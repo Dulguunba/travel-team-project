@@ -7,7 +7,7 @@ import { Twitter } from './icons/Twitter'
 export const Footer = () => {
     return (
         <div className='flex flex-col items-center justify-center bg-[#222222]'>
-            <div className='flex max-w-[1580px] w-[90%] py-5 flex-col'>
+            <div className='flex max-w-[1520px] w-[90%] py-5 flex-col'>
                 <div className='flex items-center justify-between w-full '>
                     <div className='flex'>
                         <Brand />
