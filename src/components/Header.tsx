@@ -51,3 +51,15 @@ export const Header = () => {
         </div>
     )
 }
+{/* <select className='border-l-[2px] border-[#0D6EFD]' id="Category">
+                            <option value="todo">Destination</option>
+                            <option value="Hotoffer">Hot offer </option>
+                            <option value="Giftboxes">Gift boxes</option>
+                            <option value="done">Done</option>
+                        </select>
+                        <select className='border-l-[2px] border-[#0D6EFD]' id="Category">
+                            <option value="todo">Tours</option>
+                            <option value="Hotoffer">Hot offer </option>
+                            <option value="Giftboxes">Gift boxes</option>
+                            <option value="done">Done</option>
+                        </select> */}
