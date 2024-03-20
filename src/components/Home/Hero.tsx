@@ -1,18 +1,18 @@
 import React from 'react'
-import { DownArrow } from '../Icons/DownArrow'
+import { DownArrow } from '../icons/DownArrow'
 import { Header } from '../Header'
 
 export const Hero = () => {
     return (
         <>
-            <div style={{ backgroundImage: `url(Pic.jpg)` }}>
+            <div style={{ backgroundImage: `url(Pic.jpg)` }} className='bg-cover bg-bottom bg-no-repeat'>
                 <Header />
-                <div className=' max-w-[1180px] m-auto w-[90%] h-[600px] flex mt-8 bg justify-center'>
+                <div className=' max-w-[1520px] m-auto w-[90%] h-[600px] flex mt-8 bg justify-center'>
                     <div className='z-10'>
                         <div className='flex flex-col gap-8 items-center'>
                             <div className='flex flex-col items-center drop-shadow-lg'>
-                                <h1 className='text-3xl text-white'>UNFORGETTABLE TRAVEL AWAITS THE</h1>
-                                <h1 className='font-bold text-9xl text-white'>ADVENTURE</h1>
+                                <h1 className='text-3xl text-white font-primary text-[32px] leading-10 drop-shadow-md tracking-widest'>UNFORGETTABLE TRAVEL AWAITS THE</h1>
+                                <h1 className='font-oswald font-bold text-[300px] text-start text-white'>ADVENTURE</h1>
                             </div>
                             <p className='text-white'>Expericen the asdaklsdjaksldjaskldjaskldjaslkdajsldkasjdlkasjdlkaslkdjsalkdjsalkdjas</p>
                             <div className='bg-white shadow-lg p-5 flex gap-5 rounded-md'>
