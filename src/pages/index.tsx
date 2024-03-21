@@ -4,6 +4,9 @@ import { Header } from "@/components/Header";
 import { PopularDestinations } from "@/components/Home/PopularDestinations";
 import { Hero } from "@/components/Home/Hero";
 import { Process } from "@/components/Home/Process";
+import { Gallery } from "@/components/Home/Gallery";
+import { Value } from "@/components/Home/Value";
+import { Questions } from "@/components/Home/Questions";
 
 const poppins = Poppins({
   weight: '400',
@@ -16,6 +19,9 @@ export default function Home() {
       <Hero />
       <PopularDestinations />
       <Process />
+      <Gallery />
+      <Value />
+      <Questions />
     </div>
   );
 }

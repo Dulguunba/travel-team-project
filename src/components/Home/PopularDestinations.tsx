@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LocationIcon } from '../icons/LocationIcon';
+import { LocationIcon } from '../icons/HomeIcons/LocationIcon';
 
 export const PopularDestinations = () => {
     const [currentSlide, setCurrentSlide] = useState(1); // Start with slide2 as the current slide

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { PlanningSvg } from '../icons/PlanningSvg'
+import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'
 
 interface Props {
     style: string
