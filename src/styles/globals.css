@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#card {
+    /* box-shadow: -1px -97px 46px -48px rgba(0, 0, 0, 0.55) inset; */
+    box-shadow: -1px -169px 91px -48px rgba(0, 0, 0, 0.55) inset;
+}

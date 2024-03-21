@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Grid } from './icons/Grid'
-import { Hamburger } from './icons/Hamburger'
-
+import { Loc } from './icons/Loc'
+import { Dollar } from './icons/Dollar'
 
 export const Hero = () => {
     const [select, setSelect] = useState('select')
@@ -140,7 +139,119 @@ export const Hero = () => {
                         </button>
                     </div>
                 </div>
+                <div className=' grid grid-cols-3 grid-rows-5 h-[2545px]  w-full pt-20 gap-[30px] '>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative shadow-inner ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className="col-span-2 rounded-3xl  bg-cover bg-no-repeat bg-center bg-[url('/japan.png')]  flex flex-col p-[34px] justify-end " >
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative shadow-inner ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 row-span-2 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-2 row-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 row-span-2 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
+                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
+                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
+                        <div className='flex items-center gap-2'>
+                            <Loc />
+                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
+                            <Dollar />
+                            <h3 className='text-white font-light text-base '>How much</h3>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
             </div>
-        </div>
+        </div >
     )
 }
