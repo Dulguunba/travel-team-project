@@ -1,7 +1,13 @@
-import React from 'react'
-import { LocationIcon } from '../icons/LocationIcon'
+import React, { useState } from 'react';
+import { LocationIcon } from '../icons/LocationIcon';
 
 export const PopularDestinations = () => {
+    const [currentSlide, setCurrentSlide] = useState(1); // Start with slide2 as the current slide
+
+    const handleSlideClick = (slideIndex: number) => {
+        setCurrentSlide(slideIndex); // Update the current slide when clicked
+    };
+
     return (
         <div className='flex justify-center items-center'>
             <div className='max-w-[1520px] w-[90%] mt-20'>
@@ -11,11 +17,11 @@ export const PopularDestinations = () => {
                         <p>Explore our top destinations right from our beloved clients’ reviews.</p>
                     </div>
                     <div>
-                        <div className="carousel w-full flex gap-5">
-                            <div id="slide1" className="carousel-item">
-                                <img src="Pic.jpg" className="w-[372px] h-[503px] rounded-3xl" />
+                        <div className="w-full flex gap-5">
+                            <div id="slide1" className={`slide ${currentSlide === 0 ? "active-slide" : ""}`} onClick={() => handleSlideClick(0)}>
+                                <img src="Pic2.jpg" className="w-[372px] h-[503px] rounded-3xl" />
                             </div>
-                            <div id="slide2" className="carousel-item">
+                            <div id="slide2" className={`slide ${currentSlide === 1 ? "active-slide" : ""}`} onClick={() => handleSlideClick(1)}>
                                 <div className='relative'>
                                     <img src="Pic.jpg" className="w-[713px] h-[609px] rounded-3xl" />
                                     <div className='absolute top-0 w-[713px] h-[609px]'>
@@ -39,14 +45,14 @@ export const PopularDestinations = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div id="slide3" className="carousel-item">
-                                <img src="Pic.jpg" className="w-[372px] h-[503px] rounded-3xl" />
+                            <div id="slide3" className={`slide ${currentSlide === 2 ? "active-slide" : ""}`} onClick={() => handleSlideClick(2)}>
+                                <img src="Pic3.jpg" className="w-[372px] h-[503px] rounded-3xl" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+
+};
