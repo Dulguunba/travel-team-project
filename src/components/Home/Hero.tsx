@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
 import { Header } from '../Header'
 
 export const Hero = () => {
+    const [selectedItem, setSelectedItem] = useState('');
+    const [toggleDropdown, setToggleDropdown] = useState(false);
+
+    const handleItemClick = (value: string) => {
+        setSelectedItem(value);
+
+    }
+    const toggle = () => {
+        setToggleDropdown(!false)
+    }
+
     return (
         <>
             <img src="Pic.jpg" className='w-full h-[1042px]' alt="" />
@@ -20,11 +31,19 @@ export const Hero = () => {
                             <div className='bg-white mt-12 w-[1091px] h-[146px] shadow-lg p-10 flex rounded-3xl'>
                                 <div className='flex justify-between w-full'>
                                     <div className='border-r-2 pr-8 w-[219px] h-[66px] flex flex-col gap-3 items-start'>
-                                        <div className='flex items-center justify-between w-full cursor-pointer'>
-                                            <p className='font-medium text-lg'>Destination</p>
-                                            <DownArrow fill='#4997D3' />
+                                        <div className='dropdown cursor-pointer'>
+                                            <div tabIndex={0} role="button" className="m-1 font-medium text-lg flex justify-between items-center w-full">Destination
+                                                <DownArrow fill='#4997D3' />
+                                            </div>
+                                            {!toggleDropdown &&
+                                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                                    <li><a onClick={() => { handleItemClick("Item 1"); }}>Item 1</a></li>
+                                                    <li><a onClick={() => { handleItemClick("Item 2"); }}>Item 2</a></li>
+                                                    <li><a onClick={() => { handleItemClick("Item 3"); }}>Item 3</a></li>
+                                                    <li><a onClick={() => { handleItemClick("Item 4"); }}>Item 4</a></li>
+                                                </ul>}
                                         </div>
-                                        <p className='text-gray-500'>Khuvsgul Lake</p>
+                                        <p className='text-gray-500'>{selectedItem}</p>
                                     </div>
                                     <div className='border-r-2 pr-5 w-[219px] h-[66px] flex flex-col gap-3 items-start'>
                                         <div className='flex items-center justify-between w-full  cursor-pointer'>

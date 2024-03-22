@@ -9,6 +9,7 @@ import { Value } from "@/components/Home/Value";
 import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
 
+
 const poppins = Poppins({
   weight: '400',
   subsets: ['latin'],
