@@ -4,7 +4,7 @@ import { QuestionCard } from './QuestionCard'
 export const Questions = () => {
     return (
         <div className='flex justify-center items-center'>
-            <div className='max-w-[1520px] w-[90%] mt-40 flex flex-col items-center justify-center'>
+            <div className='max-w-[1520px] w-[90%] mt-40 mb-40 flex flex-col items-center justify-center'>
                 <div className='text-center flex flex-col gap-2'>
                     <h1 className='text-[40px] font-oswald font-bold'>FREQUENTLY ASKED QUESTIONS</h1>
                     <p className='font-primary font-normal text-xl '>What our clients usually asked about our services and tours.</p>

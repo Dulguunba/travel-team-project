@@ -20,22 +20,22 @@ export const Hero = () => {
                             <div className='bg-white mt-12 w-[1091px] h-[146px] shadow-lg p-10 flex rounded-3xl'>
                                 <div className='flex justify-between w-full'>
                                     <div className='border-r-2 pr-8 w-[219px] h-[66px] flex flex-col gap-3 items-start'>
-                                        <div className='flex items-center justify-between w-full'>
+                                        <div className='flex items-center justify-between w-full cursor-pointer'>
                                             <p className='font-medium text-lg'>Destination</p>
                                             <DownArrow fill='#4997D3' />
                                         </div>
                                         <p className='text-gray-500'>Khuvsgul Lake</p>
                                     </div>
                                     <div className='border-r-2 pr-5 w-[219px] h-[66px] flex flex-col gap-3 items-start'>
-                                        <div className='flex items-center justify-between w-full'>
-                                            <p className='font-medium text-lg'>Destination</p>
+                                        <div className='flex items-center justify-between w-full  cursor-pointer'>
+                                            <p className='font-medium text-lg'>Date</p>
                                             <DownArrow fill='#4997D3' />
                                         </div>
-                                        <p className='text-gray-500'>Khuvsgul Lake</p>
+                                        <input type="date" className='outline-none border-none cursor-pointer' />
                                     </div>
-                                    <div className='w-[219px] h-[66px] flex flex-col gap-3 items-start'>
+                                    <div className='w-[219px] h-[66px] flex flex-col gap-3 items-start cursor-pointer'>
                                         <div className='flex items-center justify-between w-full'>
-                                            <p className='font-medium text-lg'>Destination</p>
+                                            <p className='font-medium text-lg'>Price</p>
                                             <DownArrow fill='#4997D3' />
                                         </div>
                                         <p className='text-gray-500'>Khuvsgul Lake</p>

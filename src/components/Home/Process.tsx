@@ -5,7 +5,7 @@ import { ProcessCard } from './ProcessCard'
 import { CalendarSvg } from '../icons/HomeIcons/CalendarSvg'
 import { TripSvg } from '../icons/HomeIcons/TripSvg'
 import { AirplaneSvg } from '../icons/HomeIcons/AirplaneSvg'
-import { PageTitleDesign } from '../PageTitleDesign'
+import { PageTitleDesign } from './PageTitleDesign'
 
 export const Process = () => {
     return (

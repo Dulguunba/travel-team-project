@@ -13,7 +13,7 @@ export const Value = () => {
                     <p className='text-blue text-xl'>VALUES</p>
                     <h1 className='text-[100px] font-oswald font-bold'>OUR VALUES</h1>
                 </div>
-                <div className='flex mt-28 justify-between w-full'>
+                <div className='flex mt-48 h-[350px] justify-between w-full'>
                     <ValueCard svg={<SmileSvg />} title='Customer Delight' description='We deliver the best service
 and experience for our customer.'/>
                     <ValueCard svg={<MountainSvg />} title='Customer Delight' description='We deliver the best service

@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageTitleDesign } from '../PageTitleDesign'
+import { PageTitleDesign } from './PageTitleDesign'
 import { ProcessCard } from './ProcessCard'
 import { Line } from '../icons/HomeIcons/Line'
 import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'

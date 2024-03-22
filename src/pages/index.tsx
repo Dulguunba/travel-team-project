@@ -7,6 +7,7 @@ import { Process } from "@/components/Home/Process";
 import { Gallery } from "@/components/Home/Gallery";
 import { Value } from "@/components/Home/Value";
 import { Questions } from "@/components/Home/Questions";
+import { MainFooter } from "@/components/Home/MainFooter";
 
 const poppins = Poppins({
   weight: '400',
@@ -22,6 +23,7 @@ export default function Home() {
       <Gallery />
       <Value />
       <Questions />
+      <MainFooter />
     </div>
   );
 }
