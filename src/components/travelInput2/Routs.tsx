@@ -3,7 +3,7 @@ import { Deleteicon } from "../icons2/product/Deleteicon";
 import axios from "axios";
 import Link from "next/link";
 
-type tripInpormationTypes = {
+type tripInformationTypes = {
   startStation: String;
   endStation: String;
   duration: String;
@@ -14,7 +14,7 @@ type tripInpormationTypes = {
 
 export const Routs = () => {
   const vehicle = ["bus", "car", "metro"];
-  const [tripInpormation, setTripInpormation] = useState({
+  const [tripInformation, setTripInformation] = useState({
     startStation: "",
     endStation: "",
     duration: "",
@@ -22,25 +22,25 @@ export const Routs = () => {
     location: "",
     information: "",
   });
-  const [tripDatabase, setTripDatabase] = useState<tripInpormationTypes[]>([]);
+  const [tripDatabase, setTripDatabase] = useState<tripInformationTypes[]>([]);
   const deleteRows = (id: number) => {
     const rowValues = tripDatabase.filter((a, index) => index !== id);
     setTripDatabase(rowValues);
   };
-  console.log(tripInpormation);
+  console.log(tripInformation);
   const Add = async () => {
     try {
-      const tripInpormationDb: tripInpormationTypes = {
-        startStation: tripInpormation.startStation,
-        endStation: tripInpormation.endStation,
-        duration: tripInpormation.duration,
-        vehicle: tripInpormation.vehicle,
-        location: tripInpormation.location,
-        information: tripInpormation.information,
+      const tripInformationDb: tripInformationTypes = {
+        startStation: tripInformation.startStation,
+        endStation: tripInformation.endStation,
+        duration: tripInformation.duration,
+        vehicle: tripInformation.vehicle,
+        location: tripInformation.location,
+        information: tripInformation.information,
       };
       const createDB = await axios.post(
         "http://localhost:8080/routs",
-        tripInpormationDb
+        tripInformationDb
       );
       const getRouts = await (
         await axios.get("http://localhost:8080/routs")
@@ -53,13 +53,13 @@ export const Routs = () => {
     }
   };
   const clear = () => {
-    tripInpormation.duration = "";
-    tripInpormation.endStation = "";
-    tripInpormation.information = "";
-    tripInpormation.location = "";
-    tripInpormation.startStation = "";
-    tripInpormation.vehicle = "";
-    setTripInpormation({ ...tripInpormation, vehicle: "bus" });
+    tripInformation.duration = "";
+    tripInformation.endStation = "";
+    tripInformation.information = "";
+    tripInformation.location = "";
+    tripInformation.startStation = "";
+    tripInformation.vehicle = "";
+    setTripInformation({ ...tripInformation, vehicle: "bus" });
   };
   return (
     <div>
@@ -77,10 +77,10 @@ export const Routs = () => {
             <input
               type="text"
               placeholder="Эхлэх цэг"
-              value={tripInpormation.startStation}
+              value={tripInformation.startStation}
               onChange={(e) =>
-                setTripInpormation({
-                  ...tripInpormation,
+                setTripInformation({
+                  ...tripInformation,
                   startStation: e.target.value,
                 })
               }
@@ -90,10 +90,10 @@ export const Routs = () => {
           <label htmlFor="">Дуусах цэг</label>
           <input
             type="text"
-            value={tripInpormation.endStation}
+            value={tripInformation.endStation}
             onChange={(e) =>
-              setTripInpormation({
-                ...tripInpormation,
+              setTripInformation({
+                ...tripInformation,
                 endStation: e.target.value,
               })
             }
@@ -103,10 +103,10 @@ export const Routs = () => {
           <label htmlFor="">Үргэлжлэх хугцаа</label>
           <input
             type="date"
-            value={tripInpormation.duration}
+            value={tripInformation.duration}
             onChange={(e) =>
-              setTripInpormation({
-                ...tripInpormation,
+              setTripInformation({
+                ...tripInformation,
                 duration: e.target.value,
               })
             }
@@ -114,10 +114,10 @@ export const Routs = () => {
           />
           <label htmlFor="">Тээврийн хэрэгсэл</label>
           <select
-            value={tripInpormation.vehicle}
+            value={tripInformation.vehicle}
             onChange={(e) =>
-              setTripInpormation({
-                ...tripInpormation,
+              setTripInformation({
+                ...tripInformation,
                 vehicle: e.target.value,
               })
             }
@@ -131,10 +131,10 @@ export const Routs = () => {
           <input
             type="text"
             placeholder="Байрлах газар"
-            value={tripInpormation.location}
+            value={tripInformation.location}
             onChange={(e) =>
-              setTripInpormation({
-                ...tripInpormation,
+              setTripInformation({
+                ...tripInformation,
                 location: e.target.value,
               })
             }
@@ -144,10 +144,10 @@ export const Routs = () => {
           <textarea
             className="textarea textarea-bordered"
             placeholder="Нэмэлт мэдээлэл"
-            value={tripInpormation.information}
+            value={tripInformation.information}
             onChange={(e) =>
-              setTripInpormation({
-                ...tripInpormation,
+              setTripInformation({
+                ...tripInformation,
                 information: e.target.value,
               })
             }
@@ -156,12 +156,12 @@ export const Routs = () => {
             onClick={Add}
             className=" mt-3 p-1 bg-white rounded-lg w-full"
             disabled={
-              !tripInpormation.duration ||
-              !tripInpormation.endStation ||
-              !tripInpormation.information ||
-              !tripInpormation.location ||
-              !tripInpormation.startStation ||
-              !tripInpormation.vehicle
+              !tripInformation.duration ||
+              !tripInformation.endStation ||
+              !tripInformation.information ||
+              !tripInformation.location ||
+              !tripInformation.startStation ||
+              !tripInformation.vehicle
             }
           >
             Add
@@ -198,16 +198,16 @@ export const Routs = () => {
               <tbody>
                 {/* row 1 */}
                 {tripDatabase.map(
-                  (tripInpormation: tripInpormationTypes, index) => {
+                  (tripInformation: tripInformationTypes, index) => {
                     return (
                       <tr>
                         <th>{index + 1}</th>
-                        <td>{tripInpormation?.startStation}</td>
-                        <td>{tripInpormation?.endStation}</td>
-                        <td>{tripInpormation?.duration}</td>
-                        <td>{tripInpormation?.vehicle}</td>
-                        <td>{tripInpormation?.location}</td>
-                        <td>{tripInpormation?.information}</td>
+                        <td>{tripInformation?.startStation}</td>
+                        <td>{tripInformation?.endStation}</td>
+                        <td>{tripInformation?.duration}</td>
+                        <td>{tripInformation?.vehicle}</td>
+                        <td>{tripInformation?.location}</td>
+                        <td>{tripInformation?.information}</td>
                         <td>
                           <button onClick={() => deleteRows(index)}>
                             <Deleteicon />
