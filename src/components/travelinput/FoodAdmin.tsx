@@ -3,9 +3,12 @@ import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { TravelDataContext } from "../context";
 
 export const FoodAdmin = () => {
   const route = useRouter();
+  const { travelData, setTravelData } = useContext(TravelDataContext);
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
   const formik = useFormik({
@@ -22,8 +25,15 @@ export const FoodAdmin = () => {
       IsIncludeFoodPriceCheck: Yup.boolean(),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const travelInputs = {
+        foodNumber: formik.values.foodNumber,
+        foodPrice: formik.values.foodPrice,
+        IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
+        IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
+      };
+      setTravelData({ ...travelData, ...travelInputs });
       route.push("/travelinputthree");
+      console.log("travel data step 2", travelData);
     },
   });
 

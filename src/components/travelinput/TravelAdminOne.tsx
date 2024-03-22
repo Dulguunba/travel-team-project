@@ -3,9 +3,12 @@ import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { TravelDataContext } from "../context";
 
 export const TravelAdminOne = () => {
   const route = useRouter();
+  const { travelData, setTravelData } = useContext(TravelDataContext);
 
   const formik = useFormik({
     initialValues: {
@@ -29,7 +32,18 @@ export const TravelAdminOne = () => {
       childPrice: Yup.number().required("Price information is required"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const travelInputs = {
+        name: formik.values.travelName,
+        travelCompany: formik.values.travelCompany,
+        duration: Number(formik.values.duration),
+        adultPrice: Number(formik.values.adultPrice),
+        childPrice: Number(formik.values.childPrice),
+      };
+      console.log("travelinput step 1", travelInputs);
+
+      setTravelData(travelInputs);
+      console.log("travel data step 1", travelData);
+
       route.push("/travelinputtwo");
     },
   });
