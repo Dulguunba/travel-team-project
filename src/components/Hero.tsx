@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Loc } from './icons/Loc'
 import { Dollar } from './icons/Dollar'
-
+import axios from 'axios'
+import { Card } from './Card'
+import { ListCard } from './ListCard'
 export const Hero = () => {
     const [select, setSelect] = useState('select')
     const [grid, setGrid] = useState('grid')
@@ -85,8 +87,32 @@ export const Hero = () => {
             console.log("type " + grid)
         }
     }
+    const [articles, setArticles] = useState([])
+
+    const fetchData = async () => {
+        try {
+            await axios.get('https://dev.to/api/articles')
+                .then(response => {
+                    setArticles(response.data)
+                })
+                .catch(error => { console.log(error) })
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchData
+    }, [])
+    // console.log(articles)
+    //     article.tag_list.map((article) => {
+    // articles.cover_image
+    //     })
     return (
+
         <div className='flex flex-col items-center justify-center bg-[white]'>
+
             <div className='flex max-w-[1520px] w-[90%] py-5 flex-col'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='font-oswald font-bold text-[40px] leading-[50px] '>POPULAR DESTINATION</h1>
@@ -139,118 +165,46 @@ export const Hero = () => {
                         </button>
                     </div>
                 </div>
-                <div className=' grid grid-cols-3 grid-rows-5 h-[2545px]  w-full pt-20 gap-[30px] '>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative shadow-inner ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
+                {
+                    grid == 'grid' ?
+                        <div className=' grid grid-cols-3 grid-rows-5 h-[2545px]  w-full pt-20 gap-[30px] '>
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')]" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-2 bg-no-repeat bg-[url('/japan.png')]   bg-no-repeat " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 row-span-2 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-2 row-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 row-span-2 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')] " />
+                        </div> :
+
+                        <div className=' flex flex-col w-full py-20 gap-12 '>
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+
                         </div>
-                    </div>
-                    <div id='card' className="col-span-2 rounded-3xl  bg-cover bg-no-repeat bg-center bg-[url('/japan.png')]  flex flex-col p-[34px] justify-end " >
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative shadow-inner ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 row-span-2 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-2 row-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 row-span-2 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                    <div id='card' className=" col-span-1 rounded-3xl bg-[url('/winter.png')] bg-cover bg-center flex flex-col p-[34px] justify-end relative  ">
-                        {/* <div className='absolute bg-gradient-to-t from-black to-white w-full h-1/2 '></div> */}
-                        <h1 className='font-medium text-white text-[32px] leading-[40px]'>Place name </h1>
-                        <div className='flex items-center gap-2'>
-                            <Loc />
-                            <h3 className='text-white font-light text-base pr-3'>country name  |</h3>
-                            <Dollar />
-                            <h3 className='text-white font-light text-base '>How much</h3>
-                        </div>
-                    </div>
-                </div>
-                <div></div>
+                }
+
+
             </div>
         </div >
     )

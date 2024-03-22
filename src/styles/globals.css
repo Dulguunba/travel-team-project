@@ -6,4 +6,11 @@
 #card {
     /* box-shadow: -1px -97px 46px -48px rgba(0, 0, 0, 0.55) inset; */
     box-shadow: -1px -169px 91px -48px rgba(0, 0, 0, 0.55) inset;
+
 }
+
+
+/* #card :hover {
+    box-shadow: 3px 12px 400px 200px rgba(0, 0, 0, 0.5) inset;
+
+} */
