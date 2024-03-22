@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useContext } from "react";
+import { TravelDataContext } from "../context";
+import { useRouter } from "next/router";
 
 export const TrafficAdmin = () => {
+  const route = useRouter();
+  const { travelData, setTravelData } = useContext(TravelDataContext);
   const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
   const [IsIncludeTrafficPrice, setIsIncludeTrafficPrice] = useState(false);
   const formik = useFormik({
@@ -18,7 +23,14 @@ export const TrafficAdmin = () => {
       IsIncludeTrafficPriceCheck: Yup.boolean(),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const travelInputs = {
+        trafficPrice: formik.values.trafficPrice,
+        IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
+        IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
+      };
+      setTravelData({ ...travelData, ...travelInputs });
+      route.push("/travelinputfour");
+      console.log("travel data step 3", travelData);
     },
   });
   formik.values;
