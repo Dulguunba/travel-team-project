@@ -1,7 +1,22 @@
-import React from 'react'
-import { DownArrow } from './icons/HomeIcons/DownArrow'
+import React, { useState } from 'react'
+import { DownArrow } from '../icons/HomeIcons/DownArrow'
+import { DestinationDropdown } from './DestinationDropdown'
+import { Data } from './types/heroTypes'
+import { getServerSideProps } from './heroData'
 
-export const Header = () => {
+export const Header = ({ data }: { data: Data[] }) => {
+    const [toggleDropdown, setToggleDropdown] = useState(false);
+
+    const handleItemClick = (value: string) => {
+        setToggleDropdown(false)
+
+    }
+    const toggle = () => {
+        setToggleDropdown(!toggleDropdown)
+    }
+
+    const TenData = data.slice(0, 10)
+
     return (
         <div className="flex flex-col items-center justify-center relative">
             <div className='flex max-w-[1520px] w-[90%] z-10'>
@@ -11,8 +26,13 @@ export const Header = () => {
                     </div>
                     <div className='flex gap-14 items-center drop-shadow-md'>
                         <div className='flex items-center gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
-                            <p>Destinations</p>
-                            <DownArrow />
+                            <div className="relative">
+                                <div role="button" className="btn m-1">Click</div>
+                                <ul className="absolute z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a>Item 1</a></li>
+                                    <li><a>Item 2</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div className='flex items-center gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                             <p>Tours</p>
@@ -30,3 +50,5 @@ export const Header = () => {
         </div>
     )
 }
+
+{ getServerSideProps }
