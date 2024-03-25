@@ -1,3 +1,13 @@
+import React from 'react'
+
+export const PopularDestinations = () => {
+    return (
+        <div className='w-full h-[500px] bg-black'>
+            PopularDestinations
+            asdaklsdjaksldjaskldjaskldjaslkdajsldkasjdlkasjdlkaslkdjsalkdjsalkdjasdasd
+        </div>
+    )
+}
 import { LocationIcon } from '../icons/HomeIcons/LocationIcon';
 import { getServerSideProps } from './heroData';
 import { Data } from './types/heroTypes';

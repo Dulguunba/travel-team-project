@@ -7,6 +7,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+
     extend: {
       colors: {
         blue: "#4997D3",
@@ -15,15 +16,18 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
+        oswald: ["Oswald"],
         primary: ["Poppins"],
-        oswald: ["Oswald"]
-      }
-    },
+      },
+
+    }
   },
+
   plugins: [require("daisyui")],
 };
 export default config;
