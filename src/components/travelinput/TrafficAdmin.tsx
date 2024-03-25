@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useContext } from "react";
 import { TravelDataContext } from "../context";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const TrafficAdmin = () => {
   const route = useRouter();
@@ -126,9 +127,14 @@ export const TrafficAdmin = () => {
             >
               Буцах
             </a>
-            <button type="submit" className="bg-primary p-2 rounded text-white">
-              Дараах
-            </button>
+            <Link href={"/stepfour"}>
+              <button
+                type="submit"
+                className="bg-primary p-2 rounded text-white"
+              >
+                Дараах
+              </button>
+            </Link>
           </div>
         </div>
       </form>
