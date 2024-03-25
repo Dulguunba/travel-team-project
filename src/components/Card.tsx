@@ -27,9 +27,9 @@ export const Card = (props: any) => {
 
         {isHover
           ?
-          <div className='absolute top-0 w-full h-full hover:bg-black duration-500 hover:ease-in rounded-3xl hover:opacity-75'>
+          <div className='group absolute top-0 w-full h-full hover:bg-black hover:duration-500 hover:ease-in  hover:opacity-75 rounded-3xl'>
             <div className='flex items-center h-full justify-center w-full flex-col'>
-              <h1 className='font-medium  text-white text-[32px] leading-[40px]'>{props.place}</h1>
+              <h1 className='font-medium  text-white text-[32px] leading-[40px]  '>{props.place}</h1>
               <div className='flex items-center gap-2 pt-6 pb-4'>
                 <Loc />
                 <h3 className='text-white  font-light text-base pr-3'>{props.country}</h3>
