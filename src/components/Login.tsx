@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Fonthideeye } from './icons/Fonthideeye';
-import { Fonteye } from './icons/Fonteye';
+import { Fonthideeye } from './icons/destinaton/Fonthideeye';
+import { Fonteye } from './icons/destinaton/Fonteye';
 import { useRouter } from 'next/router';
 
 export const Login = () => {

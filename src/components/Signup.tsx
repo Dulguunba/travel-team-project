@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Fonthideeye } from './icons/Fonthideeye';
-import { Fonteye } from './icons/Fonteye';
-import { Check } from './icons/Check';
-import { Checked } from './icons/Checked';
+import { Fonthideeye } from './icons/destinaton/Fonthideeye';
+import { Fonteye } from './icons/destinaton/Fonteye';
+import { Check } from './icons/destinaton/Check';
+import { Checked } from './icons/destinaton/Checked';
 import * as yup from 'yup';
 // import { userSchema } from '../Validations/UserValidations';
 import axios from 'axios'

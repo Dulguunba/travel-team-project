@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Loc } from './icons/Loc'
-import { Dollar } from './icons/Dollar'
+import { Loc } from './icons/destinaton/Loc'
+import { Dollar } from './icons/destinaton/Dollar'
 import axios from 'axios'
 import { Card } from './Card'
 import { ListCard } from './ListCard'

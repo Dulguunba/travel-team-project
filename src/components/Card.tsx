@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Loc } from './icons/Loc'
-import { Dollar } from './icons/Dollar'
+import { Loc } from './icons/destinaton/Loc'
+import { Dollar } from './icons/destinaton/Dollar'
 export const Card = (props: any) => {
   const [isHover, setIsHover] = useState(false)
   const LearMore = () => {
