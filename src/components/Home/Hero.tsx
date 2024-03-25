@@ -15,7 +15,7 @@ export const Hero = ({ data }: { data: Data[] }) => {
             <div className='absolute top-0 right-0 left-0'>
                 <Header data={data} />
                 <div className=' max-w-[1520px] m-auto w-[90%] h-[600px] flex mt-8 bg justify-center'>
-                    <div className='z-10'>
+                    <div>
                         <div className='flex flex-col items-center'>
                             <div className='flex flex-col items-center drop-shadow-lg'>
                                 <h1 className='text-3xl text-white font-primary text-[32px] leading-10 drop-shadow-md tracking-widest'>UNFORGETTABLE TRAVEL AWAITS THE</h1>
