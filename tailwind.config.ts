@@ -10,7 +10,9 @@ const config: Config = {
 
     extend: {
       colors: {
-        'blue': '#4997D3',
+        blue: "#4997D3",
+        grayColor: "#F6F6F6"
+
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -19,10 +21,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        oswald: ["Oswald",]
+        oswald: ["Oswald"],
+        primary: ["Poppins"],
       },
-    },
+
+    }
   },
-  plugins: [],
+
+  plugins: [require("daisyui")],
 };
 export default config;
