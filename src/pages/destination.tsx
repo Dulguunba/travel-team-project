@@ -13,8 +13,8 @@ export default function Destination() {
         <>
             <Header />
             {/* <Login /> */}
-            {/* <About /> */}
-            {/* <Hero /> */}
+            <About />
+            <Hero />
             <Details />
             <Footer />
         </>
