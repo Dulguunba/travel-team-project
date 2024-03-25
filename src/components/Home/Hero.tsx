@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { Header } from './Header'
 import { getServerSideProps } from './heroData'
 import { Data } from './types/heroTypes'
 import { PriceDropdown } from './PriceDropdown'
 import { DestinationDropdown } from './DestinationDropdown'
+import Header from './Header'
 
 
-export const Hero = ({ data }: { data: Data[] }) => {
+
+const Hero = ({ data }: { data: Data[] }) => {
     console.log('data', data)
     return (
         <>
@@ -23,18 +24,18 @@ export const Hero = ({ data }: { data: Data[] }) => {
                             </div>
                             <p className='text-white font-primary font-normal w-[730px] text-center'>Experience the thrill of exploring the world's most fascinating destinations
                                 with our expertly curated travel packages.</p>
-                            <div className='bg-white mt-12 w-[1091px] h-[146px] shadow-lg p-10 flex rounded-3xl'>
-                                <div className='flex justify-between w-full'>
+                            <div className='bg-white mt-12 w-[791px] h-[116px] shadow-lg p-6 flex rounded-3xl'>
+                                <div className='flex justify-between items-center w-full'>
                                     <DestinationDropdown data={data} />
-                                    <div className='border-r-2 pr-5 w-[219px] h-[66px] flex flex-col gap-3 items-start'>
+                                    <div className='border-r-2 pr-5 w-[219px] h-[66px] flex flex-col gap-1 items-start justify-start'>
                                         <div className='flex items-center justify-between w-full  cursor-pointer'>
-                                            <p className='font-medium text-lg'>Date</p>
+                                            <p className='font-medium text-lg p-1'>Date</p>
                                             <DownArrow fill='#4997D3' />
                                         </div>
                                         <input type="date" className='outline-none border-none cursor-pointer' />
                                     </div>
-                                    <PriceDropdown data={data} />
-                                    <button className='px-5 py-2 w-40 rounded-md bg-blue text-white'>
+                                    {/* <PriceDropdown data={data} /> */}
+                                    <button className='px-5 py-2 w-40 h-full rounded-md bg-blue text-white'>
                                         Search
                                     </button>
                                 </div>
@@ -47,4 +48,6 @@ export const Hero = ({ data }: { data: Data[] }) => {
     )
 }
 
-export { getServerSideProps }
+export { getServerSideProps };
+
+export default Hero;

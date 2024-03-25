@@ -1,28 +1,27 @@
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { Header } from "@/components/Home/Header";
-import { PopularDestinations } from "@/components/Home/PopularDestinations";
 import { Process } from "@/components/Home/Process";
-import { Gallery } from "@/components/Home/Gallery";
 import { Value } from "@/components/Home/Value";
 import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
 import { Data } from "@/components/Home/types/heroTypes";
+import { PopularDestinations } from "@/components/Home/PopularDestinations";
 import { getServerSideProps } from "@/components/Home/heroData";
-import { Hero } from "@/components/Home/Hero";
+import Hero from "@/components/Home/Hero";
+import Gallery from "@/components/Home/Gallery";
 
 const poppins = Poppins({
   weight: '400',
   subsets: ['latin'],
 })
 
-export default function Home({ data }: { data: Data[] }) {
+function Home({ data }: { data: Data[] }) {
   return (
     <div>
       <Hero data={data} />
-      <PopularDestinations />
+      <PopularDestinations data={data} />
       <Process />
-      <Gallery />
+      <Gallery data={data} />
       <Value />
       <Questions />
       <MainFooter />
@@ -31,3 +30,5 @@ export default function Home({ data }: { data: Data[] }) {
 }
 
 export { getServerSideProps };
+
+export default Home;
