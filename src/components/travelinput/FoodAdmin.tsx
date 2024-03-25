@@ -5,24 +5,33 @@ import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { TravelDataContext } from "../context";
+import Link from "next/link";
 
 export const FoodAdmin = () => {
   const route = useRouter();
   const { travelData, setTravelData } = useContext(TravelDataContext);
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
+  const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
+  const [IsIncludeTrafficPrice, setIsIncludeTrafficPrice] = useState(false);
   const formik = useFormik({
     initialValues: {
       foodNumber: 0,
       foodPrice: 0,
       IsIncludeFoodCheck: false,
       IsIncludeFoodPriceCheck: false,
+      trafficPrice: 0,
+      IsIncludeTrafficCheck: false,
+      IsIncludeTrafficPriceCheck: false,
     },
     validationSchema: Yup.object({
       foodNumber: Yup.number(),
       foodPrice: Yup.number(),
       IsIncludeFoodCheck: Yup.boolean(),
       IsIncludeFoodPriceCheck: Yup.boolean(),
+      trafficPrice: Yup.number(),
+      IsIncludeTrafficCheck: Yup.boolean(),
+      IsIncludeTrafficPriceCheck: Yup.boolean(),
     }),
     onSubmit: (values) => {
       const travelInputs = {
@@ -30,7 +39,12 @@ export const FoodAdmin = () => {
         foodPrice: formik.values.foodPrice,
         IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
         IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
+        trafficPrice: formik.values.trafficPrice,
+        IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
+        IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
       };
+      console.log("travel inputs", travelInputs);
+
       setTravelData({ ...travelData, ...travelInputs });
       route.push("/travelinputthree");
       console.log("travel data step 2", travelData);
@@ -54,109 +68,186 @@ export const FoodAdmin = () => {
         className="p-10 flex gap-5 w-full items-center justify-center h-full"
         onSubmit={formik.handleSubmit}
       >
-        <div className="flex flex-col gap-5 w-1/3 mt-20 bg-white p-5 rounded-lg">
-          <div className="w-full text-sm  flex flex-col gap-2">
-            <label htmlFor="duration">Хоолны мэдээлэл</label>
-            <div className="w-full gap-3 flex flex-col items-center">
-              <div className="w-full flex justify-start items-center gap-4 mb-2">
-                <input
-                  id="IsIncludeFoodCheck"
-                  type="checkbox"
-                  className="toggle toggle-success"
-                  {...formik.getFieldProps("IsIncludeFoodCheck")}
-                  onChange={(e) => {
-                    formik.handleChange(e);
-                    formik.setFieldValue(
-                      "IsIncludeFoodCheck",
-                      e.target.checked
-                    );
-                    setIsIncludeFood(e.target.checked);
-                  }}
-                />
-                <label htmlFor="checkbox" className="text-sm">
-                  Аялалд хоол багтсан эсэх
-                </label>
-              </div>
-              <div className="w-full flex justify-start items-center gap-2">
-                <div className="w-4/5  text-sm flex items-center">
-                  <label
-                    htmlFor="name"
-                    className={`${!IsIncludeFood ? "text-gray-400" : ""}`}
-                  >
-                    Нэг өдрийн аялалын хоолны тоо
-                  </label>
-                  <input
-                    id="foodNumber"
-                    type="number"
-                    placeholder="Нэг өдрийн аялалын хоолны тоог оруулна уу"
-                    className={`${
-                      !IsIncludeFood
-                        ? "bg-gray-50 border-gray-100"
-                        : "bg-gray-100 border-gray-200"
-                    } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
-                    disabled={!IsIncludeFood}
-                    {...formik.getFieldProps("foodNumber")}
-                  />
-                </div>
-              </div>
-              <div className="w-full flex justify-start items-center gap-2">
+        <div className="w-1/2 flex flex-col items-start bg-white rounded-lg">
+          <div className="flex flex-col gap-5 w-full  p-5 rounded-lg">
+            <div className="w-full text-sm  flex flex-col gap-2">
+              <label htmlFor="duration">Хоолны мэдээлэл</label>
+              <div className="w-full gap-3 flex flex-col items-center">
                 <div className="w-full flex justify-start items-center gap-4 mb-2">
                   <input
-                    id="IsIncludeFoodPriceCheck"
+                    id="IsIncludeFoodCheck"
                     type="checkbox"
                     className="toggle toggle-success"
-                    {...formik.getFieldProps("IsIncludeFoodPriceCheck")}
-                    disabled={!IsIncludeFood}
+                    {...formik.getFieldProps("IsIncludeFoodCheck")}
                     onChange={(e) => {
                       formik.handleChange(e);
                       formik.setFieldValue(
-                        "IsIncludeFoodPriceCheck",
+                        "IsIncludeFoodCheck",
                         e.target.checked
                       );
-                      setIsIncludeFoodPrice(e.target.checked);
+                      setIsIncludeFood(e.target.checked);
                     }}
                   />
                   <label htmlFor="checkbox" className="text-sm">
-                    Аялалын төлбөрт хоолны төлбөр багтсан эсэх
+                    Аялалд хоол багтсан эсэх
+                  </label>
+                </div>
+                <div className="w-full flex justify-start items-center gap-2">
+                  <div className="w-4/5  text-sm flex items-center">
+                    <label
+                      htmlFor="name"
+                      className={`${!IsIncludeFood ? "text-gray-400" : ""}`}
+                    >
+                      Нэг өдрийн аялалын хоолны тоо
+                    </label>
+                    <input
+                      id="foodNumber"
+                      type="number"
+                      placeholder="Нэг өдрийн аялалын хоолны тоог оруулна уу"
+                      className={`${
+                        !IsIncludeFood
+                          ? "bg-gray-50 border-gray-100"
+                          : "bg-gray-100 border-gray-200"
+                      } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
+                      disabled={!IsIncludeFood}
+                      {...formik.getFieldProps("foodNumber")}
+                    />
+                  </div>
+                </div>
+                <div className="w-full flex justify-start items-center gap-2">
+                  <div className="w-full flex justify-start items-center gap-4 mb-2">
+                    <input
+                      id="IsIncludeFoodPriceCheck"
+                      type="checkbox"
+                      className="toggle toggle-success"
+                      {...formik.getFieldProps("IsIncludeFoodPriceCheck")}
+                      disabled={!IsIncludeFood}
+                      onChange={(e) => {
+                        formik.handleChange(e);
+                        formik.setFieldValue(
+                          "IsIncludeFoodPriceCheck",
+                          e.target.checked
+                        );
+                        setIsIncludeFoodPrice(e.target.checked);
+                      }}
+                    />
+                    <label htmlFor="checkbox" className="text-sm">
+                      Аялалын төлбөрт хоолны төлбөр багтсан эсэх
+                    </label>
+                  </div>
+                </div>
+                <div className="w-full flex justify-start items-center gap-4">
+                  <div className="w-4/5  text-sm flex items-center">
+                    <label
+                      htmlFor="name"
+                      className={`${
+                        !IsIncludeFoodPrice ? "text-gray-400" : ""
+                      }`}
+                    >
+                      Нэмэлт хоолны төлбөр
+                    </label>
+                    <input
+                      id="foodPrice"
+                      type="number"
+                      placeholder="Хоолны төлбөрийг оруулна уу"
+                      className={`${
+                        !IsIncludeFood
+                          ? "bg-gray-50 border-gray-100"
+                          : "bg-gray-100 border-gray-200"
+                      } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
+                      disabled={!IsIncludeFoodPrice}
+                      {...formik.getFieldProps("foodPrice")}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full text-sm  flex flex-col mb-2 gap-5 p-5 rounded-lg ">
+            <label htmlFor="duration">Тээврийн мэдээлэл</label>
+            <div className="w-full gap-3 flex flex-col items-center">
+              <div className="w-full flex justify-start items-center gap-4 mb-2">
+                <input
+                  id="IsIncludeTrafficCheck"
+                  type="checkbox"
+                  className="toggle toggle-success"
+                  {...formik.getFieldProps("IsIncludeTrafficCheck")}
+                  onChange={(e) => {
+                    formik.handleChange(e);
+                    formik.setFieldValue(
+                      "IsIncludeTrafficCheck",
+                      e.target.checked
+                    );
+                    setIsIncludeTraffic(e.target.checked);
+                  }}
+                />
+                <label htmlFor="checkbox" className="text-sm">
+                  Аялалын компани тээврийн хэрэгслийг зохион байгуулах эсэх
+                </label>
+              </div>
+
+              <div className="w-full flex justify-start items-center gap-4">
+                <div className="w-full flex justify-start items-center gap-4 mb-2">
+                  <input
+                    id="IsIncludeTrafficPriceCheck"
+                    type="checkbox"
+                    className="toggle toggle-success"
+                    {...formik.getFieldProps("IsIncludeTrafficPriceCheck")}
+                    disabled={!IsIncludeTraffic}
+                    onChange={(e) => {
+                      formik.handleChange(e);
+                      formik.setFieldValue(
+                        "IsIncludeTrafficPriceCheck",
+                        e.target.checked
+                      );
+                      setIsIncludeTrafficPrice(e.target.checked);
+                    }}
+                  />
+                  <label htmlFor="checkbox" className="text-sm">
+                    Аялалын төлбөрт тээврийн төлбөр багтсан эсэх
                   </label>
                 </div>
               </div>
               <div className="w-full flex justify-start items-center gap-4">
-                <div className="w-4/5  text-sm flex items-center">
+                <div className="w-4/5 h-20 text-sm flex items-center">
                   <label
                     htmlFor="name"
-                    className={`${!IsIncludeFoodPrice ? "text-gray-400" : ""}`}
+                    className={`${
+                      !IsIncludeTrafficPrice ? "text-gray-400" : ""
+                    }`}
                   >
-                    Нэмэлт хоолны төлбөр
+                    Нэмэлт тээврийн төлбөр
                   </label>
                   <input
-                    id="foodPrice"
+                    id="trafficPrice"
                     type="number"
                     placeholder="Хоолны төлбөрийг оруулна уу"
                     className={`${
-                      !IsIncludeFood
+                      !IsIncludeTraffic
                         ? "bg-gray-50 border-gray-100"
                         : "bg-gray-100 border-gray-200"
                     } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
-                    disabled={!IsIncludeFoodPrice}
-                    {...formik.getFieldProps("foodPrice")}
+                    disabled={!IsIncludeTrafficPrice}
+                    {...formik.getFieldProps("trafficPrice")}
                   />
                 </div>
               </div>
             </div>
             <div className="flex justify-between items-center">
               <a
-                href="/travelinputone"
+                href="/travelinputtwo"
                 className="bg-primary p-2 rounded text-white"
               >
                 Буцах
               </a>
+              {/* <Link href={"/stepfour"}> */}
               <button
                 type="submit"
                 className="bg-primary p-2 rounded text-white"
               >
                 Дараах
               </button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
