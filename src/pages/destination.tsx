@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { About } from "@/components/About";
 import { Hero } from "@/components/Hero"
 import { Details } from "@/components/Details";
+import { Form } from "@/components/Form";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Destination() {
@@ -13,9 +14,10 @@ export default function Destination() {
         <>
             <Header />
             {/* <Login /> */}
-            <About />
-            <Hero />
-            <Details />
+            {/* <About /> */}
+            {/* <Hero /> */}
+            {/* <Details /> */}
+            <Form/>
             <Footer />
         </>
     );
