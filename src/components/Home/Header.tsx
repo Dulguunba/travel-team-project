@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
 import { Data } from './types/heroTypes'
 import { getServerSideProps } from './heroData';
+import Link from 'next/link';
 
 const Header = ({ data }: { data: Data[] }) => {
     return (
@@ -14,7 +15,7 @@ const Header = ({ data }: { data: Data[] }) => {
                     <div className='flex gap-14 items-center drop-shadow-md'>
                         <div className='flex items-center relative gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                             <div className="dropdown dropdown-hover relative">
-                                <div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div>
+                                <Link href={"/destination"}><div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div></Link>
                                 <ul tabIndex={0} className="dropdown-content -left-16 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[40vw] flex-row">
                                     <div className="text-gray-700 font-semibold border-b-2 w-full pb-2">Popular Destinations</div>
                                     {data.map((item) => (
