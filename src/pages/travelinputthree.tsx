@@ -15,7 +15,7 @@ export default function Travelinputthree() {
     >
       <Leftbar />
       <div className="flex w-full min-h-screen h-full bg-gray-100">
-        <CategoryAdmin />
+        {/* <CategoryAdmin /> */}
       </div>
     </main>
   );

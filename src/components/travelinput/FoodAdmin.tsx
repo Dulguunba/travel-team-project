@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useRouter } from "next/router";
-import { useContext } from "react";
-import { TravelDataContext } from "../context";
-import Link from "next/link";
 
-export const FoodAdmin = () => {
-  const route = useRouter();
-  const { travelData, setTravelData } = useContext(TravelDataContext);
+export const FoodAdmin = ({
+  pageNumber,
+  setPageNumber,
+  travelDataInput,
+  setTravelDataInput,
+}: {
+  pageNumber: number;
+  setPageNumber: Function;
+  travelDataInput: {};
+  setTravelDataInput: Function;
+}) => {
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
   const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
@@ -34,7 +38,7 @@ export const FoodAdmin = () => {
       IsIncludeTrafficPriceCheck: Yup.boolean(),
     }),
     onSubmit: (values) => {
-      const travelInputs = {
+      const travelInputTwo = {
         foodNumber: formik.values.foodNumber,
         foodPrice: formik.values.foodPrice,
         IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
@@ -43,16 +47,19 @@ export const FoodAdmin = () => {
         IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
         IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
       };
-      console.log("travel inputs", travelInputs);
-
-      setTravelData({ ...travelData, ...travelInputs });
-      route.push("/travelinputthree");
-      console.log("travel data step 2", travelData);
+      console.log("travel inputs", travelInputTwo);
+      setTravelDataInput({ ...travelDataInput, ...travelInputTwo });
+      console.log("travel data step 2", travelDataInput);
+      setPageNumber(3);
     },
   });
 
   return (
-    <div className="w-full h-full min-h-screen gap-7 flex flex-col justify-start items-start">
+    <div
+      className={`w-full h-full min-h-screen gap-7 ${
+        pageNumber == 2 ? "flex" : "hidden"
+      } flex flex-col justify-start items-start`}
+    >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
         <h1>Аялал нэмэх</h1>
@@ -235,7 +242,7 @@ export const FoodAdmin = () => {
             </div>
             <div className="flex justify-between items-center">
               <a
-                href="/travelinputtwo"
+                onClick={setPageNumber(1)}
                 className="bg-primary p-2 rounded text-white"
               >
                 Буцах

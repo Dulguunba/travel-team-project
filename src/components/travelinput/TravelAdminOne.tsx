@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useRouter } from "next/router";
-import { useContext } from "react";
-import { TravelDataContext } from "../context";
 
-export const TravelAdminOne = () => {
-  const route = useRouter();
-  const { travelData, setTravelData } = useContext(TravelDataContext);
-
+export const TravelAdminOne = ({
+  pageNumber,
+  setPageNumber,
+  travelDataInput,
+  setTravelDataInput,
+}: {
+  pageNumber: number;
+  setPageNumber: Function;
+  travelDataInput: {};
+  setTravelDataInput: Function;
+}) => {
   const formik = useFormik({
     initialValues: {
       travelName: "",
@@ -32,24 +36,27 @@ export const TravelAdminOne = () => {
       childPrice: Yup.number().required("Price information is required"),
     }),
     onSubmit: (values) => {
-      const travelInputs = {
+      const travelInputone = {
         name: formik.values.travelName,
         travelCompany: formik.values.travelCompany,
         duration: Number(formik.values.duration),
         adultPrice: Number(formik.values.adultPrice),
         childPrice: Number(formik.values.childPrice),
       };
-      console.log("travelinput step 1", travelInputs);
-
-      setTravelData(travelInputs);
-      console.log("travel data step 1", travelData);
-
-      route.push("/travelinputtwo");
+      console.log("travelinput step 1", travelInputone);
+      setTravelDataInput({ ...travelDataInput, ...travelInputone });
+      console.log("travel data step 1", travelDataInput);
+      setPageNumber(2);
+      console.log("page number", pageNumber);
     },
   });
 
   return (
-    <div className="w-full h-full min-h-screen gap-7 flex flex-col justify-start items-start">
+    <div
+      className={` ${
+        pageNumber == 1 ? "flex" : "hidden"
+      } w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
+    >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
         <h1>Аялал нэмэх</h1>

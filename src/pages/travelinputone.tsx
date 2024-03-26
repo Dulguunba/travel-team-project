@@ -12,7 +12,7 @@ export default function Travelinputone() {
     >
       <Leftbar />
       <div className="flex w-full min-h-screen h-full bg-gray-100">
-        <TravelAdminOne />
+        {/* <TravelAdminOne /> */}
       </div>
     </main>
   );
