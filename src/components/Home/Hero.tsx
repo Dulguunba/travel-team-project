@@ -2,7 +2,13 @@ import React from 'react'
 import { DownArrow } from '../icons/destinaton/DownArrow'
 import { Header } from '../Header'
 
+<<<<<<< HEAD
 export const Hero = () => {
+=======
+
+
+const Hero = ({ data }: { data: Data[] }) => {
+>>>>>>> main
     return (
         <>
             <div style={{ backgroundImage: `url(Pic.jpg)` }}>

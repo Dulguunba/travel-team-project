@@ -3,7 +3,7 @@ import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useContext } from "react";
-import { TravelDataContext } from "../context";
+import { TravelDataContext } from "../Context";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -109,11 +109,10 @@ export const TrafficAdmin = () => {
                   id="trafficPrice"
                   type="number"
                   placeholder="Хоолны төлбөрийг оруулна уу"
-                  className={`${
-                    !IsIncludeTraffic
+                  className={`${!IsIncludeTraffic
                       ? "bg-gray-50 border-gray-100"
                       : "bg-gray-100 border-gray-200"
-                  } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
+                    } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
                   disabled={!IsIncludeTrafficPrice}
                   {...formik.getFieldProps("trafficPrice")}
                 />

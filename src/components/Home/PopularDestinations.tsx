@@ -15,7 +15,7 @@ import { CarouselCard } from './CarouselCard';
 import Link from 'next/link';
 
 export const PopularDestinations = ({ data }: { data: Data[] }) => {
-    console.log('dataPopular', data)
+
     const slicedData = data.slice(0, 3)
     return (
         <div className='flex justify-center items-center'>

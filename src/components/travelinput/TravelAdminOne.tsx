@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { TravelDataContext } from "../context";
+import { TravelDataContext } from "../Context";
 
 export const TravelAdminOne = () => {
   const route = useRouter();

@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { TravelDataContext } from "../context";
+import { TravelDataContext } from "../Context";
 
 export const FoodAdmin = () => {
   const route = useRouter();
@@ -89,11 +89,10 @@ export const FoodAdmin = () => {
                     id="foodNumber"
                     type="number"
                     placeholder="Нэг өдрийн аялалын хоолны тоог оруулна уу"
-                    className={`${
-                      !IsIncludeFood
+                    className={`${!IsIncludeFood
                         ? "bg-gray-50 border-gray-100"
                         : "bg-gray-100 border-gray-200"
-                    } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
+                      } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
                     disabled={!IsIncludeFood}
                     {...formik.getFieldProps("foodNumber")}
                   />
@@ -133,11 +132,10 @@ export const FoodAdmin = () => {
                     id="foodPrice"
                     type="number"
                     placeholder="Хоолны төлбөрийг оруулна уу"
-                    className={`${
-                      !IsIncludeFood
+                    className={`${!IsIncludeFood
                         ? "bg-gray-50 border-gray-100"
                         : "bg-gray-100 border-gray-200"
-                    } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
+                      } rounded-lg w-full p-1 gap-3 text-sm h-10 border`}
                     disabled={!IsIncludeFoodPrice}
                     {...formik.getFieldProps("foodPrice")}
                   />
