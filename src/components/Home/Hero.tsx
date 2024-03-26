@@ -9,7 +9,7 @@ import Header from './Header'
 
 
 const Hero = ({ data }: { data: Data[] }) => {
-    console.log('data', data)
+
     return (
         <>
             <img src="Pic.jpg" className='w-full h-[1042px]' alt="" />

@@ -4,7 +4,6 @@ import { Data } from './types/heroTypes'
 import { getServerSideProps } from './heroData';
 
 const Header = ({ data }: { data: Data[] }) => {
-    console.log('dataHeader', data)
     return (
         <div className="flex flex-col items-center justify-center">
             <div className='flex max-w-[1520px] w-[90%] z-10'>
