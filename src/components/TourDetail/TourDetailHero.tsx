@@ -33,7 +33,15 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
             </div>
             <div className="carousel h-[500px] mt-14 mb-14 w-full flex gap-3 relative">
                 <div className="carousel-item relative flex gap-5 justify-center">
-                    {slicedData.map((data) => <img src={data.cover_image} className="w-[832px] h-[500px] rounded-3xl" />)}
+                    <button className='carousel-control absolute left-0'>
+                        Prev
+                    </button>
+
+                    {slicedData.map((data, index) => <img src={data.cover_image} className="w-[832px] h-[500px] rounded-3xl" />)}
+
+                    <button className='absolute right-0'>
+                        Next
+                    </button>
                 </div>
             </div>
             <Description data={data} />

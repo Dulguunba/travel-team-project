@@ -28,7 +28,7 @@ const Included = ({ data }: { data: Data[] }) => {
                     </div>
                     <div className='absolute flex top-12 left-10 items-start flex-col gap-5 justify-center '>
                         <h1 className='font-oswald text-black font-bold text-3xl'>  Ready for an adventure?</h1>
-                        <button className='p-3 bg-black font-normal text-white text-[20px] font-primary rounded-xl'>Book Now</button>
+                        <button className='p-3 bg-black font-normal text-white text-[20px] font-primary rounded-xl border border-black btn'>Book Now</button>
                     </div>
                 </div>
             </div>

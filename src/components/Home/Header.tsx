@@ -16,8 +16,8 @@ const Header = ({ data }: { data: Data[] }) => {
                         <div className='flex items-center relative gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                             <div className="dropdown dropdown-hover relative">
                                 <Link href={"/destination"}><div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div></Link>
-                                <ul tabIndex={0} className="dropdown-content -left-16 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[40vw] flex-row">
-                                    <div className="text-gray-700 font-semibold border-b-2 w-full pb-2">Popular Destinations</div>
+                                <ul tabIndex={0} className="dropdown-content -left-80 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[60vw] flex-row grid grid-cols-5">
+                                    <div className="text-gray-700 font-semibold border-b-2 w-full pb-2 col-span-5">Popular Destinations</div>
                                     {data.map((item) => (
                                         <li className='text-black'>
                                             <a>{item.title}</a>
@@ -29,7 +29,7 @@ const Header = ({ data }: { data: Data[] }) => {
                         <div className='flex items-center gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                             <div className="dropdown dropdown-hover relative">
                                 <div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Tours <DownArrow /></div>
-                                <ul tabIndex={0} className="dropdown-content -left-48 z-50 menu p-2 shadow w-[45vw] bg-base-100 rounded-box flex-row">
+                                <ul tabIndex={0} className="dropdown-content -left-80 z-50 menu p-2 shadow w-[60vw] bg-base-100 rounded-box flex-row grid grid-cols-5">
                                     {data?.map((item) => <li className='text-black'><a>{item.title}</a></li>)}
                                 </ul>
                             </div>

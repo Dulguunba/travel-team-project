@@ -5,7 +5,7 @@ import ReviewCard from './ReviewCard';
 import { Data } from '../Home/types/heroTypes';
 
 const Reviews = ({ data }: { data: Data[] }) => {
-    const pageSize = 2; // Number of items per page
+    const pageSize = 2;
     const [currentPage, setCurrentPage] = useState(0);
 
     const startIndex = currentPage * pageSize;
@@ -32,9 +32,8 @@ const Reviews = ({ data }: { data: Data[] }) => {
                 </div>
             </div>
             <div className='mt-10 flex justify-between'>
-                {data.slice(startIndex, endIndex).map((review,) => (
+                {data.slice(startIndex, endIndex).map((review) => (
                     <ReviewCard
-
                         message={review.title}
                         proPic={review.cover_image}
                         name={review.title}
