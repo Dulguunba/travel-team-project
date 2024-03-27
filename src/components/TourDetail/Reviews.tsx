@@ -1,12 +1,25 @@
-import React from 'react'
-import { LeftArrow } from './LeftArrow'
-import { RightArrow } from './RightArrow'
-import ReviewCard from './ReviewCard'
-import { getServerSideProps } from '../Home/heroData'
-import { Data } from '../Home/types/heroTypes'
+import React, { useState } from 'react';
+import { LeftArrow } from './LeftArrow';
+import { RightArrow } from './RightArrow';
+import ReviewCard from './ReviewCard';
+import { Data } from '../Home/types/heroTypes';
 
 const Reviews = ({ data }: { data: Data[] }) => {
-    const sortedData = data.sort((a, b) => b.public_reactions_count - a.public_reactions_count).slice(0, 2)
+    const pageSize = 2; // Number of items per page
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const startIndex = currentPage * pageSize;
+    const endIndex = startIndex + pageSize;
+    const totalPages = Math.ceil(data.length / pageSize);
+
+    const handlePrevPage = () => {
+        setCurrentPage(currentPage - 1);
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage(currentPage + 1);
+    };
+
     return (
         <div className='flex flex-col mt-20 mb-20'>
             <div className='flex justify-between'>
@@ -14,17 +27,26 @@ const Reviews = ({ data }: { data: Data[] }) => {
                     REVIEWS
                 </div>
                 <div className='flex gap-20'>
-                    <button><LeftArrow /></button>
-                    <button><RightArrow /></button>
+                    {currentPage !== 0 && <button onClick={handlePrevPage}><LeftArrow /></button>}
+                    {currentPage !== totalPages - 1 && <button onClick={handleNextPage}><RightArrow /></button>}
                 </div>
             </div>
             <div className='mt-10 flex justify-between'>
-                {sortedData.map((data) => <ReviewCard message={data.title} proPic={data.cover_image} name={data.title} bio={data.comments_count} />)}
+                {data.slice(startIndex, endIndex).map((review,) => (
+                    <ReviewCard
+
+                        message={review.title}
+                        proPic={review.cover_image}
+                        name={review.title}
+                        bio={review.comments_count}
+                    />
+                ))}
             </div>
+            {/* <div className="pagination">
+                <span>{`Page ${currentPage + 1} of ${totalPages}`}</span>
+            </div> */}
         </div>
-    )
-}
+    );
+};
 
-{ getServerSideProps }
-
-export default Reviews
+export default Reviews;
