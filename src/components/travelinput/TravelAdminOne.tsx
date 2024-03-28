@@ -2,18 +2,12 @@ import React from "react";
 import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { usePageStore, useTravelStore } from "@/Zustand";
 
-export const TravelAdminOne = ({
-  pageNumber,
-  setPageNumber,
-  travelDataInput,
-  setTravelDataInput,
-}: {
-  pageNumber: number;
-  setPageNumber: Function;
-  travelDataInput: {};
-  setTravelDataInput: Function;
-}) => {
+
+export const TravelAdminOne = () => {
+  const { page, increment, decrement} = usePageStore()
+  const {travel, updateTravel} = useTravelStore()
   const formik = useFormik({
     initialValues: {
       travelName: "",
@@ -44,17 +38,15 @@ export const TravelAdminOne = ({
         childPrice: Number(formik.values.childPrice),
       };
       console.log("travelinput step 1", travelInputone);
-      setTravelDataInput({ ...travelDataInput, ...travelInputone });
-      console.log("travel data step 1", travelDataInput);
-      setPageNumber(2);
-      console.log("page number", pageNumber);
+      updateTravel(travelInputone)
+      increment(1)
     },
   });
 
   return (
     <div
       className={` ${
-        pageNumber == 1 ? "flex" : "hidden"
+        page == 1 ? "flex" : "hidden"
       } w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
@@ -62,9 +54,10 @@ export const TravelAdminOne = ({
         <h1>Аялал нэмэх</h1>
       </a>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal mt-5">
-        <li className="step step-primary">General information</li>
-        <li className="step ">Food</li>
-        <li className="step">Traffic</li>
+        <li className="step step-primary font-semibold">General information</li>
+        <li className="step ">Food & Traffic</li>
+        <li className="step ">Category</li>
+        <li className="step">Picture</li>
         <li className="step">Routes</li>
         <li className="step">Calendar</li>
       </ul>
@@ -73,7 +66,7 @@ export const TravelAdminOne = ({
         onSubmit={formik.handleSubmit}
       >
         <div className="flex flex-col gap-5 w-1/2">
-          <div className="w-full flex flex-col gap-3 rounded-lg bg-white p-5">
+          <div className="w-full flex flex-col gap-2 rounded-lg bg-white p-5">
             <div className="w-full h-20 text-sm flex-col mb-2 gap-1">
               <label htmlFor="travelName">Аялалын нэр</label>
               <input
@@ -123,7 +116,7 @@ export const TravelAdminOne = ({
                 </div>
               ) : null}
             </div>
-            <div className="w-full h-40 text-sm flex-col mb-2 gap-3">
+            <div className="w-full h-40 text-sm flex-col gap-3">
               <label htmlFor="name">Төлбөрийн мэдээлэл</label>
               <div className="w-full h-16">
                 <div className="flex gap-3 items-center">

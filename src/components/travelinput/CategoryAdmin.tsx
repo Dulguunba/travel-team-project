@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Return } from "../icons/adminicons/Return";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useContext } from "react";
 import { TravelDataContext } from "../context";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { instance } from "../utilities/TravelUtility";
+import { usePageStore, useTravelStore } from "@/Zustand";
 
-export const CategoryAdmin = ({
-  pageNumber,
-  setPageNumber,
-  travelDataInput,
-  setTravelDataInput,
-}: {
-  pageNumber: number;
-  setPageNumber: Function;
-  travelDataInput: {};
-  setTravelDataInput: Function;
-}) => {
+
+export const CategoryAdmin = () => {
+  const { page, increment, decrement} = usePageStore()
+  const {travel, updateTravel} = useTravelStore()
   const route = useRouter();
-  const { travelData, setTravelData } = useContext(TravelDataContext);
   const [categoryData, setCategoryData] = useState([]);
   const [touristData, setTouristdata] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
@@ -72,10 +62,8 @@ export const CategoryAdmin = ({
     } else {
       const unChecked = e.target.value;
       console.log("uncheck", unChecked);
-
       const CheckedData = data.filter((item) => item !== unChecked);
       console.log("checkdata", CheckedData);
-
       return setData(CheckedData);
     }
   };
@@ -96,18 +84,20 @@ export const CategoryAdmin = ({
   };
 
   const submit = () => {
-    setTravelDataInput({
-      ...travelDataInput,
+    const travelDataInput ={
       categoryType: categoryData,
       touristType: touristData,
-    });
-    setPageNumber(4);
+    }
+    updateTravel(travelDataInput)
+    increment(1)
   };
+
+  const decreasePageNumber=()=>{ decrement(1)}
 
   return (
     <div
       className={`w-full h-full min-h-screen gap-7 ${
-        pageNumber == 3 ? "flex" : "hidden"
+        page == 3 ? "flex" : "hidden"
       } flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
@@ -115,9 +105,10 @@ export const CategoryAdmin = ({
         <h1>Аялал нэмэх</h1>
       </a>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal mt-5">
-        <li className="step step-primary">General information</li>
-        <li className="step step-primary">Food & Traffic</li>
-        <li className="step step-primary">Category</li>
+        <li className="step step-primary ">General information</li>
+        <li className="step step-primary ">Food & Traffic</li>
+        <li className="step step-primary font-semibold">Category</li>
+        <li className="step semibold">Picture</li>
         <li className="step">Routes</li>
         <li className="step">Calendar</li>
       </ul>
@@ -176,18 +167,15 @@ export const CategoryAdmin = ({
           <div className="flex justify-between items-center">
             <a
               className="bg-primary p-2 rounded text-white"
-              onClick={setPageNumber(2)}
-            >
+              onClick={decreasePageNumber}            >
               Буцах
             </a>
-            {/* <Link href={"/stepfour"}> */}
             <button
               onClick={submit}
               className="bg-primary p-2 rounded text-white"
             >
               Дараах
             </button>
-            {/* </Link> */}
           </div>
         </div>
       </div>

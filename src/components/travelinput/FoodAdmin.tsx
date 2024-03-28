@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import { Return } from "../icons/adminicons/Return";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { usePageStore, useTravelStore } from "@/Zustand";
 
-export const FoodAdmin = ({
-  pageNumber,
-  setPageNumber,
-  travelDataInput,
-  setTravelDataInput,
-}: {
-  pageNumber: number;
-  setPageNumber: Function;
-  travelDataInput: {};
-  setTravelDataInput: Function;
-}) => {
+
+export const FoodAdmin = () => {
+  const { page, increment, decrement} = usePageStore()
+  const {travel, updateTravel} = useTravelStore()
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
   const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
@@ -47,17 +41,17 @@ export const FoodAdmin = ({
         IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
         IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
       };
-      console.log("travel inputs", travelInputTwo);
-      setTravelDataInput({ ...travelDataInput, ...travelInputTwo });
-      console.log("travel data step 2", travelDataInput);
-      setPageNumber(3);
+      updateTravel(travelInputTwo)
+      increment(1)
     },
   });
+
+  const decreasePageNumber=()=>{ decrement(1)}
 
   return (
     <div
       className={`w-full h-full min-h-screen gap-7 ${
-        pageNumber == 2 ? "flex" : "hidden"
+        page == 2 ? "flex" : "hidden"
       } flex flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
@@ -65,9 +59,10 @@ export const FoodAdmin = ({
         <h1>Аялал нэмэх</h1>
       </a>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal mt-5">
-        <li className="step step-primary">General information</li>
-        <li className="step step-primary">Food</li>
-        <li className="step">Traffic</li>
+        <li className="step step-primary ">General information</li>
+        <li className="step step-primary semibold ">Food & Traffic</li>
+        <li className="step ">Category</li>
+        <li className="step">Picture</li>
         <li className="step">Routes</li>
         <li className="step">Calendar</li>
       </ul>
@@ -242,19 +237,17 @@ export const FoodAdmin = ({
             </div>
             <div className="flex justify-between items-center">
               <a
-                onClick={setPageNumber(1)}
+                onClick={decreasePageNumber}
                 className="bg-primary p-2 rounded text-white"
               >
                 Буцах
               </a>
-              {/* <Link href={"/stepfour"}> */}
               <button
                 type="submit"
                 className="bg-primary p-2 rounded text-white"
               >
                 Дараах
               </button>
-              {/* </Link> */}
             </div>
           </div>
         </div>
