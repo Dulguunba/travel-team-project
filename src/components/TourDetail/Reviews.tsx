@@ -5,20 +5,15 @@ import ReviewCard from './ReviewCard';
 import { Data } from '../Home/types/heroTypes';
 
 const Reviews = ({ data }: { data: Data[] }) => {
-    const pageSize = 2;
-    const [currentPage, setCurrentPage] = useState(0);
+    const [index, setIndex] = useState(0);
 
-    const startIndex = currentPage * pageSize;
-    const endIndex = startIndex + pageSize;
-    const totalPages = Math.ceil(data.length / pageSize);
+    const handlePrev = () => {
+        if (index > 0) setIndex(index - 2);
+    }
 
-    const handlePrevPage = () => {
-        setCurrentPage(currentPage - 1);
-    };
-
-    const handleNextPage = () => {
-        setCurrentPage(currentPage + 1);
-    };
+    const handleNext = () => {
+        if (index < data.length - 2) setIndex(index + 2);
+    }
 
     return (
         <div className='flex flex-col mt-20 mb-20'>
@@ -27,12 +22,12 @@ const Reviews = ({ data }: { data: Data[] }) => {
                     REVIEWS
                 </div>
                 <div className='flex gap-20'>
-                    {currentPage !== 0 && <button onClick={handlePrevPage}><LeftArrow /></button>}
-                    {currentPage !== totalPages - 1 && <button onClick={handleNextPage}><RightArrow /></button>}
+                    <button onClick={handlePrev}><LeftArrow /></button>
+                    <button onClick={handleNext}><RightArrow /></button>
                 </div>
             </div>
             <div className='mt-10 flex justify-between'>
-                {data.slice(startIndex, endIndex).map((review) => (
+                {data.slice(index, index + 2).map((review) => (
                     <ReviewCard
                         message={review.title}
                         proPic={review.cover_image}
@@ -41,9 +36,7 @@ const Reviews = ({ data }: { data: Data[] }) => {
                     />
                 ))}
             </div>
-            {/* <div className="pagination">
-                <span>{`Page ${currentPage + 1} of ${totalPages}`}</span>
-            </div> */}
+
         </div>
     );
 };

@@ -5,11 +5,15 @@ import Description from './Description';
 import Included from './Included';
 
 const TourDetailHero = ({ data }: { data: Data[] }) => {
-    const slicedData = data.sort((a, b) => b.reading_time_minutes - a.reading_time_minutes).slice(0, 5);
-    const [currentSlide, setCurrentSlide] = useState(3);
+    const slicedData = data.sort((a, b) => b.reading_time_minutes - a.reading_time_minutes).slice(0, 6);
+    const [currentSlide, setCurrentSlide] = useState(1);
 
-    const handleCarousel = () => {
+    const handlePrev = () => {
+        setCurrentSlide(oldSlide => (oldSlide > 0 ? oldSlide - 1 : slicedData.length - 1));
+    }
 
+    const handleNext = () => {
+        setCurrentSlide(oldSlide => (oldSlide < slicedData.length - 1 ? oldSlide + 1 : 0));
     }
     return (
         <>
@@ -31,18 +35,25 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
                     </div>
                 </div>
             </div>
-            <div className="carousel h-[500px] mt-14 mb-14 w-full flex gap-3 relative">
-                <div className="carousel-item relative flex gap-5 justify-center">
-                    <button className='carousel-control absolute left-0'>
-                        Prev
-                    </button>
-
-                    {slicedData.map((data, index) => <img src={data.cover_image} className="w-[832px] h-[500px] rounded-3xl" />)}
-
-                    <button className='absolute right-0'>
-                        Next
-                    </button>
+            <div className="h-[500px] mt-14 mb-14 w-full flex gap-3 relative">
+                <button className='absolute left-5 top-1/2 p-2 bg-white' onClick={handlePrev}>
+                    Prev
+                </button>
+                <div className="flex gap-5 justify-center">
+                    {slicedData.map((data, index) => (
+                        <div className={`relative w-[832px] h-[500px] rounded-3xl`}>
+                            <img
+                                src={data.cover_image}
+                                className="w-full h-full"
+                                style={{ display: (index === currentSlide || index === currentSlide - 1 || index === currentSlide + 1) ? 'block' : 'none' }}
+                            />
+                            <div className={`absolute top-0 left-0 w-full h-full bg-black ${index === currentSlide ? 'opacity-0' : 'opacity-50'}`}></div>
+                        </div>
+                    ))}
                 </div>
+                <button className='absolute right-5 top-1/2 p-2 bg-white' onClick={handleNext}>
+                    Next
+                </button>
             </div>
             <Description data={data} />
 
@@ -52,4 +63,4 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
 
 { getServerSideProps }
 
-export default TourDetailHero
+export default TourDetailHero;
