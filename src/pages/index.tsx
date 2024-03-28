@@ -19,7 +19,7 @@ function Home({ data }: { data: Data[] }) {
   return (
     <div>
       {/* <Hero data={data} /> */}
-      <PopularDestinations />
+      {/* <PopularDestinations /> */}
       <Process />
       {/* <Gallery data={data} /> */}
       <Value />

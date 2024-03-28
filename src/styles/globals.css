@@ -10,7 +10,12 @@
 #card {
     /* box-shadow: -1px -97px 46px -48px rgba(0, 0, 0, 0.55) inset; */
     box-shadow: -1px -169px 91px -48px rgba(0, 0, 0, 0.55) inset;
+}
 
+@media only screen and (max-width: 600px) {
+    #card {
+        height: 350px;
+    }
 }
 
 

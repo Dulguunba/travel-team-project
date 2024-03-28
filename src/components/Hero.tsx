@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Loc } from './icons/destinaton/Loc'
-import { Dollar } from './icons/destinaton/Dollar'
 import axios from 'axios'
 import { Card } from './Card'
 import { ListCard } from './ListCard'
+
 export const Hero = () => {
+
     const [select, setSelect] = useState('select')
     const [grid, setGrid] = useState('grid')
     const [best, setBest] = useState('select')
@@ -86,38 +86,30 @@ export const Hero = () => {
             setGrid('grid')
             console.log("type " + grid)
         }
-    }
+    };
+    const BASE_URL = 'https://dev.to/api/articles';
+
     const [articles, setArticles] = useState([])
 
     const fetchData = async () => {
         try {
-            await axios.get('https://dev.to/api/articles')
-                .then(response => {
-                    setArticles(response.data)
-                })
-                .catch(error => { console.log(error) })
-
+            const response = await axios.get(BASE_URL);
+            setArticles(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-        catch (error) {
-            console.error(error)
-        }
-    }
-
+    };
 
     useEffect(() => {
-        fetchData
+        fetchData();
     }, [])
-    console.log(articles)
-    // console.log(articles)
-    //     article.tag_list.map((article) => {
-    // articles.cover_image
-    //     })
+    console.log(articles);
     return (
 
         <div className='flex flex-col items-center justify-center bg-[white]'>
             <div className='flex max-w-[1520px] w-[90%] py-5 flex-col'>
-                <div className='flex justify-between w-full items-center'>
-                    <h1 className='font-oswald font-bold text-[40px] leading-[50px] '>POPULAR DESTINATION</h1>
+                <div className='flex justify-between w-full items-center flex-wrap'>
+                    <h1 className='font-oswald font-bold md:text-[40px] md:leading-[50px] '>POPULAR DESTINATION</h1>
                     <div className='flex items-center border-b-2 py-4'>
                         <input type="search" placeholder='Search' />
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,16 +118,16 @@ export const Hero = () => {
 
                     </div>
                 </div>
-                <div className='pt-16 flex justify-between items-center w-full'>
-                    <div className='flex gap-4 '>
-                        <button onClick={selectBtn} className={`py-3 px-8 font-medium text-xl  rounded-[10px] text-${select == 'select' ? 'black' : 'white'} bg-${select == 'select' ? '[#F6F6F6]' : 'blue'}`}>All</button>
-                        <button onClick={selectBest} className={`py-3 px-8 font-medium text-xl  rounded-[10px] text-${best == 'select' ? 'black' : 'white'} bg-${best == 'select' ? '[#F6F6F6]' : 'blue'}`}>Best seller</button>
-                        <button onClick={selectNature} className={`py-3 px-8 font-medium text-xl  rounded-[10px] text-${nature == 'select' ? 'black' : 'white'} bg-${nature == 'select' ? '[#F6F6F6]' : 'blue'}`}>Nature</button>
-                        <button onClick={selectCity} className={`py-3 px-8 font-medium text-xl  rounded-[10px] text-${city == 'select' ? 'black' : 'white'} bg-${city == 'select' ? '[#F6F6F6]' : 'blue'}`}>City</button>
-                        <button onClick={selectSea} className={`py-3 px-8 font-medium text-xl  rounded-[10px] text-${sea == 'select' ? 'black' : 'white'} bg-${sea == 'select' ? '[#F6F6F6]' : 'blue'}`}>Seasonal</button>
+                <div className='pt-16 flex justify-between gap-4 items-center flex-wrap'>
+                    <div className='flex md:gap-10 gap-4 flex-wrap'>
+                        <button onClick={selectBtn} className={`md:py-3 md:px-8 py-2 px-4  font-medium text-xl  rounded-[10px] text-${select == 'select' ? 'black' : 'white'} bg-${select == 'select' ? '[#F6F6F6]' : 'blue'}`}>All</button>
+                        <button onClick={selectBest} className={`md:py-3 md:px-8 py-2 px-4 font-medium text-xl  rounded-[10px] text-${best == 'select' ? 'black' : 'white'} bg-${best == 'select' ? '[#F6F6F6]' : 'blue'}`}>Best seller</button>
+                        <button onClick={selectNature} className={`md:py-3 md:px-8 py-2 px-4 font-medium text-xl  rounded-[10px] text-${nature == 'select' ? 'black' : 'white'} bg-${nature == 'select' ? '[#F6F6F6]' : 'blue'}`}>Nature</button>
+                        <button onClick={selectCity} className={`md:py-3 md:px-8 py-2 px-4 font-medium text-xl  rounded-[10px] text-${city == 'select' ? 'black' : 'white'} bg-${city == 'select' ? '[#F6F6F6]' : 'blue'}`}>City</button>
+                        <button onClick={selectSea} className={`md:py-3 md:px-8 py-2 px-4 font-medium text-xl  rounded-[10px] text-${sea == 'select' ? 'black' : 'white'} bg-${sea == 'select' ? '[#F6F6F6]' : 'blue'}`}>Seasonal</button>
                     </div>
                     <div className='flex items-center gap-4'>
-                        <button onClick={toggleGrid} className={`bg-${grid == 'list' ? '[#F6F6F6]' : 'blue'} flex items-center gap-3 px-4  rounded-[10px] py-[17px] text-${grid == 'list' ? '#222222' : 'white'}`}>
+                        <button onClick={toggleGrid} className={`bg-${grid == 'list' ? '[#F6F6F6]' : 'blue'} flex items-center gap-3 md:py-3 md:px-8 py-2 px-4 rounded-[10px]  text-${grid == 'list' ? '#222222' : 'white'}`}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g >
                                     <path d="M6.90594 0H2.31281C1.03754 0 0 1.03754 0 2.31281V6.90594C0 8.18121 1.03754 9.21875 2.31281 9.21875H6.90594C8.18121 9.21875 9.21875 8.18121 9.21875 6.90594V2.31281C9.21875 1.03754 8.18121 0 6.90594 0ZM7.65625 6.90594C7.65625 7.31965 7.31965 7.65625 6.90594 7.65625H2.31281C1.8991 7.65625 1.5625 7.31965 1.5625 6.90594V2.31281C1.5625 1.8991 1.8991 1.5625 2.31281 1.5625H6.90594C7.31965 1.5625 7.65625 1.8991 7.65625 2.31281V6.90594Z" fill={`${grid == 'list' ? '#222222' : 'white'}`} />
@@ -149,7 +141,7 @@ export const Hero = () => {
                             </svg>
                             <p>Grid view</p>
                         </button>
-                        <button onClick={toggleGrid} className={`${grid == 'grid' ? 'bg-[#F6F6F6]' : 'bg-blue'} flex items-center gap-3 px-4  rounded-[10px] py-[17px] text-${grid == 'grid' ? '#222222' : 'white'}`}>
+                        <button onClick={toggleGrid} className={`${grid == 'grid' ? 'bg-[#F6F6F6]' : 'bg-blue'} flex items-center gap-3  rounded-[10px]  md:py-3 md:px-8 py-2 px-4 text-${grid == 'grid' ? '#222222' : 'white'}`}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g>
                                     <path d="M19 11H1C0.734784 11 0.48043 10.8946 0.292893 10.7071C0.105357 10.5196 0 10.2652 0 10C0 9.73478 0.105357 9.48043 0.292893 9.29289C0.48043 9.10536 0.734784 9 1 9H19C19.2652 9 19.5196 9.10536 19.7071 9.29289C19.8946 9.48043 20 9.73478 20 10C20 10.2652 19.8946 10.5196 19.7071 10.7071C19.5196 10.8946 19.2652 11 19 11ZM19 4H1C0.734784 4 0.48043 3.89464 0.292893 3.70711C0.105357 3.51957 0 3.26522 0 3C0 2.73478 0.105357 2.48043 0.292893 2.29289C0.48043 2.10536 0.734784 2 1 2H19C19.2652 2 19.5196 2.10536 19.7071 2.29289C19.8946 2.48043 20 2.73478 20 3C20 3.26522 19.8946 3.51957 19.7071 3.70711C19.5196 3.89464 19.2652 4 19 4ZM19 18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17C0 16.7348 0.105357 16.4804 0.292893 16.2929C0.48043 16.1054 0.734784 16 1 16H19C19.2652 16 19.5196 16.1054 19.7071 16.2929C19.8946 16.4804 20 16.7348 20 17C20 17.2652 19.8946 17.5196 19.7071 17.7071C19.5196 17.8946 19.2652 18 19 18Z"
@@ -165,18 +157,18 @@ export const Hero = () => {
                 </div>
                 {
                     grid == 'grid' ?
-                        <div className=' grid grid-cols-3 grid-rows-5 h-[2545px]  w-full pt-20 gap-[30px] '>
-                            <Card place="Place name" country="country name  |" price="How much" style="col-span-1 bg-[url('/winter.png')]" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-2 bg-no-repeat bg-[url('/japan.png')]   bg-no-repeat " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 row-span-2 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-2 row-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 row-span-2 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
-                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="col-span-1 bg-[url('/winter.png')] " />
+                        <div className=' md:grid  md:grid-cols-3  md:grid-rows-5 md:h-[2545px] flex flex-col  w-full pt-20 gap-[30px] '>
+                            <Card place="Place name" country="country name  |" price="How much" style="md:col-span-1 bg-[url('/winter.png')]" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-2   bg-no-repeat bg-[url('/japan.png')]   bg-no-repeat " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   md:row-span-2 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-2   md:row-span-1 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   md:row-span-2 bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
+                            <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="md:col-span-1   bg-[url('/winter.png')] " />
                         </div> :
 
                         <div className=' flex flex-col w-full py-20 gap-12 '>

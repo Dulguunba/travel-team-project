@@ -7,17 +7,21 @@ import { About } from "@/components/About";
 import { Hero } from "@/components/Hero"
 import { Details } from "@/components/Details";
 import { Form } from "@/components/Form";
+import { Signup } from "@/components/Signup";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Destination() {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             {/* <Login /> */}
             {/* <About /> */}
-            {/* <Hero /> */}
+            <Hero />
             {/* <Details /> */}
-            <Form/>
+            {/* <Form /> */}
+            {/* <Login />
+             */}
+            {/* <Signup /> */}
             <Footer />
         </>
     );
