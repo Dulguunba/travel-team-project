@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
-import Header, { getServerSideProps } from '../Home/Header'
-import { Data } from '../Home/types/heroTypes'
+import Slider from 'react-slick';
+import React from 'react';
+import Header, { getServerSideProps } from '../Home/Header';
+import { Data } from '../Home/types/heroTypes';
 import Description from './Description';
-import Included from './Included';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/component.json'
+import CenterMode from './CenterMode';
+import SimpleSlider from './CenterMode';
 
 const TourDetailHero = ({ data }: { data: Data[] }) => {
-    const slicedData = data.sort((a, b) => b.reading_time_minutes - a.reading_time_minutes).slice(0, 6);
-    const [currentSlide, setCurrentSlide] = useState(1);
+    const settings = {
+        dots: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplaySpeed: 1000,
+    };
 
-    const handlePrev = () => {
-        setCurrentSlide(oldSlide => (oldSlide > 0 ? oldSlide - 1 : slicedData.length - 1));
-    }
-
-    const handleNext = () => {
-        setCurrentSlide(oldSlide => (oldSlide < slicedData.length - 1 ? oldSlide + 1 : 0));
-    }
     return (
         <>
             <img src="Pic2.jpg" className='w-full h-[950px]' alt="" />
@@ -28,38 +32,27 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
                                 <p className='border-r-2 pr-3'>Tours</p>
                                 <p>Mexico</p>
                             </div>
-                            <h1 className='font-oswald drop-shadow-md font-bold text-[200px] leading-[200px] text-white text-center'>BEACH VACATION
-                                IN CANCUN</h1>
+                            <h1 className='font-oswald drop-shadow-md font-bold text-[200px] leading-[200px] text-white text-center'>BEACH VACATION IN CANCUN</h1>
                         </div>
                         <div></div>
                     </div>
                 </div>
             </div>
-            <div className="h-[500px] mt-14 mb-14 w-full flex gap-3 relative">
-                <button className='absolute left-5 top-1/2 p-2 bg-white' onClick={handlePrev}>
-                    Prev
-                </button>
-                <div className="flex gap-5 justify-center">
-                    {slicedData.map((data, index) => (
-                        <div className={`relative w-[832px] h-[500px] rounded-3xl`}>
-                            <img
-                                src={data.cover_image}
-                                className="w-full h-full"
-                                style={{ display: (index === currentSlide || index === currentSlide - 1 || index === currentSlide + 1) ? 'block' : 'none' }}
-                            />
-                            <div className={`absolute top-0 left-0 w-full h-full bg-black ${index === currentSlide ? 'opacity-0' : 'opacity-50'}`}></div>
+            <div className="slider-container mt-10 mb-10 pl-8 pr-8 w-full">
+                <Slider {...settings}>
+                    {data.slice(0, 5).map((item, index) => (
+                        <div key={index}>
+                            <img src={item.cover_image} className="w-[832px] h-[500px] rounded-3xl m" />
                         </div>
                     ))}
-                </div>
-                <button className='absolute right-5 top-1/2 p-2 bg-white' onClick={handleNext}>
-                    Next
-                </button>
+                </Slider>
             </div>
+            {/* <SimpleSlider /> */}
             <Description data={data} />
 
         </>
-    )
-}
+    );
+};
 
 { getServerSideProps }
 

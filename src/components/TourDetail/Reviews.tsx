@@ -22,8 +22,12 @@ const Reviews = ({ data }: { data: Data[] }) => {
                     REVIEWS
                 </div>
                 <div className='flex gap-20'>
-                    <button onClick={handlePrev}><LeftArrow /></button>
-                    <button onClick={handleNext}><RightArrow /></button>
+                    <button onClick={handlePrev}>
+                        {index > 0 ? <LeftArrow /> : <LeftArrow fill='#F6F6F6' />}
+                    </button>
+                    <button onClick={handleNext}>
+                        {index < data.length - 2 ? <RightArrow /> : <RightArrow fill='#F6F6F6' />}
+                    </button>
                 </div>
             </div>
             <div className='mt-10 flex justify-between'>
