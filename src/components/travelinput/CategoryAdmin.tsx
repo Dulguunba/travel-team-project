@@ -6,10 +6,9 @@ import { useRouter } from "next/router";
 import { instance } from "../utilities/TravelUtility";
 import { usePageStore, useTravelStore } from "@/Zustand";
 
-
 export const CategoryAdmin = () => {
-  const { page, increment, decrement} = usePageStore()
-  const {travel, updateTravel} = useTravelStore()
+  const { page, increment, decrement } = usePageStore();
+  const { travel, updateTravel } = useTravelStore();
   const route = useRouter();
   const [categoryData, setCategoryData] = useState([]);
   const [touristData, setTouristdata] = useState([]);
@@ -84,15 +83,20 @@ export const CategoryAdmin = () => {
   };
 
   const submit = () => {
-    const travelDataInput ={
-      categoryType: categoryData,
-      touristType: touristData,
-    }
-    updateTravel(travelDataInput)
-    increment(1)
+    const travelDataInput = {
+      categoryType: selectedCategory,
+      touristType: selectedTourist,
+    };
+    console.log("step", travelDataInput);
+
+    updateTravel(travelDataInput);
+    increment(1);
+    console.log("travel", travel);
   };
 
-  const decreasePageNumber=()=>{ decrement(1)}
+  const decreasePageNumber = () => {
+    decrement(1);
+  };
 
   return (
     <div
@@ -167,7 +171,8 @@ export const CategoryAdmin = () => {
           <div className="flex justify-between items-center">
             <a
               className="bg-primary p-2 rounded text-white"
-              onClick={decreasePageNumber}            >
+              onClick={decreasePageNumber}
+            >
               Буцах
             </a>
             <button

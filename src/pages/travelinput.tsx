@@ -7,12 +7,15 @@ import { FoodAdmin } from "@/components/travelinput/FoodAdmin";
 import { usePageStore, useTravelStore } from "@/Zustand";
 import { PictureAdmin } from "@/components/travelinput/PictureAdmin";
 import { RouteAdmin } from "@/components/travelinput/RouteAdmin";
+import { CalendarAdmin } from "@/components/travelinput/CalendarAdmin";
+import { LoadingAdmin } from "@/components/travelinput/LoadingAdmin";
+import { SuccessAdmin } from "@/components/travelinput/SuccessAdmin";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Travelinput() {
-  const { page, increment, decrement} = usePageStore()
-  const {travel, updateTravel} = useTravelStore()
+  const { page, increment, decrement } = usePageStore();
+  const { travel, updateTravel } = useTravelStore();
 
   return (
     <main
@@ -21,10 +24,13 @@ export default function Travelinput() {
       <Leftbar />
       <div className="flex w-full  h-full bg-gray-100">
         <TravelAdminOne />
-        <FoodAdmin        />
-        <CategoryAdmin       />
-        <PictureAdmin/>
-        <RouteAdmin/>
+        <FoodAdmin />
+        <CategoryAdmin />
+        <PictureAdmin />
+        <RouteAdmin />
+        <CalendarAdmin />
+        <LoadingAdmin />
+        <SuccessAdmin />
       </div>
     </main>
   );

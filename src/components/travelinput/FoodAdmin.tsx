@@ -4,10 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { usePageStore, useTravelStore } from "@/Zustand";
 
-
 export const FoodAdmin = () => {
-  const { page, increment, decrement} = usePageStore()
-  const {travel, updateTravel} = useTravelStore()
+  const { page, increment, decrement } = usePageStore();
+  const { travel, updateTravel } = useTravelStore();
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
   const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
@@ -33,26 +32,35 @@ export const FoodAdmin = () => {
     }),
     onSubmit: (values) => {
       const travelInputTwo = {
-        foodNumber: formik.values.foodNumber,
-        foodPrice: formik.values.foodPrice,
-        IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
-        IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
-        trafficPrice: formik.values.trafficPrice,
-        IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
-        IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
+        food: {
+          foodNumber: formik.values.foodNumber,
+          foodPrice: formik.values.foodPrice,
+          IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
+          IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
+        },
+        traffic: {
+          trafficPrice: formik.values.trafficPrice,
+          IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
+          IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
+        },
       };
-      updateTravel(travelInputTwo)
-      increment(1)
+      console.log("step", travelInputTwo);
+
+      updateTravel(travelInputTwo);
+      increment(1);
+      console.log("travel", travel);
     },
   });
 
-  const decreasePageNumber=()=>{ decrement(1)}
+  const decreasePageNumber = () => {
+    decrement(1);
+  };
 
   return (
     <div
       className={`w-full h-full min-h-screen gap-7 ${
         page == 2 ? "flex" : "hidden"
-      } flex flex-col justify-start items-start`}
+      }  flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />

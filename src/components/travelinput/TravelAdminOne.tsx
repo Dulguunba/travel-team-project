@@ -4,10 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { usePageStore, useTravelStore } from "@/Zustand";
 
-
 export const TravelAdminOne = () => {
-  const { page, increment, decrement} = usePageStore()
-  const {travel, updateTravel} = useTravelStore()
+  const { page, increment, decrement } = usePageStore();
+  const { travel, updateTravel } = useTravelStore();
   const formik = useFormik({
     initialValues: {
       travelName: "",
@@ -34,12 +33,16 @@ export const TravelAdminOne = () => {
         name: formik.values.travelName,
         travelCompany: formik.values.travelCompany,
         duration: Number(formik.values.duration),
-        adultPrice: Number(formik.values.adultPrice),
-        childPrice: Number(formik.values.childPrice),
+        price: {
+          adultPrice: Number(formik.values.adultPrice),
+          childPrice: Number(formik.values.childPrice),
+        },
       };
       console.log("travelinput step 1", travelInputone);
-      updateTravel(travelInputone)
-      increment(1)
+      updateTravel(travelInputone);
+      console.log("travel", travel);
+
+      increment(1);
     },
   });
 
