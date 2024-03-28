@@ -1,9 +1,29 @@
-import React, { use, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import axios from "axios";
 import Link from "next/link";
+import { instance } from "../utilities/TravelUtility";
+import { ok } from "assert";
 
-type tripInformationTypes = {
+type tripInformations = {
+  _id: string;
+  startStation: String;
+  endStation: String;
+  duration: String;
+  vehicle: String;
+  location: String;
+  information: String;
+};
+export type tripInformationTypes = {
+  startStation: String;
+  endStation: String;
+  duration: String;
+  vehicle: String;
+  location: String;
+  information: String;
+  image: String;
+};
+type tripInformationType = {
   startStation: String;
   endStation: String;
   duration: String;
@@ -21,16 +41,16 @@ export const Routs = () => {
     vehicle: "bus",
     location: "",
     information: "",
+    image: "",
   });
-  const [tripDatabase, setTripDatabase] = useState<tripInformationTypes[]>([]);
-  const deleteRows = (id: number) => {
-    const rowValues = tripDatabase.filter((a, index) => index !== id);
-    setTripDatabase(rowValues);
+  const [tripDatabase, setTripDatabase] = useState<tripInformations[]>([]);
+  const deleteRows = async (id: String) => {
+    await instance.delete("route/delete?id=" + id);
+    // getRoutDatabase();
   };
-  console.log(tripInformation);
   const Add = async () => {
     try {
-      const tripInformationDb: tripInformationTypes = {
+      const tripInformationDb: tripInformationType = {
         startStation: tripInformation.startStation,
         endStation: tripInformation.endStation,
         duration: tripInformation.duration,
@@ -38,15 +58,20 @@ export const Routs = () => {
         location: tripInformation.location,
         information: tripInformation.information,
       };
-      const createDB = await axios.post(
-        "http://localhost:8080/routs",
-        tripInformationDb
+      const getInput = new FormData();
+      if (!tripInformation.image) {
+        return ok;
+      }
+      getInput.append("image", tripInformation.image);
+      getInput.append("information", JSON.stringify(tripInformationDb));
+      const createDB = await instance.post(
+        "http://localhost:8800/route/create",
+        getInput,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
       );
-      const getRouts = await (
-        await axios.get("http://localhost:8080/routs")
-      ).data;
-      console.log(getRouts);
-      setTripDatabase(getRouts);
+      alert("add successfullys");
       // clear();
     } catch (error) {
       console.log("create hiihed aldaa garlaa");
@@ -61,6 +86,17 @@ export const Routs = () => {
     tripInformation.vehicle = "";
     setTripInformation({ ...tripInformation, vehicle: "bus" });
   };
+  // const getRoutDatabase = async () => {
+  //   try {
+  //     const getRouts = await (await instance.get("/route/get")).data;
+  //     setTripDatabase(getRouts);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  useMemo(async () => {
+    // getRoutDatabase();
+  }, [tripDatabase]);
   return (
     <div>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal py-7">
@@ -152,6 +188,22 @@ export const Routs = () => {
               })
             }
           ></textarea>
+          <label htmlFor="">Зураг</label>
+          <form action="/file" encType="multipart/from" method="post">
+            <input
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              onChange={(e: React.FormEvent<HTMLFormElement>) => {
+                const target = e.target as HTMLFormElement & {
+                  files: FileList;
+                };
+                setTripInformation({
+                  ...tripInformation,
+                  image: target.files[0],
+                });
+              }}
+            />
+          </form>
           <button
             onClick={Add}
             className=" mt-3 p-1 bg-white rounded-lg w-full"
@@ -192,13 +244,14 @@ export const Routs = () => {
                   <th>Тээврийн хэрэгсэл</th>
                   <th>Байрлах газар</th>
                   <th>Нэмэлт мэдээлэл</th>
+                  <th>Зураг</th>
                   <th>Устгах</th>
                 </tr>
               </thead>
               <tbody>
                 {/* row 1 */}
                 {tripDatabase.map(
-                  (tripInformation: tripInformationTypes, index) => {
+                  (tripInformation: tripInformations, index: number) => {
                     return (
                       <tr>
                         <th>{index + 1}</th>
@@ -208,8 +261,11 @@ export const Routs = () => {
                         <td>{tripInformation?.vehicle}</td>
                         <td>{tripInformation?.location}</td>
                         <td>{tripInformation?.information}</td>
+                        <td>image</td>
                         <td>
-                          <button onClick={() => deleteRows(index)}>
+                          <button
+                            onClick={() => deleteRows(tripInformation?._id)}
+                          >
                             <Deleteicon />
                           </button>
                         </td>

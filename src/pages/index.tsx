@@ -11,9 +11,9 @@ import Hero from "@/components/Home/Hero";
 import Gallery from "@/components/Home/Gallery";
 
 const poppins = Poppins({
-  weight: '400',
-  subsets: ['latin'],
-})
+  weight: "400",
+  subsets: ["latin"],
+});
 
 function Home({ data }: { data: Data[] }) {
   return (
