@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Navbar } from "./nav/Navbar";
 import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
+import { instance } from "../utilities/TravelUtility";
+import { tripInformationTypes } from "../travelInput2/Routs";
 
 export const AdminDashbourd = () => {
-  const data = [{}, {}, {}, {}, {}];
+  const [getOrder, setGetOrder] = useState([]);
+  const getOrderDB = async () => {
+    try {
+      const get = (await instance.get("route/get")).data;
+      setGetOrder(get);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTravel = useMemo(() => {
+    getOrderDB();
+  }, []);
   return (
     <div className="flex">
       <Navbar />
       <div className="bg-gray-200 w-full grid grid-cols-8 gap-x-8 p-8">
         <div className=" w-full col-span-4 grid grid-rows-5 gap-8">
           <div className=" rounded-lg p-3 border-none bg-white row-span-1">
-            <h3>$ Орлого</h3>
             <h1 className=" text-2xl font-bold">235,000₮</h1>
             <p className=" text-[]">Өнөөдөр</p>
           </div>
@@ -25,15 +37,15 @@ export const AdminDashbourd = () => {
               <thead className=" bg-gray-200">
                 <tr>
                   <th>
-                    <label>№</label>
+                    <label>{}</label>
                   </th>
-                  <th>Бүтээгдэхүүн</th>
-                  <th>Зарагдсан</th>
+                  <th>Аяалал</th>
+                  <th>Үйл ажилгаа</th>
                   <th>Үнэ</th>
                 </tr>
               </thead>
               <tbody>
-                {data.map(() => {
+                {getOrder.map((e: tripInformationTypes) => {
                   return (
                     <tr>
                       <th>
@@ -46,7 +58,7 @@ export const AdminDashbourd = () => {
                           <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
                               <img
-                                src="/tailwind-css-component-profile-2@56w.png"
+                                src={`${e?.image}`}
                                 alt="Avatar Tailwind CSS Component"
                               />
                             </div>

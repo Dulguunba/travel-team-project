@@ -4,49 +4,74 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { TravelDataContext } from "../Context";
+import { TravelDataContext } from "../context";
 
 export const FoodAdmin = () => {
-  const route = useRouter();
-  const { travelData, setTravelData } = useContext(TravelDataContext);
+  const { page, increment, decrement } = usePageStore();
+  const { travel, updateTravel } = useTravelStore();
   const [IsIncludeFood, setIsIncludeFood] = useState(false);
   const [IsIncludeFoodPrice, setIsIncludeFoodPrice] = useState(false);
+  const [IsIncludeTraffic, setIsIncludeTraffic] = useState(false);
+  const [IsIncludeTrafficPrice, setIsIncludeTrafficPrice] = useState(false);
   const formik = useFormik({
     initialValues: {
       foodNumber: 0,
       foodPrice: 0,
       IsIncludeFoodCheck: false,
       IsIncludeFoodPriceCheck: false,
+      trafficPrice: 0,
+      IsIncludeTrafficCheck: false,
+      IsIncludeTrafficPriceCheck: false,
     },
     validationSchema: Yup.object({
       foodNumber: Yup.number(),
       foodPrice: Yup.number(),
       IsIncludeFoodCheck: Yup.boolean(),
       IsIncludeFoodPriceCheck: Yup.boolean(),
+      trafficPrice: Yup.number(),
+      IsIncludeTrafficCheck: Yup.boolean(),
+      IsIncludeTrafficPriceCheck: Yup.boolean(),
     }),
     onSubmit: (values) => {
-      const travelInputs = {
-        foodNumber: formik.values.foodNumber,
-        foodPrice: formik.values.foodPrice,
-        IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
-        IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
+      const travelInputTwo = {
+        food: {
+          foodNumber: formik.values.foodNumber,
+          foodPrice: formik.values.foodPrice,
+          IsIncludeFoodCheck: formik.values.IsIncludeFoodCheck,
+          IsIncludeFoodPriceCheck: formik.values.IsIncludeFoodPriceCheck,
+        },
+        traffic: {
+          trafficPrice: formik.values.trafficPrice,
+          IsIncludeTrafficCheck: formik.values.IsIncludeTrafficCheck,
+          IsIncludeTrafficPriceCheck: formik.values.IsIncludeTrafficPriceCheck,
+        },
       };
-      setTravelData({ ...travelData, ...travelInputs });
-      route.push("/travelinputthree");
-      console.log("travel data step 2", travelData);
+      console.log("step", travelInputTwo);
+
+      updateTravel(travelInputTwo);
+      increment(1);
+      console.log("travel", travel);
     },
   });
 
+  const decreasePageNumber = () => {
+    decrement(1);
+  };
+
   return (
-    <div className="w-full h-full min-h-screen gap-7 flex flex-col justify-start items-start">
+    <div
+      className={`w-full h-full min-h-screen gap-7 ${page == 2 ? "flex" : "hidden"
+        }  flex-col justify-start items-start`}
+    >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
         <h1>Аялал нэмэх</h1>
       </a>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal mt-5">
-        <li className="step step-primary">General information</li>
-        <li className="step step-primary">Food</li>
-        <li className="step">Traffic</li>
+        <li className="step step-primary ">General information</li>
+        <li className="step step-primary semibold ">Food & Traffic</li>
+        <li className="step ">Category</li>
+        <li className="step">Picture</li>
         <li className="step">Routes</li>
         <li className="step">Calendar</li>
       </ul>
@@ -144,7 +169,7 @@ export const FoodAdmin = () => {
             </div>
             <div className="flex justify-between items-center">
               <a
-                href="/travelinputone"
+                onClick={decreasePageNumber}
                 className="bg-primary p-2 rounded text-white"
               >
                 Буцах
