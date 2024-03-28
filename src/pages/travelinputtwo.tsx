@@ -12,7 +12,7 @@ export default function Travelinputtwo() {
     >
       <Leftbar />
       <div className="flex w-full min-h-screen h-full bg-gray-100">
-        <FoodAdmin />
+        {/* <FoodAdmin /> */}
       </div>
     </main>
   );

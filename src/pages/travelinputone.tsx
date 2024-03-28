@@ -2,6 +2,9 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Leftbar } from "@/components/admin/Leftbar";
 import { TravelAdminOne } from "@/components/travelinput/TravelAdminOne";
+import { PictureAdmin } from "@/components/travelinput/PictureAdmin";
+import { RouteAdmin } from "@/components/travelinput/RouteAdmin";
+import { CalendarAdmin } from "@/components/travelinput/CalendarAdmin";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +15,7 @@ export default function Travelinputone() {
     >
       <Leftbar />
       <div className="flex w-full min-h-screen h-full bg-gray-100">
-        <TravelAdminOne />
+        {/* <CalendarAdmin /> */}
       </div>
     </main>
   );
