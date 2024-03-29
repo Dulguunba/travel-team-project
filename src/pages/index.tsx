@@ -22,7 +22,7 @@ function Home({ toursData }: { toursData: Tours }) {
       <Hero toursData={toursData} />
       {/* <PopularDestinations data={data} />
       <Process />
-      <Gallery data={data} />
+      {/* <Gallery data={data} /> */}
       <Value />
       <Questions />
       <MainFooter /> */}

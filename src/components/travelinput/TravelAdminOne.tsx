@@ -48,9 +48,8 @@ export const TravelAdminOne = () => {
 
   return (
     <div
-      className={` ${
-        page == 1 ? "flex" : "hidden"
-      } w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
+      className={` ${page == 1 ? "flex" : "hidden"
+        } w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
