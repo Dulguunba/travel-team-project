@@ -17,6 +17,8 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
         slidesToScroll: 1,
         infinite: true,
         autoplaySpeed: 1000,
+        focusOnSelect: true,
+        centerMode: true
     };
 
     return (
@@ -41,7 +43,7 @@ const TourDetailHero = ({ data }: { data: Data[] }) => {
             <div className="slider-container mt-10 mb-10 pl-8 pr-8 w-full">
                 <Slider {...settings}>
                     {data.slice(0, 5).map((item, index) => (
-                        <div key={index}>
+                        <div key={index} className='slide'>
                             <img src={item.cover_image} className="w-[832px] h-[500px] rounded-3xl m" />
                         </div>
                     ))}
