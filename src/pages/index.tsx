@@ -6,25 +6,26 @@ import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
 import { Data } from "@/components/Home/types/heroTypes";
 import { PopularDestinations } from "@/components/Home/PopularDestinations";
-import { getServerSideProps } from "@/components/Home/heroData";
+import { getServerSideProps } from "@/components/Home/Hero";
 import Hero from "@/components/Home/Hero";
 import Gallery from "@/components/Home/Gallery";
+import { Tours } from "@/components/Home/Header";
 
 const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],
 });
 
-function Home({ data }: { data: Data[] }) {
+function Home({ toursData }: { toursData: Tours }) {
   return (
     <div>
-      <Hero data={data} />
-      <PopularDestinations data={data} />
+      <Hero toursData={toursData} />
+      {/* <PopularDestinations data={data} />
       <Process />
       <Gallery data={data} />
       <Value />
       <Questions />
-      <MainFooter />
+      <MainFooter /> */}
     </div>
   );
 }
