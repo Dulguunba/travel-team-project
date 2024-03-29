@@ -4,11 +4,12 @@ import { Header } from "@/components/Header";
 import { Login } from "@/components/Login";
 import { Footer } from "@/components/Footer";
 import { About } from "@/components/About";
-import { Hero } from "@/components/Hero"
+
 import { Details } from "@/components/Details";
 import { Form } from "@/components/Form";
 import { Signup } from "@/components/Signup";
 import { Order } from "@/components/Order";
+import { Hero } from "@/components/Hero";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Destination() {
@@ -16,8 +17,8 @@ export default function Destination() {
         <>
             {/* <Header /> */}
             <About />
-            <Order />
-            {/* <Hero /> */}
+            {/* <Order /> */}
+            <Hero />
             {/* <Details /> */}
             {/* <Form /> */}
             {/* <Login /> */}
