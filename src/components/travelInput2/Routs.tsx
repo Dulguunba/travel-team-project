@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import axios from "axios";
+import Link from "next/link";
 
 type tripInpormationTypes = {
   startStation: String;
@@ -177,12 +178,11 @@ export const Routs = () => {
             <button className="bg-blue-400 p-1 rounded text-white w-16">
               back
             </button>
-            <button
-              className="bg-blue-400 p-1 rounded text-white w-16"
-              // onClick={createRouts}
-            >
-              next
-            </button>
+            <Link href={"/stepfive"}>
+              <button className="bg-blue-400 p-1 rounded text-white w-16">
+                next
+              </button>
+            </Link>
           </div>
         </div>
         <div className=" w-9/12 rounded p-3">

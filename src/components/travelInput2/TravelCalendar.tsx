@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
+import Link from "next/link";
 
 type rowDataProps = {
   startTime: string;
@@ -99,10 +100,15 @@ export const TravelCalendar = () => {
               setTravelInput({ ...travelInput, endDay: e.target.value });
             }}
           />
-          <div className=" flex justify-center text-xl mt-3">
+          <div className=" flex justify-center gap-20 text-xl mt-3">
+            <Link href={"/stepfour"}>
+              <button className=" bg-blue-200 p-1 rounded-lg h-fit">
+                back
+              </button>
+            </Link>
             <button
               onClick={add}
-              className=" bg-slate-200 p-2 rounded-lg"
+              className="bg-blue-200 p-1 rounded-lg h-fit "
               disabled={
                 !travelInput.endDay ||
                 !travelInput.endTime ||
@@ -110,7 +116,7 @@ export const TravelCalendar = () => {
                 !travelInput.startTimes
               }
             >
-              Add Rows
+              Add Row
             </button>
           </div>
         </div>
