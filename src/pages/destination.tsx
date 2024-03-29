@@ -22,7 +22,9 @@ export default function Destination() {
             {/* <Details /> */}
             {/* <Form /> */}
             {/* <Login /> */}
+            {/* <Login /> */}
             {/* <Signup /> */}
+
 
             <Footer />
         </>
