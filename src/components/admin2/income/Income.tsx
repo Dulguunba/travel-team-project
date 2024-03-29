@@ -3,8 +3,38 @@ import { PrintIcon } from "@/components/icons2/PrintIcon";
 import React, { useState } from "react";
 import { Navbar } from "../nav/Navbar";
 
+type income = {
+  id: String;
+  email: String;
+  phone: String;
+  payment: String;
+  date: String;
+};
+
 export const Income = () => {
-  const [incomeData, setIncomeData] = useState([{}, {}, {}, {}]);
+  const [incomeData, setIncomeData] = useState([
+    {
+      id: "12345678",
+      email: "Zoloosoko0526@gmail.com",
+      phone: "88556061",
+      payment: "12,000₮",
+      date: "2024/12/23",
+    },
+    {
+      id: "12345678",
+      email: "Zoloosoko0526@gmail.com",
+      phone: "88556061",
+      payment: "12,000₮",
+      date: "2024/12/23",
+    },
+    {
+      id: "12345678",
+      email: "Zoloosoko0526@gmail.com",
+      phone: "88556061",
+      payment: "12,000₮",
+      date: "2024/12/23",
+    },
+  ]);
   return (
     <div>
       <Navbar />
@@ -55,15 +85,15 @@ export const Income = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {incomeData.map(() => {
+                    {incomeData.map((e: income) => {
                       return (
                         <tr>
-                          <th>#12345678</th>
+                          <th>{e?.id}</th>
                           <td>
-                            Zoloosoko0526@gmail.com <br /> 88556061
+                            {e?.email} <br /> {e?.phone}
                           </td>
-                          <td>12,000₮</td>
-                          <td>Огноо</td>
+                          <td>{e?.payment}</td>
+                          <td>{e?.date}</td>
                         </tr>
                       );
                     })}

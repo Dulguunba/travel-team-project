@@ -4,6 +4,16 @@ import { Searchicon } from "@/components/icons2/product/Searchicon";
 import { Bagaih } from "@/components/icons2/product/Bagaih";
 import { Leftbar } from "@/components/admin/Leftbar";
 
+type order = {
+  id: String;
+  name: String;
+  description: String;
+  date: String;
+  clock: String;
+  payment: String;
+  status: String;
+};
+
 export const OrderA = () => {
   const list = [
     "Бүгд",
@@ -13,7 +23,35 @@ export const OrderA = () => {
     "Хүргэгдсэн",
     "Цуцлагдсан",
   ];
-  const data = [{}, {}, {}, {}, {}];
+  const data = [
+    {
+      id: "#18BA51",
+      name: "Hart Hagerty",
+      description: "United States",
+      date: "2024-03-19",
+      clock: "11-00",
+      payment: "12000$",
+      status: "Хүргэгдсэн",
+    },
+    {
+      id: "#18BA51",
+      name: "Hart Hagerty",
+      description: "United States",
+      date: "2024-03-19",
+      clock: "11-00",
+      payment: "12000$",
+      status: "Хүргэгдсэн",
+    },
+    {
+      id: "#18BA51",
+      name: "Hart Hagerty",
+      description: "United States",
+      date: "2024-03-19",
+      clock: "11-00",
+      payment: "12000$",
+      status: "Хүргэгдсэн",
+    },
+  ];
   return (
     <div>
       <Navbar />
@@ -68,29 +106,29 @@ export const OrderA = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map(() => {
+                  {data.map((e: order) => {
                     return (
                       <tr>
                         <th>
-                          <label>#18BA51</label>
+                          <label>{e?.id}</label>
                         </th>
                         <td>
                           <div>
-                            <div className="font-bold">Hart Hagerty</div>
+                            <div className="font-bold">{e?.name}</div>
                             <div className="text-sm opacity-50">
-                              United States
+                              {e?.description}
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p>2024-03-19</p>
+                          <p>{e?.date}</p>
                         </td>
-                        <td>11:00</td>
-                        <td>12:000$</td>
+                        <td>{e?.clock}</td>
+                        <td>{e?.payment}</td>
                         <td>
                           {" "}
                           <button className=" rounded-xl bg-[#C1E6CF] p-1 text-[#0A4E22]">
-                            Хүргэгдсэн
+                            {e?.status}
                           </button>
                         </td>
                         <td>

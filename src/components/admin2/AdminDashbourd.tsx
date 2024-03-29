@@ -1,14 +1,43 @@
 import React, { useMemo, useState } from "react";
-import React, { useMemo, useState } from "react";
 import { Navbar } from "./nav/Navbar";
 import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
 import { instance } from "../utilities/TravelUtility";
-import { tripInformationTypes } from "../travelInput2/Routs";
 import { Leftbar } from "../admin/Leftbar";
 
+type dashboardData = {
+  name: String;
+  id: String;
+  image: String;
+  order: String;
+  price: String;
+};
+
 export const AdminDashbourd = () => {
-  const [getOrder, setGetOrder] = useState([{}, {}, {}]);
+  const [getOrder, setGetOrder] = useState();
+  const data = [
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "88",
+      price: "90000",
+    },
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "90",
+      price: "90000",
+    },
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "90",
+      price: "90000",
+    },
+  ];
   const getOrderDB = async () => {
     try {
       const get = (await instance.get("route/get")).data;
@@ -51,19 +80,14 @@ export const AdminDashbourd = () => {
                   {/* head */}
                   <thead>
                     <tr>
-                      <th>
-                        <label>
-                          <input type="checkbox" className="checkbox" />
-                        </label>
-                      </th>
-                      <th>Name</th>
-                      <th>Job</th>
-                      <th>Favorite Color</th>
                       <th></th>
+                      <th>Бүтээгдэхүүн</th>
+                      <th>Зарагдсан</th>
+                      <th>Үнэ</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {getOrder.map(() => {
+                    {data.map((e: dashboardData) => {
                       return (
                         <tr>
                           <th>
@@ -76,32 +100,21 @@ export const AdminDashbourd = () => {
                               <div className="avatar">
                                 <div className="mask mask-squircle w-12 h-12">
                                   <img
-                                    src="/tailwind-css-component-profile-2@56w.png"
+                                    src={`${e.image}`}
                                     alt="Avatar Tailwind CSS Component"
                                   />
                                 </div>
                               </div>
                               <div>
-                                <div className="font-bold">Hart Hagerty</div>
+                                <div className="font-bold">{e?.name}</div>
                                 <div className="text-sm opacity-50">
-                                  United States
+                                  {e?.id}
                                 </div>
                               </div>
                             </div>
                           </td>
-                          <td>
-                            Zemlak, Daniel and Leannon
-                            <br />
-                            <span className="badge badge-ghost badge-sm">
-                              Desktop Support Technician
-                            </span>
-                          </td>
-                          <td>Purple</td>
-                          <th>
-                            <button className="btn btn-ghost btn-xs">
-                              details
-                            </button>
-                          </th>
+                          <td>{e?.order}</td>
+                          <td>{e?.price}</td>
                         </tr>
                       );
                     })}
