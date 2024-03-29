@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Leftbar } from "@/components/admin/Leftbar";
 import { TravelAdminOne } from "@/components/travelinput/TravelAdminOne";
-import { TravelDataContext } from "@/components/context";
+import { TravelDataContext } from "@/components/Context";
 import { useContext } from "react";
 import { createTravelInfo } from "@/components/utilities/TravelUtility";
 import { PictureAdmin } from "@/components/travelinput/PictureAdmin";

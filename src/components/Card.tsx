@@ -9,7 +9,7 @@ export const Card = (props: any) => {
   return (
     <>
 
-      <div id='card' onMouseEnter={() => { setIsHover(true) }} onMouseLeave={() => { setIsHover(false) }} className={` ${props.style} relative w-full h-full rounded-3xl bg-cover bg-center flex flex-col duration-1000 p-[34px]
+      <div id='card' onClick={LearMore} onMouseEnter={() => { setIsHover(true) }} onMouseLeave={() => { setIsHover(false) }} className={` ${props.style} relative w-full h-full rounded-3xl bg-cover bg-center flex flex-col duration-1000 p-[34px]
        ${isHover ? 'justify-center items-center' : 'justify-end'}   `}>
         {/* <div>
           <h1 className='font-medium text-white  text-[32px] leading-[40px]'>{props.place}</h1>
@@ -36,14 +36,14 @@ export const Card = (props: any) => {
                 <Dollar />
                 <h3 className='text-white font-light text-base '>{props.price}</h3>
               </div>
-              <p className='text-white w-[356px]'>{props.details}</p>
+              <p className='text-white max-w-[356px] '>{props.details}</p>
               <button onClick={LearMore} className='mt-10  rounded-[10px] text-white border-2 border-white py-4 px-6 font-medium text-[20px] leading-[30px]'>Learn More</button>
             </div>
           </div>
           :
           <div>
             <h1 className='font-medium text-white  text-[32px] leading-[40px]'>{props.place}</h1>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 flex-wrap'>
               <Loc />
               <h3 className='text-white font-light text-base pr-3'>{props.country}</h3>
               <Dollar />

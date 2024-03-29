@@ -6,12 +6,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 #card {
     /* box-shadow: -1px -97px 46px -48px rgba(0, 0, 0, 0.55) inset; */
     box-shadow: -1px -169px 91px -48px rgba(0, 0, 0, 0.55) inset;
+}
+
+@media only screen and (max-width: 600px) {
+    #card {
+        height: 350px;
+    }
+}
+
+#order {
+    box-shadow: -1px 1px 26px 3px rgba(0, 0, 0, 0.41);
+}
+
+.slider-container button {
+
+    margin: auto;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    background-color: black;
 
 }
+
+.slick-track {
+    display: flex;
+    gap: 50px;
+}
+
+.slick-slider {
+    width: 100%;
+
+}
+
 
 
 /* #card :hover {
@@ -25,3 +58,6 @@
 .active-slide {
     transform: translateX(-100%);
 } */
+
+/* 
+ */
