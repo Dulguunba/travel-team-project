@@ -20,6 +20,10 @@
     }
 }
 
+#order {
+    box-shadow: -1px 1px 26px 3px rgba(0, 0, 0, 0.41);
+}
+
 .slider-container button {
 
     margin: auto;

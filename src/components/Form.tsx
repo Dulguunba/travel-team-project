@@ -6,17 +6,17 @@ export const Form = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center bg-[url('/place.png')] bg-no-repeat bg-cover">
-                <div className='flex max-w-[1520px] w-[90%] py-5 flex-col h-[950px]'>
+                <div className='flex max-w-[1520px] w-[90%] py-5 flex-col h-[600px] md:h-[950px]'>
                     <div className='flex items-center justify-center h-full flex-col'>
                         <p className='text-white'> Home    |   Destination</p>
-                        <h1 className='font-oswald text-white font-bold text-[200px] leading-[200px]'>BOOKING FORM</h1>
+                        <h1 className='font-oswald text-white font-bold  md:text-[200px] md:leading-[200px] text-[40px] leading-[50px]'>BOOKING FORM</h1>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center bg-white pt-20">
                 <div className='flex max-w-[1520px] w-[90%] flex-col '>
                     <h1 className='pb-[60px] font-oswald font-bold text-[40px] leading-[50px]'>PERSONAL IDENTITY</h1>
-                    <div className='flex gap-[30px]'>
+                    <div className='md:flex gap-[30px]'>
                         <div>
                             <div className='flex pb-4'>
                                 <h2 className=''> FIRST NAME </h2>
@@ -32,26 +32,26 @@ export const Form = () => {
                                 <h2 className=''> LAST NAME </h2>
                                 <p className='text-blue'>*</p>
                             </div>
-                            <div className='w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'> <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='Watson' /></div>
+                            <div className='md:w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'> <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='Watson' /></div>
                         </div>
                     </div>
-                    <div className='flex gap-[30px] pt-12'>
+                    <div className='md:flex gap-[30px] pt-12'>
                         <div>
                             <div className='flex pb-4'>
                                 <h2 className=''> EMAIL ADDRESS </h2>
                                 <p className='text-blue'>*</p>
                             </div>
-                            <div className='w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'>  <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='AmeliaWatson@gmail.com' /></div>
+                            <div className='md:w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'>  <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='AmeliaWatson@gmail.com' /></div>
                         </div>
                         <div>
                             <div className='flex pb-4'>
                                 <h2 className=''> PHONE NUMBER </h2>
                                 <p className='text-blue'>*</p>
                             </div>
-                            <div className='w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'>  <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='123 - 456 - 7890' /></div>
+                            <div className='md:w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'>  <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='123 - 456 - 7890' /></div>
                         </div>
                     </div>
-                    <div className='flex gap-[30px] pt-12'>
+                    {/* <div className='flex gap-[30px] pt-12'>
                         <div>
                             <div className='flex pb-4'>
                                 <h2 className=''> START DATE </h2>
@@ -77,7 +77,7 @@ export const Form = () => {
                             </div>
                             <button className='w-[551px] rounded-[15px] bg-grayColor h-[100px]'> Mrs</button>
                         </div>
-                    </div>
+                    </div> */}
                     <div className='flex items-center justify-between pt-20'>
                         <h1 className=' font-oswald font-bold text-[40px] leading-[50px] pb-12'>PACKAGE</h1>
                         <div className='flex gap-[64px]' >
@@ -99,7 +99,7 @@ export const Form = () => {
                                 </svg>
                             </div>
                             <div className='pb-[64px]'>
-                                <h1 className='font-oswald font-bold text-[100px] leading-[100px] text-white'>DISCOVER JAPAN TOUR PACKAGE</h1>
+                                <h1 className='font-oswald font-bold md:text-[100px] md:leading-[100px] text-[40px] leading-[50px] text-white'>DISCOVER JAPAN TOUR PACKAGE</h1>
                                 <div className='flex items-center pt-10'>
                                     <Loc />
                                     <p className='font-normal text-[20px] text-white leading-[30px] pl-4 pr-6'>   Tokyo & Kyoto , Japan </p>
@@ -110,18 +110,18 @@ export const Form = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-between pt-20 pb-[120px]'>
+                    <div className='md:flex justify-between pt-20 pb-[120px]'>
                         <div>
-                            <div className='flex gap-4'>
+                            <div className='flex gap-4 items-center'>
                                 <input type="checkbox" defaultChecked className="checkbox" />
                                 <p>Get me a travel insurance that covers my whole trip safety and cancellation.</p>
                             </div>
-                            <div className='flex gap-4 pt-4'>
+                            <div className='flex gap-4 items-center py-4'>
                                 <input type="checkbox" defaultChecked className="checkbox" />
                                 <p>Get me a travel insurance that covers my whole trip safety and cancellation.</p>
                             </div>
                         </div>
-                        <button className='py-[30px] px-[100px] bg-blue text-white rounded-xl'>Book Now</button>
+                        <button className='md:py-[30px] md:px-[100px] py-[15px] px-12 bg-blue text-white rounded-xl'>Book Now</button>
                     </div>
 
                 </div>
