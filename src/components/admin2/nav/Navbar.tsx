@@ -1,44 +1,22 @@
 import React from "react";
-import { HomeIcon } from "../../icons2/HomeIcon";
-import { Ordericon } from "../../icons2/Ordericon";
-import { Incomeicon } from "../../icons2/Incomeicon";
-import { Producticon } from "../../icons2/Producticon";
-import { Settingsicon } from "../../icons2/Settingsicon";
+import { Pineconelogoicon } from "@/components/icons2/Pineconelogoicon";
+import { Bellicon } from "@/components/icons2/Bellicon";
+import { Profileicon } from "@/components/icons2/Profileicon";
 
 export const Navbar = () => {
-  const list = [
-    {
-      icon: <HomeIcon />,
-      title: "Хяналтын самбар",
-    },
-    {
-      icon: <Ordericon />,
-      title: "Захиалга",
-    },
-    {
-      icon: <Incomeicon />,
-      title: "Орлого",
-    },
-    {
-      icon: <Producticon />,
-      title: "Бүтээгдэхүүн",
-    },
-    {
-      icon: <Settingsicon />,
-      title: "Тохиргоо",
-    },
-  ];
   return (
-    <div className=" bg-[#FFFFFF]">
-      <div className="w-4/12 flex flex-col p-5 text-right">
-        {list.map((e: any) => {
-          return (
-            <div className="flex gap-3 mb-3 w-fit h-fit justify-center items-center">
-              <ol className="w-8">{e.icon}</ol>
-              <ol className=" font-semibold">{e?.title}</ol>
-            </div>
-          );
-        })}
+    <div className=" bg-[#121316] flex justify-between p-3">
+      <Pineconelogoicon />
+      <div className="flex gap-5">
+        <div className="mt-1">
+          <Bellicon />
+        </div>
+        <button className=" flex gap-2">
+          <div className=" mt-[3px]">
+            <Profileicon />
+          </div>
+          <h1 className="text-white">Username</h1>
+        </button>
       </div>
     </div>
   );
