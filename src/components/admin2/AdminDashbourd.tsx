@@ -1,87 +1,134 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Navbar } from "./nav/Navbar";
 import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
+import { instance } from "../utilities/TravelUtility";
+import { Leftbar } from "../admin/Leftbar";
+
+type dashboardData = {
+  name: String;
+  id: String;
+  image: String;
+  order: String;
+  price: String;
+};
 
 export const AdminDashbourd = () => {
-  const data = [{}, {}, {}, {}, {}];
+  const [getOrder, setGetOrder] = useState();
+  const data = [
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "88",
+      price: "90000",
+    },
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "90",
+      price: "90000",
+    },
+    {
+      name: "WOMEN'S HORSEBIT",
+      id: "#12345678",
+      image: "./Pic3.jpg",
+      order: "90",
+      price: "90000",
+    },
+  ];
+  const getOrderDB = async () => {
+    try {
+      const get = (await instance.get("route/get")).data;
+      setGetOrder(get);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTravel = useMemo(() => {
+    getOrderDB();
+  }, []);
   return (
-    <div className="flex">
+    <div>
       <Navbar />
-      <div className="bg-gray-200 w-full grid grid-cols-8 gap-x-8 p-8">
-        <div className=" w-full col-span-4 grid grid-rows-5 gap-8">
-          <div className=" rounded-lg p-3 border-none bg-white row-span-1">
-            <h3>$ Орлого</h3>
-            <h1 className=" text-2xl font-bold">235,000₮</h1>
-            <p className=" text-[]">Өнөөдөр</p>
-          </div>
-          <div className=" rounded-lg p-3 border-none bg-white row-span-4">
-            <div className=" flex justify-between mb-3">
-              <h1 className=" text-xl">Шилдэг бүтээгдэхүүн</h1>
-              <Bagaih />
+      <div className="flex">
+        <Leftbar />
+        <div className="bg-gray-200 w-full p-8">
+          <div className=" flex gap-10">
+            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-7/12 h-30">
+              <h2 className=" flex">
+                <Ordericon /> Захиалга
+              </h2>
+              <h1 className=" text-2xl font-bold">58</h1>
+              <p className=" text-[]">Өнөөдөр</p>
             </div>
-            <table className="table bg-white">
-              {/* head */}
-              <thead className=" bg-gray-200">
-                <tr>
-                  <th>
-                    <label>№</label>
-                  </th>
-                  <th>Бүтээгдэхүүн</th>
-                  <th>Зарагдсан</th>
-                  <th>Үнэ</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map(() => {
-                  return (
+            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-5/12 h-30">
+              <h1 className=" text-2xl font-bold">235,000₮</h1>
+              <p className=" text-[]">Өнөөдөр</p>
+            </div>
+          </div>
+          {/* Borluulalt */}
+          <div className="flex w-full mt-5 gap-10">
+            <div className=" rounded-lg p-3 border-none bg-white w-7/12">
+              <div className=" flex justify-between mb-3">
+                <h1 className=" text-xl">Шилдэг бүтээгдэхүүн</h1>
+                <Bagaih />
+              </div>
+              <div className="overflow-x-auto">
+                <table className="table">
+                  {/* head */}
+                  <thead>
                     <tr>
-                      <th>
-                        <label>
-                          <input type="checkbox" className="checkbox" />
-                        </label>
-                      </th>
-                      <td>
-                        <div className="flex items-center gap-3">
-                          <div className="avatar">
-                            <div className="mask mask-squircle w-12 h-12">
-                              <img
-                                src="/tailwind-css-component-profile-2@56w.png"
-                                alt="Avatar Tailwind CSS Component"
-                              />
-                            </div>
-                          </div>
-                          <div>
-                            <div className="font-bold">Hart Hagerty</div>
-                            <div className="text-sm opacity-50">
-                              United States
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p>Эмэгтэй, цүнх</p>
-                      </td>
-                      <td>19,000$</td>
+                      <th></th>
+                      <th>Бүтээгдэхүүн</th>
+                      <th>Зарагдсан</th>
+                      <th>Үнэ</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div className=" w-full col-span-4 grid grid-rows-5 gap-8">
-          <div className=" rounded-lg p-3 border-none bg-white row-span-1">
-            <h2 className=" flex">
-              <Ordericon /> Захиалга
-            </h2>
-            <h1 className=" text-2xl font-bold">58</h1>
-            <p className=" text-[]">Өнөөдөр</p>
-          </div>
-          <div className=" rounded-lg p-3 border-none bg-white row-span-2">
-            <div className=" flex justify-between mb-3">
-              <h1 className=" text-xl">Борлуулалт</h1>
-              <Bagaih />
+                  </thead>
+                  <tbody>
+                    {data.map((e: dashboardData) => {
+                      return (
+                        <tr>
+                          <th>
+                            <label>
+                              <input type="checkbox" className="checkbox" />
+                            </label>
+                          </th>
+                          <td>
+                            <div className="flex items-center gap-3">
+                              <div className="avatar">
+                                <div className="mask mask-squircle w-12 h-12">
+                                  <img
+                                    src={`${e.image}`}
+                                    alt="Avatar Tailwind CSS Component"
+                                  />
+                                </div>
+                              </div>
+                              <div>
+                                <div className="font-bold">{e?.name}</div>
+                                <div className="text-sm opacity-50">
+                                  {e?.id}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>{e?.order}</td>
+                          <td>{e?.price}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className=" w-5/12">
+              <div className=" rounded-lg p-3 border-none bg-white row-span-2">
+                <div className=" flex justify-between mb-3">
+                  <h1 className=" text-xl">Борлуулалт</h1>
+                  <Bagaih />
+                </div>
+              </div>
             </div>
           </div>
         </div>

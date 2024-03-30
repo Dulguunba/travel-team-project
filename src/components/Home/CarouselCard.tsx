@@ -15,12 +15,12 @@ export const CarouselCard = ({ image, title, icon, miniTitle, description }: Pro
 
     <div className='relative'>
       <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className='border cursor-pointer rounded-3xl'>
-        <img src={image} className={`${isHovered ? "w-[713px] h-[609px]" : "w-[372px] h-[503px]"} transition-all ease-out duration-200 rounded-3xl`} />
+        <img src={image} className={`${isHovered ? "w-[713px] h-[609px]" : "w-[372px] h-[503px]"} transition-all ease-out duration-700 rounded-3xl`} />
         {isHovered
           ? <div className='absolute top-0 w-full h-full'>
-            <div className="bg-gradient-to-t from-black to-transparent absolute inset-0 rounded-3xl">
+            <div className="bg-gradient-to-t from-black transform transition-all duration-700 to-transparent absolute inset-0 rounded-3xl">
               <div className='absolute bottom-0'>
-                <div className='p-8 flex font-primary flex-col gap-3 text-white'>
+                <div className='p-8 flex font-primary flex-col gap-3 text-white transform transition-all duration-700'>
                   <h1 className='text-3xl font-medium'>{title}</h1>
                   <div className='flex gap-2 items-center'>
                     {icon}

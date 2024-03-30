@@ -1,12 +1,19 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useMemo, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import Link from "next/link";
+import axios from "axios";
+import { instance } from "../utilities/TravelUtility";
 
 type rowDataProps = {
   startTime: string;
-  startDay: string;
   endTime: string;
-  endDay: string;
+};
+type rowData = {
+  _id: String;
+  startTime: string;
+  endTime: string;
+  startDay: String;
+  endDay: String;
 };
 
 export const TravelCalendar = () => {
@@ -16,17 +23,21 @@ export const TravelCalendar = () => {
     startDay: "",
     endDay: "",
   });
-  const [travelData, setTravelData] = useState<rowDataProps[]>([]);
+  const [travelData, setTravelData] = useState<rowData[]>([]);
 
   const add = async () => {
     const travelInputValue: rowDataProps = {
-      startTime: travelInput.startTimes,
-      startDay: travelInput.startDay,
-      endTime: travelInput.endTime,
-      endDay: travelInput.endDay,
+      startTime: travelInput.startDay + "T" + travelInput.startTimes,
+      endTime: travelInput.endDay + "T" + travelInput.endTime,
     };
-    setTravelData([...travelData, travelInputValue]);
-    clear();
+    try {
+      const createDB = await instance.post("calendar/create", travelInputValue);
+      getCalendar();
+      alert("successfully create");
+    } catch (error) {
+      console.log(error);
+    }
+    // clear();
   };
   const clear = () => {
     travelInput.startTimes = "";
@@ -35,12 +46,25 @@ export const TravelCalendar = () => {
     travelInput.endDay = "";
     setTravelInput({ ...travelInput, endDay: "" });
   };
-  const deleteRows = (id: number) => {
-    const rowValues = travelData.filter(
-      (travelCalendar, index) => index !== id
-    );
-    setTravelData(rowValues);
+  const deleteRows = async (id: String) => {
+    try {
+      const deleteRow = await instance.delete("/calendar/delete?id=" + id);
+      getCalendar();
+    } catch (error) {
+      console.log("calendar Delete note", error);
+    }
   };
+  const getCalendar = async () => {
+    try {
+      const get = await (await instance.get("/calendar/get")).data;
+      setTravelData(get);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useMemo(() => {
+    getCalendar();
+  }, []);
   return (
     <div>
       <ul className="w-full justify-center steps steps-vertical lg:steps-horizontal py-7">
@@ -55,10 +79,11 @@ export const TravelCalendar = () => {
         <div className=" border-none p-5 w-3/12 rounded flex flex-col bg-gray-200 h-fit">
           <div className=" flex justify-between mb-3">
             <h1 className=" text-xl font-normal">TravelCalendar</h1>
-            <button onClick={clear} className="">
+            <button onClick={clear}>
               <Deleteicon />
             </button>
           </div>
+          <label htmlFor="">Эхлэх цаг</label>
           <input
             type="time"
             value={travelInput.startTimes}
@@ -70,6 +95,7 @@ export const TravelCalendar = () => {
               });
             }}
           />
+          <label htmlFor="">Дуусах цаг</label>
           <input
             type="time"
             placeholder="Дуусах цаг"
@@ -79,6 +105,7 @@ export const TravelCalendar = () => {
               setTravelInput({ ...travelInput, endTime: e.target.value });
             }}
           />
+          <label htmlFor="">Эхлэх өдөр</label>
           <input
             type="date"
             placeholder="Эхлэх өдөр"
@@ -91,6 +118,7 @@ export const TravelCalendar = () => {
               });
             }}
           />
+          <label htmlFor="">Дуусах өдөр</label>
           <input
             type="date"
             placeholder="Дуусах өдөр"
@@ -135,16 +163,21 @@ export const TravelCalendar = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {travelData.map((travelCalendar: rowDataProps, index: number) => {
+              {travelData.map((travelCalendar: rowData, index: number) => {
+                const startTime = travelCalendar?.startTime.slice(11, 16);
+                const endTime = travelCalendar?.endTime.slice(11, 16);
+                const startDay = travelCalendar?.startTime.slice(0, 10);
+                const endDay = travelCalendar?.endTime.slice(0, 10);
+
                 return (
                   <tr>
                     <th>{index + 1}</th>
-                    <td>{travelCalendar?.startTime}</td>
-                    <td>{travelCalendar?.endTime}</td>
-                    <td>{travelCalendar?.startDay}</td>
-                    <td>{travelCalendar?.endDay}</td>
+                    <td>{startTime}</td>
+                    <td>{endTime}</td>
+                    <td>{startDay}</td>
+                    <td>{endDay}</td>
                     <td>
-                      <button onClick={() => deleteRows(index)}>
+                      <button onClick={() => deleteRows(travelCalendar?._id)}>
                         <Deleteicon />
                       </button>
                     </td>

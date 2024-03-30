@@ -1,3 +1,4 @@
+
 import { LocationIcon } from '../icons/HomeIcons/LocationIcon';
 import { getServerSideProps } from './heroData';
 import { Data } from './types/heroTypes';
