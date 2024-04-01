@@ -1,5 +1,5 @@
 import React from "react";
-import { Orderdetail } from "../../../components/admin2/order/Orderdetail";
+import { Orderdetail } from "../../../components/admin/order/Orderdetail";
 
 export default function detail() {
   return (

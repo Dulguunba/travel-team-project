@@ -1,10 +1,10 @@
-import { OrderA } from "@/components/admin2/order/OrderA";
+import { OrderAdmin } from "@/components/admin/order/OrderAdmin";
 import React from "react";
 
 export default function order() {
   return (
     <div>
-      <OrderA />
+      <OrderAdmin />
     </div>
   );
 }

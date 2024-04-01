@@ -3,7 +3,7 @@ import { Navbar } from "./nav/Navbar";
 import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
 import { instance } from "../utilities/TravelUtility";
-import { Leftbar } from "../admin/Leftbar";
+import { Leftbar } from "./Leftbar";
 
 type dashboardData = {
   name: String;

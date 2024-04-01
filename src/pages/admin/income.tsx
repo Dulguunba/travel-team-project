@@ -1,4 +1,4 @@
-import { Income } from "@/components/admin2/income/Income";
+import { Income } from "@/components/admin/income/Income";
 import React from "react";
 
 export default function income() {

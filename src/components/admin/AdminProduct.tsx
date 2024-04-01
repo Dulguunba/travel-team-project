@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar } from "./nav/Navbar";
-import { Leftbar } from "../admin/Leftbar";
+import { Leftbar } from "./Leftbar";
 import { Addtionicon } from "../icons2/Addtionicon";
 import { Categoryicon } from "../icons2/product/Categoryicon";
 import { Dolloryicon } from "../icons2/product/Dolloryicon";

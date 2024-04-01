@@ -14,7 +14,7 @@ type order = {
   status: String;
 };
 
-export const OrderA = () => {
+export const OrderAdmin = () => {
   const list = [
     "Бүгд",
     "Шинэ захиалага",
@@ -132,7 +132,7 @@ export const OrderA = () => {
                           </button>
                         </td>
                         <td>
-                          <a href="/admin/order/detail">
+                          <a href="/admin/order/Detail">
                             <div className="ml-5">
                               <Bagaih />
                             </div>

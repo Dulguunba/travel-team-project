@@ -1,7 +1,7 @@
-import { AdminProduct } from "@/components/admin2/AdminProduct";
+import { AdminProduct } from "@/components/admin/AdminProduct";
 import React from "react";
 
-export default function product() {
+export default function Product() {
   return (
     <div>
       <AdminProduct />
