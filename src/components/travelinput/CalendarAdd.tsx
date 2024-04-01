@@ -6,7 +6,7 @@ import {
   useTravelCalendarStore,
   useTravelStore,
 } from "@/Zustand";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { useTravelRouteStore } from "@/Zustand";
 
 export const CalendarAdd = () => {

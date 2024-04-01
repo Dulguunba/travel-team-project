@@ -1,6 +1,6 @@
 import React from 'react'
-import { Brand } from './icons/destinaton/Brand'
-import { DownArrow } from './icons/destinaton/DownArrow'
+import { Brand } from '../icons/destination/Brand'
+import { DownArrow } from '../icons/destination/DownArrow'
 
 
 export const Header = () => {

@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import axios from "axios";
 import Link from "next/link";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { ok } from "assert";
 
 type tripInformations = {

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { usePageStore, useTravelStore } from "@/Zustand";
 import { Return } from "../icons/adminicons/Return";
 
@@ -67,9 +67,8 @@ export const PictureAdmin = () => {
 
   return (
     <div
-      className={` ${
-        page == 4 ? "flex" : "hidden"
-      }  w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
+      className={` ${page == 4 ? "flex" : "hidden"
+        }  w-full h-full min-h-screen gap-7  flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
@@ -115,17 +114,15 @@ export const PictureAdmin = () => {
                     alt=""
                   />
                   <div
-                    className={`absolute top-[40%] left-[40%]  gap-5 text-lg ${
-                      mainloading ? "flex" : "hidden"
-                    } `}
+                    className={`absolute top-[40%] left-[40%]  gap-5 text-lg ${mainloading ? "flex" : "hidden"
+                      } `}
                   >
                     <span>Loading</span>
                     <span className="loading loading-ring loading-md"></span>
                   </div>
                   <div
-                    className={`w-full  h-full absolute top-0 left-0 flex flex-col items-center gap-2 justify-center ${
-                      mainloading ? "hidden" : "flex"
-                    }`}
+                    className={`w-full  h-full absolute top-0 left-0 flex flex-col items-center gap-2 justify-center ${mainloading ? "hidden" : "flex"
+                      }`}
                   >
                     <p className="font-semibold">
                       {mainImage
@@ -157,17 +154,15 @@ export const PictureAdmin = () => {
                     alt=""
                   />
                   <div
-                    className={`absolute top-[40%] left-[40%]  gap-5 text-lg ${
-                      supportloading ? "flex" : "hidden"
-                    } `}
+                    className={`absolute top-[40%] left-[40%]  gap-5 text-lg ${supportloading ? "flex" : "hidden"
+                      } `}
                   >
                     <span>Loading</span>
                     <span className="loading loading-ring loading-md"></span>
                   </div>
                   <div
-                    className={`w-full  h-full absolute top-0 left-0 flex flex-col items-center gap-2 justify-center ${
-                      supportloading ? "hidden" : "flex"
-                    }`}
+                    className={`w-full  h-full absolute top-0 left-0 flex flex-col items-center gap-2 justify-center ${supportloading ? "hidden" : "flex"
+                      }`}
                   >
                     <p className="font-semibold">
                       {supportImage

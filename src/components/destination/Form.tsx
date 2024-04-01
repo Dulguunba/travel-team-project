@@ -1,6 +1,7 @@
 import React from 'react'
-import { Loc } from './icons/destinaton/Loc'
-import { Dollar } from './icons/destinaton/Dollar'
+
+import { Dollar } from '../icons/destination/Dollar'
+import { LocationBlue } from '../icons/destination'
 
 export const Form = () => {
     return (
@@ -51,33 +52,6 @@ export const Form = () => {
                             <div className='md:w-[745px] flex items-center rounded-[15px] bg-grayColor h-[100px]'>  <input type="text" className='bg-grayColor rounded-[15px] pl-12 w-full h-full' placeholder='123 - 456 - 7890' /></div>
                         </div>
                     </div>
-                    {/* <div className='flex gap-[30px] pt-12'>
-                        <div>
-                            <div className='flex pb-4'>
-                                <h2 className=''> START DATE </h2>
-                                <p className='text-blue'>*</p>
-                            </div>
-                            <div className='flex gap-[30px]'>
-                                <button className='w-[164px] rounded-[15px] bg-grayColor h-[100px]'> Mrs</button>
-                                <button className='w-[164px] rounded-[15px] bg-grayColor h-[100px]'> Mrs</button>
-                                <button className='w-[193px] rounded-[15px] bg-grayColor h-[100px]'> Mrs</button>
-                            </div>
-                        </div>
-                        <div>
-                            <div className='flex pb-4'>
-                                <h2 className=''>DURATION </h2>
-                                <p className='text-blue'>*</p>
-                            </div>
-                            <button className='w-[328px] rounded-[15px] bg-grayColor h-[100px]'>Mrs</button>
-                        </div>
-                        <div>
-                            <div className='flex pb-4'>
-                                <h2 className=''>DESTINATION </h2>
-                                <p className='text-blue'>*</p>
-                            </div>
-                            <button className='w-[551px] rounded-[15px] bg-grayColor h-[100px]'> Mrs</button>
-                        </div>
-                    </div> */}
                     <div className='flex items-center justify-between pt-20'>
                         <h1 className=' font-oswald font-bold text-[40px] leading-[50px] pb-12'>PACKAGE</h1>
                         <div className='flex gap-[64px]' >
@@ -101,7 +75,7 @@ export const Form = () => {
                             <div className='pb-[64px]'>
                                 <h1 className='font-oswald font-bold md:text-[100px] md:leading-[100px] text-[40px] leading-[50px] text-white'>DISCOVER JAPAN TOUR PACKAGE</h1>
                                 <div className='flex items-center pt-10'>
-                                    <Loc />
+                                    <LocationBlue />
                                     <p className='font-normal text-[20px] text-white leading-[30px] pl-4 pr-6'>   Tokyo & Kyoto , Japan </p>
                                     <p className='font-normal text-[20px] text-white leading-[30px] pr-4 '>|</p>
                                     <Dollar />

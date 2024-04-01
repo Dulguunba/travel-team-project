@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Navbar } from "./nav/Navbar";
 import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { tripInformationTypes } from "../travelInput2/Routs";
 
 export const AdminDashbourd = () => {
@@ -37,7 +37,7 @@ export const AdminDashbourd = () => {
               <thead className=" bg-gray-200">
                 <tr>
                   <th>
-                    <label>{}</label>
+                    <label>{ }</label>
                   </th>
                   <th>Аяалал</th>
                   <th>Үйл ажилгаа</th>

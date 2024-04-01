@@ -3,7 +3,7 @@ import { Return } from "../icons/adminicons/Return";
 import { useContext } from "react";
 import { TravelDataContext } from "../context";
 import { useRouter } from "next/router";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { usePageStore, useTravelStore } from "@/Zustand";
 
 export const CategoryAdmin = () => {
@@ -100,9 +100,8 @@ export const CategoryAdmin = () => {
 
   return (
     <div
-      className={`w-full h-full min-h-screen gap-7 ${
-        page == 3 ? "flex" : "hidden"
-      } flex-col justify-start items-start`}
+      className={`w-full h-full min-h-screen gap-7 ${page == 3 ? "flex" : "hidden"
+        } flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />

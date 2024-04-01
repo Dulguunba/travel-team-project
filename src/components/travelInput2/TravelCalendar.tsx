@@ -2,7 +2,7 @@ import React, { ReactNode, useMemo, useState } from "react";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import Link from "next/link";
 import axios from "axios";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 
 type rowDataProps = {
   startTime: string;

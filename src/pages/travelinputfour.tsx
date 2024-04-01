@@ -4,7 +4,7 @@ import { Leftbar } from "@/components/admin/Leftbar";
 import { TravelAdminOne } from "@/components/travelinput/TravelAdminOne";
 import { TravelDataContext } from "@/components/Context";
 import { useContext } from "react";
-import { createTravelInfo } from "@/components/utilities/TravelUtility";
+import { createTravelInfo } from "@/utilities/TravelUtility";
 import { PictureAdmin } from "@/components/travelinput/PictureAdmin";
 
 const inter = Inter({ subsets: ["latin"] });

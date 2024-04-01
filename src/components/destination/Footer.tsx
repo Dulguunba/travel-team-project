@@ -1,8 +1,8 @@
 import React from 'react'
-import { Brand } from './icons/destinaton/Brand'
-import { Facebook } from './icons/destinaton/Fb'
-import { Ig } from './icons/destinaton/Ig'
-import { Twitter } from './icons/destinaton/Twitter'
+import { Brand } from '../icons/destination/Brand'
+import { Facebook } from '../icons/destination/Fb'
+import { Ig } from '../icons/destination/Ig'
+import { Twitter } from '../icons/destination/Twitter'
 
 export const Footer = () => {
     return (

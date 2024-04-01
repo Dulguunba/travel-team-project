@@ -1,6 +1,6 @@
 import React from 'react'
 import { LocationIcon } from '../icons/HomeIcons/LocationIcon'
-import { Dollar } from '../icons/destinaton/Dollar'
+import { Dollar } from '../icons/destination/Dollar'
 import { TimeIcon } from './TimeIcon'
 import { CalendarIcon } from './CalendarIcon'
 import Included from './Included'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createTravelInfo } from "../utilities/TravelUtility";
+import { createTravelInfo } from "../../utilities/TravelUtility";
 import { usePageStore, useTravelStore } from "@/Zustand";
 import { Return } from "../icons/adminicons/Return";
 
@@ -9,9 +9,8 @@ export const SuccessAdmin = () => {
 
   return (
     <div
-      className={`   w-full h-full min-h-screen ${
-        page == 8 ? "flex" : "hidden"
-      } gap-7  flex-col justify-start items-start relative`}
+      className={`   w-full h-full min-h-screen ${page == 8 ? "flex" : "hidden"
+        } gap-7  flex-col justify-start items-start relative`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />

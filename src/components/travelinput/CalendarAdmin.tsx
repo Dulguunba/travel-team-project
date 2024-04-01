@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createTravelInfo, instance } from "../utilities/TravelUtility";
+import { createTravelInfo, instance } from "../../utilities/TravelUtility";
 import {
   CalendarType,
   RouteType,
@@ -37,9 +37,8 @@ export const CalendarAdmin = () => {
 
   return (
     <div
-      className={`   w-full h-full min-h-screen ${
-        page == 6 ? "flex" : "hidden"
-      } gap-7  flex-col justify-start items-start relative`}
+      className={`   w-full h-full min-h-screen ${page == 6 ? "flex" : "hidden"
+        } gap-7  flex-col justify-start items-start relative`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />

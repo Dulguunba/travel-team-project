@@ -1,5 +1,5 @@
 import React from "react";
-import { instance } from "../utilities/TravelUtility";
+import { instance } from "../../utilities/TravelUtility";
 import { RouteType, usePageStore, useTravelStore } from "@/Zustand";
 import { Return } from "../icons/adminicons/Return";
 import { RouteAdd } from "./RouteAdd";
@@ -33,9 +33,8 @@ export const RouteAdmin = () => {
 
   return (
     <div
-      className={`   w-full h-full min-h-screen ${
-        page == 5 ? "flex" : "hidden"
-      } gap-7  flex-col justify-start items-start`}
+      className={`   w-full h-full min-h-screen ${page == 5 ? "flex" : "hidden"
+        } gap-7  flex-col justify-start items-start`}
     >
       <a className="w-full flex gap-7 items-center bg-white" href="/">
         <Return />
