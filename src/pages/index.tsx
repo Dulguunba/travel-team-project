@@ -4,8 +4,7 @@ import { Process } from "@/components/Home/Process";
 import { Value } from "@/components/Home/Value";
 import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
-import { getServerSideProps as getTravelDatas } from '@/components/Home/travelData'
-import { getServerSideProps as getToursDatas } from '@/components/Home/toursData'
+import { getServerSideProps } from "@/components/Home/fetchTravelDatas"
 import Hero from "@/components/Home/Hero";
 import Gallery from "@/components/Home/Gallery";
 import { Tours } from "@/types/toursTypes";
@@ -26,8 +25,8 @@ function Home({ travelDatas, toursData }: Props) {
   return (
     <div>
       <Hero toursData={toursData} />
-      {/* <PopularDestinations travelDatas={travelDatas} />
-      <Process />
+      <PopularDestinations travelDatas={travelDatas} />
+      {/* <Process />
       <Gallery travelDatas={travelDatas} />
       <Value />
       <Questions />
@@ -36,6 +35,6 @@ function Home({ travelDatas, toursData }: Props) {
   );
 }
 
-export { getToursDatas, getTravelDatas };
+export { getServerSideProps };
 
 export default Home;

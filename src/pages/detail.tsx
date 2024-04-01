@@ -1,7 +1,6 @@
 import { Travel } from '@/types/travelTypes'
 import TourDetailHero from '@/components/TourDetail/TourDetailHero'
 import React from 'react'
-import { getServerSideProps } from '../components/Home/travelData'
 import { Footer } from '@/components/Footer'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -17,6 +16,5 @@ const Detail = ({ travelDatas }: { travelDatas: Travel }) => {
     )
 }
 
-export { getServerSideProps }
 
 export default Detail

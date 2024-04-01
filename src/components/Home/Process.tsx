@@ -19,8 +19,10 @@ export const Process = () => {
                                 <Line />
                                 <ProcessCard style='absolute top-0 -left-28' svg={<PlanningSvg />} title='Trip Planning' description='We plan on what to do during the trip days.' />
                                 <ProcessCard style='absolute top-[93px] left-[280px]' svg={<CalendarSvg />} title='Trip Booking' description='We book the necessary hotel and travels for your trip.' />
-                                <ProcessCard style='absolute -top-16 right-[270px]' svg={<TripSvg />} title='Trip Booking' description='We book the necessary hotel and travels for your trip.' />
-                                <ProcessCard style='absolute top-24 -right-28' svg={<AirplaneSvg />} title='Trip Booking' description='We book the necessary hotel and travels for your trip.' />
+                                <ProcessCard style='absolute -top-16 right-[270px]' svg={<TripSvg />} title='Trip Preparation' description='We prepare all accommodation
+and trip necessities.' />
+                                <ProcessCard style='absolute top-24 -right-28' svg={<AirplaneSvg />} title='Trip Experience' description='We give you the best travel
+experience with our tour guide.' />
                             </div>
                         </div>
                     </div>

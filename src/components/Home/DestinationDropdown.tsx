@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow';
-import { getServerSideProps as getToursDatas } from './toursData'
+import { getServerSideProps } from './fetchTravelDatas'
 import { Tours } from '../../types/toursTypes';
 
 const DestinationDropdown = ({ toursData }: { toursData: Tours }) => {
@@ -47,6 +47,6 @@ const DestinationDropdown = ({ toursData }: { toursData: Tours }) => {
     );
 }
 
-export { getToursDatas };
+export { getServerSideProps };
 
 export default DestinationDropdown;

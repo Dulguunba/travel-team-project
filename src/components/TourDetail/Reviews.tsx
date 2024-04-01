@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import { LeftArrow } from './LeftArrow';
 import { RightArrow } from './RightArrow';
 import ReviewCard from './ReviewCard';
-import { Data } from '../../types/toursTypes';
 
-const Reviews = ({ data }: { data: Data[] }) => {
+const Reviews = () => {
     const [index, setIndex] = useState(0);
 
     const handlePrev = () => {
         if (index > 0) setIndex(index - 2);
     }
 
-    const handleNext = () => {
-        if (index < data.length - 2) setIndex(index + 2);
-    }
+    // const handleNext = () => {
+    //     if (index < data.length - 2) setIndex(index + 2);
+    // }
 
     return (
         <div className='flex flex-col mt-20 mb-20'>
-            <div className='flex justify-between'>
+            {/* <div className='flex justify-between'>
                 <div className='text-[40px] font-oswald font-bold'>
                     REVIEWS
                 </div>
@@ -39,7 +38,7 @@ const Reviews = ({ data }: { data: Data[] }) => {
                         bio={review.comments_count}
                     />
                 ))}
-            </div>
+            </div> */}
 
         </div>
     );

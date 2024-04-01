@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { getServerSideProps as getToursDatas } from './toursData'
+import { getServerSideProps } from './fetchTravelDatas'
 import { Tours } from '../../types/toursTypes'
 import { PriceDropdown } from './PriceDropdown'
 import Header from './Header'
@@ -49,6 +49,6 @@ const Hero = ({ toursData }: { toursData: Tours }) => {
     )
 };
 
-export { getToursDatas };
+export { getServerSideProps };
 
 export default Hero;

@@ -6,7 +6,7 @@ import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'
 import { CalendarSvg } from '../icons/HomeIcons/CalendarSvg'
 import { TripSvg } from '../icons/HomeIcons/TripSvg'
 import { AirplaneSvg } from '../icons/HomeIcons/AirplaneSvg'
-import { getServerSideProps } from './travelData'
+import { getServerSideProps } from './fetchTravelDatas'
 import { Travel } from '../../types/travelTypes'
 
 const Gallery = ({ travelDatas }: { travelDatas: Travel }) => {
@@ -21,7 +21,7 @@ const Gallery = ({ travelDatas }: { travelDatas: Travel }) => {
                         <div className='mt-20'>
                             <div>
                                 <div className="grid grid-rows-2 grid-cols-2 gap-4">
-                                    {slicedData.map((data) => <img className='w-full h-full rounded-3xl' src={data.image.mainImage} alt="" />)}
+                                    {slicedData.map((data) => <img className='w-[900px] h-[400px] rounded-3xl' src={data.image.mainImage} alt="" />)}
                                     {/* <div className="row-span-5">
                                         <img className='w-full h-full rounded-3xl' src="Pic2.jpg" alt="" />
                                     </div>

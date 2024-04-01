@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
 import { Tours } from '../../types/toursTypes'
 import Link from 'next/link';
-import { getServerSideProps as getToursDatas } from '../Home/toursData'
+import { getServerSideProps } from '@/components/Home/fetchTravelDatas'
 import { BurgerMenu } from '../icons/HomeIcons/BurgerMenu';
 import { XIcon } from '../icons/HomeIcons/XIcon';
 
@@ -49,7 +49,7 @@ const Header = ({ toursData }: { toursData: Tours }) => {
                                                 {personalTours.map((tour) =>
                                                 (
                                                     <Link href={`/tours/${tour.english}`}>
-                                                        < div className='cursor-pointer hover:bg-red-600' > {tour.english} </div>
+                                                        < div className='cursor-pointer hover:text-blue transition-all' > {tour.english} </div>
                                                     </Link>)
                                                 )}
                                             </div>
@@ -62,7 +62,7 @@ const Header = ({ toursData }: { toursData: Tours }) => {
                                             <div className='text-black mt-2 flex flex-col gap-1 capitalize'>
                                                 {groupTours.map((tour) => (
                                                     <Link href={`/tours/${tour.english}`}>
-                                                        <div className='cursor-pointer'> {tour.english} </div>
+                                                        <div className='cursor-pointer hover:text-blue transition-all'> {tour.english} </div>
                                                     </Link>
                                                 ))}
                                             </div>
@@ -84,27 +84,28 @@ const Header = ({ toursData }: { toursData: Tours }) => {
                 </div >
 
             </div >
-            {showMenu &&
-                <div className='fixed right-0 left-auto top-0 z-50 transition-all bg-white w-[200px] h-[300px]'>
-                    <div className='flex flex-col gap-4'>
-                        <div className='w-full border-b-2 pb-2'>
-                            <button className='ml-2' onClick={() => { setShowMenu(false) }}>
-                                <XIcon width='18' fill='black' />
-                            </button>
-                        </div>
-                        <ul className='ml-2'>
-                            <Link href={'/'}><li>Home</li></Link>
-                            <Link href={'/destination'}><li>Destination</li></Link>
-                            <Link href={'/tours'}><li>Tours</li></Link>
-                            <Link href={'/about'}><li>About</li></Link>
-                        </ul>
+            <div className='fixed right-0 left-auto top-0 z-50 transition-all bg-white w-[200px] h-[300px] duration-500 ease-in-out' style={{ transform: showMenu ? 'translateX(0)' : 'translateX(100%)', opacity: showMenu ? '1' : '0', visibility: showMenu ? 'visible' : 'hidden' }}>
+                <div className='flex flex-col gap-4'>
+                    <div className='w-full border-b-2 pb-2'>
+                        <button className='ml-2' onClick={() => { setShowMenu(false) }}>
+                            <XIcon width='18' fill='black' />
+                        </button>
+                    </div>
+                    <ul className='ml-2 font-primary flex flex-col gap-6'>
+                        <Link href={'/'}><li>Home</li></Link>
+                        <Link href={'/destination'}><li>Destination</li></Link>
+                        <Link href={'/tours'}><li>Tours</li></Link>
+                        <Link href={'/about'}><li>About</li></Link>
+                    </ul>
+                    <div className='p-3 bg-black text-white'>
+                        Logo
                     </div>
                 </div>
-            }
+            </div>
         </>
     )
 };
 
-export { getToursDatas };
+export { getServerSideProps };
 
 export default Header;

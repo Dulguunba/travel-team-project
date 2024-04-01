@@ -1,26 +1,25 @@
 import React from 'react'
-import { getServerSideProps } from '../Home/toursData'
-import { Data } from '../../types/toursTypes'
 
-const Included = ({ data }: { data: Data[] }) => {
-    const slicedData = data.slice(0, 8)
-    const notIncludedData = data.slice(8, 13)
+
+const Included = () => {
+    // const slicedData = data.slice(0, 8)
+    // const notIncludedData = data.slice(8, 13)
     return (
         <div className='mt-14 flex justify-between'>
             <div className='flex flex-col gap-5'>
                 <div className='text-[40px] font-oswald font-bold'>
                     INCLUDED
                 </div>
-                <ul className='list-disc ml-5 font-primary'>
+                {/* <ul className='list-disc ml-5 font-primary'>
                     {slicedData.map((data) => <li>{data.title}</li>)}
-                </ul>
+                </ul> */}
             </div>
             <div className='flex flex-col gap-5 w-[615px]'>
                 <div className='text-[40px] font-oswald font-bold'>
                     NOT INCLUDED
                 </div>
                 <ul className='list-disc font-primary ml-5'>
-                    {notIncludedData.map((data) => <li>{data.title}</li>)}
+                    {/* {notIncludedData.map((data) => <li>{data.title}</li>)} */}
                 </ul>
                 <div className='relative'>
                     <img src="Pic2.jpg" className='w-full h-[204px] rounded-3xl' alt="" />
@@ -36,6 +35,6 @@ const Included = ({ data }: { data: Data[] }) => {
     )
 }
 
-{ getServerSideProps }
+
 
 export default Included
