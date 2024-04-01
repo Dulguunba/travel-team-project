@@ -6,8 +6,8 @@ import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'
 import { CalendarSvg } from '../icons/HomeIcons/CalendarSvg'
 import { TripSvg } from '../icons/HomeIcons/TripSvg'
 import { AirplaneSvg } from '../icons/HomeIcons/AirplaneSvg'
-import { getServerSideProps } from './heroData'
-import { Data } from './types/heroTypes'
+import { getServerSideProps } from './toursData'
+import { Data } from './types/toursTypes'
 
 const Gallery = ({ data }: { data: Data[] }) => {
     const slicedData = data.slice(0, 6)

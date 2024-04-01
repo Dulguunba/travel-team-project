@@ -1,18 +1,18 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { Data } from "./types/heroTypes";
+import { Tours } from "./types/toursTypes";
 
 export const getServerSideProps: GetServerSideProps = async () => {
     try {
-        const res = await axios.get("https://dev.to/api/articles");
-        const data: Data[] = res.data;
+        const res = await axios.get("http://localhost:8800/tourist/get");
+        const data: Tours = res.data;
         return {
             props: {
                 data
             }
         }
     } catch (error) {
-        console.error("Error fetching data:hasdhaskjdhaskdhjkas", error);
+        console.error("Error fetching data:", error);
         return {
             props: {
                 data: []
