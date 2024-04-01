@@ -1,7 +1,7 @@
 import React from 'react'
 import ItineraryCard from './ItineraryCard'
 import { getServerSideProps } from '../Home/toursData'
-import { Data } from '../Home/types/toursTypes'
+import { Data } from '../../types/toursTypes'
 
 const Itinerary = ({ data }: { data: Data[] }) => {
 

@@ -1,4 +1,4 @@
-import { Travel } from '@/components/Home/types/travelTypes'
+import { Travel } from '@/types/travelTypes'
 import TourDetailHero from '@/components/TourDetail/TourDetailHero'
 import React from 'react'
 import { getServerSideProps } from '../components/Home/travelData'

@@ -1,12 +1,12 @@
 import { LocationIcon } from '../icons/HomeIcons/LocationIcon';
 import { getServerSideProps } from './travelData'
-import { Travel } from './types/travelTypes';
+import { Travel } from '../../types/travelTypes';
 import { CarouselCard } from './CarouselCard';
 import Link from 'next/link';
 
 const PopularDestinations = ({ travelDatas }: { travelDatas: Travel }) => {
-
-    // const slicedData = data.slice(0, 3)
+    const datas = travelDatas.result;
+    const slicedData = datas.slice(0, 3)
     return (
         <div className='flex justify-center items-center'>
             <div className='max-w-[1520px] w-[90%] mt-20'>
@@ -16,7 +16,7 @@ const PopularDestinations = ({ travelDatas }: { travelDatas: Travel }) => {
                         <p>Explore our top destinations right from our beloved clients’ reviews.</p>
                     </div>
                     <div className="w-full mt-10 justify-center flex gap-5">
-                        {/* {slicedData.map((data) => <CarouselCard image={data.cover_image} title={data.title} icon={<LocationIcon />} miniTitle={data.comments_count} description={data.title} />)} */}
+                        {slicedData.map((data) => <CarouselCard image={data.image.supportImage} title={data.route[0].endPoint} icon={<LocationIcon />} miniTitle={data.additionalInfo} description={data.travelCompany} />)}
                     </div>
 
                 </div>

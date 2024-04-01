@@ -6,11 +6,12 @@ import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'
 import { CalendarSvg } from '../icons/HomeIcons/CalendarSvg'
 import { TripSvg } from '../icons/HomeIcons/TripSvg'
 import { AirplaneSvg } from '../icons/HomeIcons/AirplaneSvg'
-import { getServerSideProps } from './toursData'
-import { Data } from './types/toursTypes'
+import { getServerSideProps } from './travelData'
+import { Travel } from '../../types/travelTypes'
 
-const Gallery = ({ data }: { data: Data[] }) => {
-    const slicedData = data.slice(0, 6)
+const Gallery = ({ travelDatas }: { travelDatas: Travel }) => {
+    const datas = travelDatas.result;
+    const slicedData = datas.slice(0, 6)
     return (
         <div className='mb-40 flex justify-center pt-20'>
             <div className='max-w-[1520px] w-[90%]'>
@@ -20,7 +21,7 @@ const Gallery = ({ data }: { data: Data[] }) => {
                         <div className='mt-20'>
                             <div>
                                 <div className="grid grid-rows-2 grid-cols-2 gap-4">
-                                    {slicedData.map((data) => <img className='w-full h-full rounded-3xl' src={data.cover_image} alt="" />)}
+                                    {slicedData.map((data) => <img className='w-full h-full rounded-3xl' src={data.image.mainImage} alt="" />)}
                                     {/* <div className="row-span-5">
                                         <img className='w-full h-full rounded-3xl' src="Pic2.jpg" alt="" />
                                     </div>
@@ -44,6 +45,6 @@ const Gallery = ({ data }: { data: Data[] }) => {
     )
 }
 
-{ getServerSideProps }
+export { getServerSideProps };
 
 export default Gallery;

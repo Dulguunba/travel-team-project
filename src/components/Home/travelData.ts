@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { Travel } from "./types/travelTypes";
+import { Travel } from "../../types/travelTypes";
 
 export const getServerSideProps: GetServerSideProps = async () => {
     try {

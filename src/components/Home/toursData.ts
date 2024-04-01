@@ -1,21 +1,21 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { Tours } from "./types/toursTypes";
+import { Tours } from '../../types/toursTypes'
 
 export const getServerSideProps: GetServerSideProps = async () => {
     try {
         const res = await axios.get("http://localhost:8800/tourist/get");
-        const data: Tours = res.data;
+        const toursData: Tours = res.data;
         return {
             props: {
-                data
+                toursData
             }
         }
     } catch (error) {
         console.error("Error fetching data:", error);
         return {
             props: {
-                data: []
+                toursData: []
             }
         };
     }

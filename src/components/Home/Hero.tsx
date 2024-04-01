@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { getServerSideProps } from './toursData'
-import { Tours } from './types/toursTypes'
+import { getServerSideProps as getToursDatas } from './toursData'
+import { Tours } from '../../types/toursTypes'
 import { PriceDropdown } from './PriceDropdown'
 import Header from './Header'
 import DestinationDropdown from './DestinationDropdown'
+import { Travel } from '../../types/travelTypes'
 
 
 
 const Hero = ({ toursData }: { toursData: Tours }) => {
-
+    console.log('travel', toursData)
     return (
         <>
             <img src="Pic.jpg" className='md:w-full h-[700px] md:h-[1042px]' alt="" />
@@ -46,8 +47,8 @@ const Hero = ({ toursData }: { toursData: Tours }) => {
             </div>
         </>
     )
-}
+};
 
-export { getServerSideProps };
+export { getToursDatas };
 
 export default Hero;

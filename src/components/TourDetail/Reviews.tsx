@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LeftArrow } from './LeftArrow';
 import { RightArrow } from './RightArrow';
 import ReviewCard from './ReviewCard';
-import { Data } from '../Home/types/toursTypes';
+import { Data } from '../../types/toursTypes';
 
 const Reviews = ({ data }: { data: Data[] }) => {
     const [index, setIndex] = useState(0);

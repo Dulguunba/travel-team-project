@@ -1,6 +1,6 @@
 import React from 'react'
 import { getServerSideProps } from '../Home/toursData'
-import { Data } from '../Home/types/toursTypes'
+import { Data } from '../../types/toursTypes'
 
 const Included = ({ data }: { data: Data[] }) => {
     const slicedData = data.slice(0, 8)

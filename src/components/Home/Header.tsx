@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { Tours } from './types/toursTypes'
+import { Tours } from '../../types/toursTypes'
 import Link from 'next/link';
-import { getServerSideProps } from './toursData'
+import { getServerSideProps as getToursDatas } from '../Home/toursData'
 import { BurgerMenu } from '../icons/HomeIcons/BurgerMenu';
 import { XIcon } from '../icons/HomeIcons/XIcon';
 
 
 
 const Header = ({ toursData }: { toursData: Tours }) => {
-    const tours = toursData.result
-    const [showMenu, setShowMenu] = useState(false);
 
+    const [showMenu, setShowMenu] = useState(false);
+    const tours = toursData.result;
     const personalTours = tours.filter(tour => tour.group === "personal tours");
     const groupTours = tours.filter(tour => tour.group === "groups tour");
 
@@ -105,6 +105,6 @@ const Header = ({ toursData }: { toursData: Tours }) => {
     )
 };
 
-export { getServerSideProps };
+export { getToursDatas };
 
 export default Header;

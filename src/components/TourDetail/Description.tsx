@@ -5,7 +5,7 @@ import { TimeIcon } from './TimeIcon'
 import { CalendarIcon } from './CalendarIcon'
 import Included from './Included'
 import { getServerSideProps } from '../Home/toursData'
-import { Data } from '../Home/types/toursTypes'
+import { Data } from '../../types/toursTypes'
 import Itinerary from './Itinerary'
 import Reviews from './Reviews'
 

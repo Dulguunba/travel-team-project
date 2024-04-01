@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow';
-import { getServerSideProps } from './toursData'
-import { Tours } from './types/toursTypes';
+import { getServerSideProps as getToursDatas } from './toursData'
+import { Tours } from '../../types/toursTypes';
 
 const DestinationDropdown = ({ toursData }: { toursData: Tours }) => {
     const [inputValue, setInputValue] = useState('');
@@ -47,6 +47,6 @@ const DestinationDropdown = ({ toursData }: { toursData: Tours }) => {
     );
 }
 
-export { getServerSideProps };
+export { getToursDatas };
 
 export default DestinationDropdown;
