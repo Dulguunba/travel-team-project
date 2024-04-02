@@ -26,10 +26,10 @@ function Home({ travelDatas, toursData }: Props) {
     <div>
       <Hero toursData={toursData} />
       <PopularDestinations travelDatas={travelDatas} />
-      {/* <Process />
+      <Process />
       <Gallery travelDatas={travelDatas} />
       <Value />
-      <Questions />
+      {/* <Questions />
       <MainFooter /> */}
     </div>
   );

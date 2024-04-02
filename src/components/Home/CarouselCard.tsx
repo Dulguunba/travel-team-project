@@ -1,15 +1,19 @@
 import React, { ReactElement, useState } from 'react'
+import { LocationIcon } from '../icons/HomeIcons/LocationIcon'
 
 interface Props {
-  image: string
   title: string
+  image: string
   icon: ReactElement
   miniTitle: string
   description: string
+  responsivePackage: number
+  responsiveTitle: string
 }
 
-export const CarouselCard = ({ image, title, icon, miniTitle, description }: Props) => {
+const CarouselCard = ({ responsiveTitle, image, title, icon, miniTitle, description, responsivePackage }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
+
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
       setIsHovered(true);
@@ -23,7 +27,7 @@ export const CarouselCard = ({ image, title, icon, miniTitle, description }: Pro
   return (
     <div className='relative'>
       <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='border cursor-pointer rounded-3xl'>
-        <img src={image} className={`${isHovered ? "md:w-[713px] md:h-[609px]" : "md:w-[372px] md:h-[503px]"} transition-all w-[417px] h-[564px] ease-out duration-700 rounded-3xl`} />
+        <img src={image} className={`${isHovered ? "md:w-[713px] md:h-[609px]" : "md:w-[372px] md:h-[503px]"} transition-all w-[417px] h-[464px] ease-out duration-700 rounded-3xl`} />
         <div className={`hidden md:block absolute top-0 w-full h-full transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
           <div className="bg-gradient-to-t from-black to-transparent absolute inset-0 rounded-3xl">
             <div className='absolute bottom-0'>
@@ -43,6 +47,15 @@ export const CarouselCard = ({ image, title, icon, miniTitle, description }: Pro
           </div>
         </div>
       </div>
-    </div>
+      <div className='md:hidden flex flex-col mt-2'>
+        <div className='font-primary text-2xl font-bold'>{responsiveTitle}</div>
+        <div className='flex gap-1 items-center font-primary mt-2'>
+          <LocationIcon width='20' height='22' fill='#4997D3' />
+          <h1>{responsivePackage} Packages</h1>
+        </div>
+      </div>
+    </div >
   )
 }
+
+export default CarouselCard;
