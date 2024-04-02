@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { getServerSideProps } from './fetchTravelDatas'
+import { getServerSideProps } from '../../utils/fetchTravelDatas'
 import { Tours } from '../../types/toursTypes'
 import { PriceDropdown } from './PriceDropdown'
 import Header from './Header'

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
 import { Tours } from '../../types/toursTypes'
 import Link from 'next/link';
-import { getServerSideProps } from '@/components/Home/fetchTravelDatas'
+import { getServerSideProps } from '@/utils/fetchTravelDatas'
 import { BurgerMenu } from '../icons/HomeIcons/BurgerMenu';
 import { XIcon } from '../icons/HomeIcons/XIcon';
 

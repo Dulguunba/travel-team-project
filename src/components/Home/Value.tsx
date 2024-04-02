@@ -16,7 +16,7 @@ export const Value = () => {
             <div className='max-w-[1520px] w-[90%] flex flex-col gap-5 justify-center items-center mb-20'>
                 <div className='text-center'>
                     <p className='text-blue md:text-xl'>VALUES</p>
-                    <h1 className='md:text-[100px] font-oswald font-bold'>OUR VALUES</h1>
+                    <h1 className='md:text-[100px] text-3xl font-oswald font-bold'>OUR VALUES</h1>
                 </div>
                 <div className='flex md:flex-row flex-col items-center gap-10 mt-10 md:mt-48 md:h-[350px] md:justify-between w-full'>
                     <div className='text-center md:w-[264px] md:h-[230px]' onMouseEnter={() => window.innerWidth > 768 ? setIsHoveredSmile(true) : setIsHoveredSmile(false)} onMouseLeave={() => window.innerWidth > 768 ? setIsHoveredSmile(false) : setIsHoveredSmile(true)}>

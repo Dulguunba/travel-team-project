@@ -6,8 +6,10 @@ import { CalendarIcon } from './CalendarIcon'
 import Included from './Included'
 import Itinerary from './Itinerary'
 import Reviews from './Reviews'
+import { getServerSideProps } from '../../utils/fetchTravelDatas'
+import { Props } from './TourDetailHero'
 
-const Description = () => {
+const Description = ({ toursData, travelDatas }: Props) => {
     return (
         <div className='flex items-center justify-center'>
             <div className='max-w-[1520px] w-[90%]'>
@@ -49,14 +51,15 @@ const Description = () => {
 
                     </div>
                 </div>
-                {/* <Included data={data} />
-                <Itinerary data={data} />
-                <Reviews data={data} /> */}
+                <Included toursData={toursData} travelDatas={travelDatas} />
+                <Itinerary toursData={toursData} travelDatas={travelDatas} />
+                <Reviews toursData={toursData} travelDatas={travelDatas} />
             </div>
 
         </div>
     )
 }
 
+export { getServerSideProps };
 
 export default Description

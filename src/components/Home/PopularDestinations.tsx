@@ -1,5 +1,5 @@
 import { LocationIcon } from '../icons/HomeIcons/LocationIcon';
-import { getServerSideProps } from './fetchTravelDatas'
+import { getServerSideProps } from '../../utils/fetchTravelDatas'
 import { Travel } from '../../types/travelTypes';
 
 import Link from 'next/link';

@@ -6,7 +6,7 @@ import { PlanningSvg } from '../icons/HomeIcons/PlanningSvg'
 import { CalendarSvg } from '../icons/HomeIcons/CalendarSvg'
 import { TripSvg } from '../icons/HomeIcons/TripSvg'
 import { AirplaneSvg } from '../icons/HomeIcons/AirplaneSvg'
-import { getServerSideProps } from './fetchTravelDatas'
+import { getServerSideProps } from '../../utils/fetchTravelDatas'
 import { Travel } from '../../types/travelTypes'
 
 const Gallery = ({ travelDatas }: { travelDatas: Travel }) => {

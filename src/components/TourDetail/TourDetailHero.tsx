@@ -7,8 +7,17 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/component.json'
 import CenterMode from './CenterMode';
 import SimpleSlider from './CenterMode';
+import { getServerSideProps } from '../../utils/fetchTravelDatas'
+import { Tours } from '@/types/toursTypes';
+import { Travel } from '@/types/travelTypes';
 
-const TourDetailHero = () => {
+export interface Props {
+    travelDatas: Travel
+    toursData: Tours
+}
+
+const TourDetailHero = ({ toursData, travelDatas }: Props) => {
+    const travelData = travelDatas.result;
     const settings = {
         dots: true,
         speed: 500,
@@ -24,7 +33,7 @@ const TourDetailHero = () => {
         <>
             <img src="Pic2.jpg" className='w-full h-[950px]' alt="" />
             <div className='absolute top-0 right-0 left-0'>
-                {/* <Header data={data} /> */}
+                <Header toursData={toursData} />
                 <div className=' max-w-[1520px] m-auto w-[90%] h-[600px] flex mt-8 bg justify-center'>
                     <div className='flex flex-col items-center mt-20'>
                         <div className='flex flex-col items-center drop-shadow-lg'>
@@ -39,21 +48,20 @@ const TourDetailHero = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="slider-container mt-10 mb-10 pl-8 pr-8 w-full">
+            <div className="slider-container mt-10 mb-10 pl-8 pr-8 w-full">
                 <Slider {...settings}>
-                    {data.slice(0, 5).map((item, index) => (
+                    {travelData.slice(0, 5).map((data, index) => (
                         <div key={index} className='slide'>
-                            <img src={item.cover_image} className="w-[832px] h-[500px] rounded-3xl m" />
+                            <img src={data.image.supportImage} className="w-[832px] h-[500px] rounded-3xl m" />
                         </div>
                     ))}
                 </Slider>
             </div>
-            <Description data={data} /> */}
-
+            <Description toursData={toursData} travelDatas={travelDatas} />
         </>
     );
 };
 
-// export { getServerSideProps }
+export { getServerSideProps };
 
 export default TourDetailHero;
