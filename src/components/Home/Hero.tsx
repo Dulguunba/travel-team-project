@@ -49,6 +49,8 @@ const Hero = ({ toursData }: { toursData: Tours }) => {
     )
 };
 
+
 export { getServerSideProps };
 
 export default Hero;
+

@@ -6,6 +6,7 @@ import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
 import { getServerSideProps } from "@/utils/fetchTravelDatas"
 import Hero from "@/components/Home/Hero";
+
 import Gallery from "@/components/Home/Gallery";
 import { Tours } from "@/types/toursTypes";
 import { Travel } from "@/types/travelTypes";
@@ -15,7 +16,6 @@ interface Props {
   toursData: Tours
   travelDatas: Travel
 }
-
 const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],

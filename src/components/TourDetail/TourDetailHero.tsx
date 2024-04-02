@@ -1,7 +1,6 @@
 import Slider from 'react-slick';
 import React from 'react';
 import Header from '../Home/Header';
-import Description from './Description';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/component.json'
@@ -10,6 +9,7 @@ import SimpleSlider from './CenterMode';
 import { getServerSideProps } from '../../utils/fetchTravelDatas'
 import { Tours } from '@/types/toursTypes';
 import { Travel } from '@/types/travelTypes';
+import Description from './Description';
 
 export interface Props {
     travelDatas: Travel
@@ -50,13 +50,14 @@ const TourDetailHero = ({ toursData, travelDatas }: Props) => {
             </div>
             <div className="slider-container mt-10 mb-10 pl-8 pr-8 w-full">
                 <Slider {...settings}>
-                    {travelData.slice(0, 5).map((data, index) => (
+                    {travelData.slice(0, 5).map((item, index) => (
                         <div key={index} className='slide'>
-                            <img src={data.image.supportImage} className="w-[832px] h-[500px] rounded-3xl m" />
+                            <img src={item.image.supportImage} className="w-[832px] h-[500px] rounded-3xl m" />
                         </div>
                     ))}
                 </Slider>
             </div>
+            {/* <SimpleSlider /> */}
             <Description toursData={toursData} travelDatas={travelDatas} />
         </>
     );
