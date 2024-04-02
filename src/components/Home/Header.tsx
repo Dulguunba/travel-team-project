@@ -2,47 +2,49 @@ import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
 import { Tours } from '../../types/toursTypes'
 import Link from 'next/link';
-import { getServerSideProps } from '@/utils/fetchTravelDatas'
+import { getServerSideProps } from '@/utils/fetchTravelDatas';
 import { BurgerMenu } from '../icons/HomeIcons/BurgerMenu';
 import { XIcon } from '../icons/HomeIcons/XIcon';
+import { Destination } from '@/types/destinationTypes';
+import { DestinationCategory } from '@/types/destinationCategoryTypes';
+import { Props } from '@/pages';
 
-
-
-const Header = ({ toursData }: { toursData: Tours }) => {
-
+const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
     const [showMenu, setShowMenu] = useState(false);
-    const tours = toursData.result;
-    const personalTours = tours.filter(tour => tour.group === "personal tours");
-    const groupTours = tours.filter(tour => tour.group === "groups tour");
+    const personalTours = toursData.result.filter(tour => tour.group === "personal tours");
+    const groupTours = toursData.result.filter(tour => tour.group === "groups tour");
+
 
     return (
         <>
             <div className="flex flex-col items-center justify-center">
                 <div className='flex max-w-[1520px] w-[90%] z-10'>
-                    <div className='flex items-center justify-between w-full text-white md:p-8 p-4 font-primary text-base'>
+                    <div className='flex items-center justify-between w-full text-white lg:p-8 p-4 font-primary text-base'>
                         <div className='p-2 bg-green-300'>
                             Logo
                         </div>
-                        <div className='hidden md:flex gap-14 md:items-center md:drop-shadow-md'>
+                        <div className='hidden lg:flex gap-14 lg:items-center lg:drop-shadow-lg'>
                             <div className='flex items-center relative gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                                 <div className="dropdown dropdown-hover relative">
                                     <Link href={"/destination"}><div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div></Link>
                                     <ul tabIndex={0} className="dropdown-content -left-80 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[60vw] flex-row grid grid-cols-5">
-                                        <div className="text-gray-700 font-semibold border-b-2 w-full pb-2 col-span-5">Popular Destinations</div>
+                                        <div className="text-gray-700 flex gap-2 font-semibold border-b-2 w-full pb-2 col-span-5">
+                                            {categoryDatas.result.map((category) => category.english)}
+                                        </div>
                                         {/* {data.map((item) => (
-                                        <li className='text-black'>
-                                            <a>{item.title}</a>
-                                        </li>
-                                    ))} */}
+                                            <li className='text-black'>
+                                                <a>{item.title}</a>
+                                            </li>
+                                        ))} */}
                                     </ul>
                                 </div>
                             </div>
                             <div className='flex items-center gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                                 <div className="dropdown dropdown-hover relative">
                                     <div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Tours <DownArrow /></div>
-                                    <ul tabIndex={0} className="dropdown-content z-50 menu p-2 shadow bg-base-100 w-[400px] rounded-box flex-row justify-around">
+                                    <ul tabIndex={0} className="dropdown-content absolute -left-40 z-50 menu p-2 shadow bg-base-100 w-[400px] rounded-box flex-row justify-around">
                                         <div className='flex flex-col'>
-                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-center capitalize">
+                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-start capitalize">
                                                 {personalTours.length > 0 ? personalTours[0].group : ''}
                                             </div>
                                             <div className='text-black mt-2 flex flex-col gap-1 capitalize'>
@@ -55,7 +57,7 @@ const Header = ({ toursData }: { toursData: Tours }) => {
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-center capitalize">
+                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-start capitalize">
                                                 {groupTours.length > 0 ? groupTours[0].group : ''}
 
                                             </div>
@@ -74,10 +76,10 @@ const Header = ({ toursData }: { toursData: Tours }) => {
                             <p className='cursor-pointer hover:-translate-y-1 transition ease-in-out'>Blog</p>
                             <p className='cursor-pointer hover:-translate-y-1 transition ease-in-out'>Contact</p>
                         </div>
-                        <div className='hidden md:block p-3 border rounded-md font-medium cursor-pointer hover:-translate-y-1 transition ease-in-out hover:scale-110'>
+                        <div className='hidden lg:block p-3 border rounded-lg font-medium cursor-pointer hover:-translate-y-1 transition ease-in-out hover:scale-110'>
                             Sign in
                         </div>
-                        <div className='md:hidden block'>
+                        <div className='lg:hidden block'>
                             <button onClick={() => { setShowMenu(true) }}><BurgerMenu fill='white' /></button>
                         </div>
                     </div>

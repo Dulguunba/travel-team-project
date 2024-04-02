@@ -10,13 +10,13 @@ const PopularDestinations = ({ travelDatas }: { travelDatas: Travel }) => {
     const slicedData = datas.slice(0, 3)
     return (
         <div className='flex justify-center items-center'>
-            <div className='md:max-w-[1520px] w-full md:w-[90%] mt-20 p-2'>
-                <div className='flex md:h-[769px] flex-col md:gap-10 items-center '>
+            <div className='lg:max-w-[1520px] w-full lg:w-[90%] mt-20 p-2'>
+                <div className='flex lg:h-[769px] flex-col lg:gap-10 items-center '>
                     <div className='text-center flex gap-4 flex-col'>
-                        <h1 className='font-oswald font-bold text-2xl md:text-4xl'>POPULAR DESTINATIONS</h1>
+                        <h1 className='font-oswald font-bold text-2xl lg:text-4xl'>POPULAR DESTINATIONS</h1>
                         <p className='font-primary'>Explore our top destinations right from our beloved clients’ reviews.</p>
                     </div>
-                    <div className="w-full mt-10 justify-center flex md:flex-row flex-col gap-5">
+                    <div className="w-full mt-10 justify-center flex lg:flex-row flex-col gap-5">
                         {slicedData.map((data) => <CarouselCard responsiveTitle={data.route[0].endPoint} responsivePackage={data.duration} image={data.image.supportImage} title={data.route[0].endPoint} icon={<LocationIcon />} miniTitle={data.travelCompany} description={data.travelCompany} />)}
                     </div>
                 </div>

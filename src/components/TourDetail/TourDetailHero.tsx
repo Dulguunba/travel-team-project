@@ -1,6 +1,6 @@
 import Slider from 'react-slick';
 import React from 'react';
-import Header from '../Home/Header';
+import Header from '../home/Header';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/component.json'
