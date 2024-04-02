@@ -6,8 +6,7 @@ import { CalendarIcon } from './CalendarIcon'
 import Included from './Included'
 import Itinerary from './Itinerary'
 import Reviews from './Reviews'
-import { getServerSideProps } from '../../utils/fetchTravelDatas'
-import { Props } from './TourDetailHero'
+import { Props, getServerSideProps } from './TourDetailHero'
 
 const Description = ({ toursData, travelDatas }: Props) => {
     return (
@@ -62,4 +61,4 @@ const Description = ({ toursData, travelDatas }: Props) => {
 
 export { getServerSideProps };
 
-export default Description
+export default Description;
