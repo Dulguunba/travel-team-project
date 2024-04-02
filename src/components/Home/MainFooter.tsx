@@ -10,8 +10,8 @@ export const MainFooter = () => {
                     <h1 className='font-bold font-oswald lg:text-[100px] text-black text-3xl text-center'>START YOUR ADVENTURE</h1>
                     <p className='lg:text-[20px] lg:mt-10 font-primary lg:w-[881px] text-center'>Sign up for our newsletter and receive exclusive travel deals, insider tips, and destination
                         inspiration. Don't miss out on the adventure - join our mailing list today!</p>
-                    <div className='flex gap-2'>
-                        <input type="text" placeholder='Enter your email address here ...' className='lg:p-5 p-2 rounded-lg lg:w-[551px] lg:text-[20px] bg-transparent border-black border placeholder-black' />
+                    <div className='flex lg:flex-row flex-col gap-2'>
+                        <input type="text" placeholder='Enter your email address here ...' className='lg:p-5 p-2 w-[271px] rounded-lg lg:w-[551px] lg:text-[20px] bg-transparent border-black border placeholder-black' />
                         <button className='bg-black text-white px-5 py-2 lg:w-[164px] rounded-lg'>Subscribe</button>
                     </div>
                 </div>

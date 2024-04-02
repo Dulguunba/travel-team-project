@@ -1,25 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useWindowScroll } from 'react-use'
 import { DownArrow } from '../icons/HomeIcons/DownArrow'
-import { Tours } from '../../types/toursTypes'
 import Link from 'next/link';
 import { getServerSideProps } from '@/utils/fetchTravelDatas';
 import { BurgerMenu } from '../icons/HomeIcons/BurgerMenu';
 import { XIcon } from '../icons/HomeIcons/XIcon';
-import { Destination } from '@/types/destinationTypes';
-import { DestinationCategory } from '@/types/destinationCategoryTypes';
 import { Props } from '@/pages';
+import { RightArrow } from '../TourDetail/RightArrow';
 
 const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
     const [showMenu, setShowMenu] = useState(false);
     const personalTours = toursData.result.filter(tour => tour.group === "personal tours");
     const groupTours = toursData.result.filter(tour => tour.group === "groups tour");
 
+    const { y } = useWindowScroll();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        setIsScrolled(y > 450);
+    }, [y]);
 
     return (
         <>
             <div className="flex flex-col items-center justify-center">
                 <div className='flex max-w-[1520px] w-[90%] z-10'>
-                    <div className='flex items-center justify-between w-full text-white lg:p-8 p-4 font-primary text-base'>
+                    <div className={`${isScrolled ? "duration-700 ease-in-out transition-all lg:static fixed top-0 right-0 left-0 bg-white shadow-lg text-black" : ""} flex items-center justify-between w-full text-white lg:p-8 p-4 font-primary text-base`}>
                         <div className='p-2 bg-green-300'>
                             Logo
                         </div>
@@ -28,9 +33,11 @@ const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
                                 <div className="dropdown dropdown-hover relative">
                                     <Link href={"/destination"}><div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div></Link>
                                     <ul tabIndex={0} className="dropdown-content -left-80 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[60vw] flex-row grid grid-cols-5">
-                                        <div className="text-gray-700 flex gap-2 font-semibold border-b-2 w-full pb-2 col-span-5">
-                                            {categoryDatas.result.map((category) => category.english)}
-                                        </div>
+                                        {categoryDatas.result.map((category) =>
+                                            <div className="text-gray-700 flex justify-between font-semibold pb-2 capitalize">
+                                                <h1 className='border-b-2 pb-2'>{category.english}</h1>
+                                            </div>
+                                        )}
                                         {/* {data.map((item) => (
                                             <li className='text-black'>
                                                 <a>{item.title}</a>
@@ -80,28 +87,32 @@ const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
                             Sign in
                         </div>
                         <div className='lg:hidden block'>
-                            <button onClick={() => { setShowMenu(true) }}><BurgerMenu fill='white' /></button>
+                            <button onClick={() => { setShowMenu(true) }}>
+                                {isScrolled ? <BurgerMenu fill='#4997D3' /> : <BurgerMenu fill='white' />}
+
+                            </button>
                         </div>
                     </div>
                 </div >
 
             </div >
-            <div className='fixed right-0 left-auto top-0 z-50 transition-all bg-white w-[200px] h-[300px] duration-500 ease-in-out' style={{ transform: showMenu ? 'translateX(0)' : 'translateX(100%)', opacity: showMenu ? '1' : '0', visibility: showMenu ? 'visible' : 'hidden' }}>
+            <div className='fixed right-0 left-auto top-0 z-50 transition-all bg-slate-900 text-white w-[200px] h-screen duration-500 ease-in-out' style={{ transform: showMenu ? 'translateX(0)' : 'translateX(100%)', opacity: showMenu ? '1' : '0', visibility: showMenu ? 'visible' : 'hidden' }}>
                 <div className='flex flex-col gap-4'>
-                    <div className='w-full border-b-2 pb-2'>
-                        <button className='ml-2' onClick={() => { setShowMenu(false) }}>
-                            <XIcon width='18' fill='black' />
+                    <div className='w-full border-b-2 pb-4'>
+                        <button className='ml-4 mt-5' onClick={() => { setShowMenu(false) }}>
+                            <XIcon width='18' fill='#4997D3' />
                         </button>
+                        <div className='p-3 flex mt-10 w-10 h-10 m-auto bg-black text-white'>
+                            Logo
+                        </div>
                     </div>
-                    <ul className='ml-2 font-primary flex flex-col gap-6'>
-                        <Link href={'/'}><li>Home</li></Link>
-                        <Link href={'/destination'}><li>Destination</li></Link>
-                        <Link href={'/tours'}><li>Tours</li></Link>
-                        <Link href={'/about'}><li>About</li></Link>
+                    <ul className='ml-2 mr-2 mt-10 font-primary flex flex-col gap-6'>
+                        <Link className='w-full  text-xl font-semibold' href={'/'}><li>Home</li></Link>
+                        <Link className='w-full  text-xl font-semibold' href={'/destination'}><li>Destination</li></Link>
+                        <Link className='w-full  text-xl font-semibold' href={'/tours'}><li>Tours</li></Link>
+                        <Link className='w-full text-xl font-semibold' href={'/about'}><li>About</li></Link>
+                        <Link className='w-full text-xl font-semibold' href={'/about'}><li>Sign In</li></Link>
                     </ul>
-                    <div className='p-3 bg-black text-white'>
-                        Logo
-                    </div>
                 </div>
             </div>
         </>
