@@ -1,10 +1,11 @@
 import React from 'react'
-import { getServerSideProps } from '../Home/heroData'
-import { Data } from '../Home/types/heroTypes'
+import { Props, getServerSideProps } from './TourDetailHero'
 
-const Included = ({ data }: { data: Data[] }) => {
-    const slicedData = data.slice(0, 8)
-    const notIncludedData = data.slice(8, 13)
+
+const Included = ({ toursData, travelDatas }: Props) => {
+    const tourDatas = toursData.result;
+    const slicedData = tourDatas.slice(0, 8)
+    const notIncludedData = tourDatas.slice(8, 13)
     return (
         <div className='mt-14 flex justify-between'>
             <div className='flex flex-col gap-5'>
@@ -12,7 +13,7 @@ const Included = ({ data }: { data: Data[] }) => {
                     INCLUDED
                 </div>
                 <ul className='list-disc ml-5 font-primary'>
-                    {slicedData.map((data) => <li>{data.title}</li>)}
+                    {slicedData.map((data) => <li>{data.english}</li>)}
                 </ul>
             </div>
             <div className='flex flex-col gap-5 w-[615px]'>
@@ -20,7 +21,7 @@ const Included = ({ data }: { data: Data[] }) => {
                     NOT INCLUDED
                 </div>
                 <ul className='list-disc font-primary ml-5'>
-                    {notIncludedData.map((data) => <li>{data.title}</li>)}
+                    {notIncludedData.map((data) => <li>{data.english}</li>)}
                 </ul>
                 <div className='relative'>
                     <img src="Pic2.jpg" className='w-full h-[204px] rounded-3xl' alt="" />
@@ -36,6 +37,6 @@ const Included = ({ data }: { data: Data[] }) => {
     )
 }
 
-{ getServerSideProps }
+export { getServerSideProps }
 
 export default Included

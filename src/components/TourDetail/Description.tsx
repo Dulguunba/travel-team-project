@@ -4,12 +4,11 @@ import { Dollar } from '../icons/destinaton/Dollar'
 import { TimeIcon } from './TimeIcon'
 import { CalendarIcon } from './CalendarIcon'
 import Included from './Included'
-import { getServerSideProps } from '../Home/heroData'
-import { Data } from '../Home/types/heroTypes'
 import Itinerary from './Itinerary'
 import Reviews from './Reviews'
+import { Props, getServerSideProps } from './TourDetailHero'
 
-const Description = ({ data }: { data: Data[] }) => {
+const Description = ({ toursData, travelDatas }: Props) => {
     return (
         <div className='flex items-center justify-center'>
             <div className='max-w-[1520px] w-[90%]'>
@@ -51,15 +50,15 @@ const Description = ({ data }: { data: Data[] }) => {
 
                     </div>
                 </div>
-                <Included data={data} />
-                <Itinerary data={data} />
-                <Reviews data={data} />
+                <Included toursData={toursData} travelDatas={travelDatas} />
+                <Itinerary toursData={toursData} travelDatas={travelDatas} />
+                <Reviews toursData={toursData} travelDatas={travelDatas} />
             </div>
 
         </div>
     )
 }
 
-{ getServerSideProps }
+export { getServerSideProps };
 
-export default Description
+export default Description;

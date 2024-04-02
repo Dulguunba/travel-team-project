@@ -1,22 +1,21 @@
-import { Data } from '@/components/Home/types/heroTypes'
-import TourDetailHero from '@/components/TourDetail/TourDetailHero'
+import { Travel } from '@/types/travelTypes'
+import TourDetailHero, { Props, getServerSideProps } from '@/components/TourDetail/TourDetailHero'
 import React from 'react'
-import { getServerSideProps } from '.'
 import { Footer } from '@/components/Footer'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-const Detail = ({ data }: { data: Data[] }) => {
+const Detail = ({ toursData, travelDatas }: Props) => {
     return (
         <div>
-            <TourDetailHero data={data} />
+            <TourDetailHero travelDatas={travelDatas} toursData={toursData} />
             <Footer />
         </div>
     )
 }
 
-export { getServerSideProps }
+export { getServerSideProps };
 
 export default Detail

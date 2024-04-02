@@ -6,9 +6,9 @@ export const QuestionCard = () => {
     const [showAnswers, setShowAnswers] = useState(false);
 
     return (
-        <div className='w-[987px] p-6 rounded-3xl border'>
+        <div className='md:w-[987px] md:p-6 p-2 rounded-3xl border transition-all duration-700 ease-in-out'>
             <div className='flex justify-between'>
-                <h1 className='text-3xl font-primary font-medium'>How do I book a trip with Vacasky?</h1>
+                <h1 className='md:text-3xl text-lg font-primary font-medium'>How do I book a trip with Vacasky?</h1>
                 <button onClick={() => { setShowAnswers(!showAnswers) }}>
                     {showAnswers
                         ? <div className='p-2 bg-blue rounded-full'><UpArrow width='24' height='24' /></div>
@@ -16,7 +16,7 @@ export const QuestionCard = () => {
                     }
                 </button>
             </div>
-            <p className={`w-[841px] mt-5 ${showAnswers ? "" : "hidden"}`}>Vacasky offers a wide range of travel packages to destinations around the world, including customized tours, group tours, luxury travel, adventure travel, and more. Our travel specialists work with you to create an itinerary that meets your specific needs and preferences.</p>
+            <p className={`md:w-[841px] transition-all mt-5 ${showAnswers ? "block" : "hidden"}`}>Vacasky offers a wide range of travel packages to destinations around the world, including customized tours, group tours, luxury travel, adventure travel, and more. Our travel specialists work with you to create an itinerary that meets your specific needs and preferences.</p>
         </div>
     )
 }

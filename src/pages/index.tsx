@@ -4,32 +4,35 @@ import { Process } from "@/components/Home/Process";
 import { Value } from "@/components/Home/Value";
 import { Questions } from "@/components/Home/Questions";
 import { MainFooter } from "@/components/Home/MainFooter";
-import { Data } from "@/components/Home/types/heroTypes";
-import { PopularDestinations } from "@/components/Home/PopularDestinations";
-import { getServerSideProps } from "@/components/Home/Hero";
-import Hero from "@/components/Home/Hero";
+import Hero, { getServerSideProps } from "@/components/Home/Hero";
 import Gallery from "@/components/Home/Gallery";
-import { Tours } from "@/components/Home/Header";
+import PopularDestinations from "@/components/Home/PopularDestinations";
+import { Tours } from "@/types/toursTypes";
+import { Travel } from "@/types/travelTypes";
 
+interface Props {
+  toursData: Tours
+  travelDatas: Travel
+}
 const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],
 });
 
-function Home({ toursData }: { toursData: Tours }) {
+function Home({ travelDatas, toursData }: Props) {
   return (
     <div>
       <Hero toursData={toursData} />
-      {/* <PopularDestinations data={data} />
+      <PopularDestinations travelDatas={travelDatas} />
       <Process />
-      {/* <Gallery data={data} /> */}
+      <Gallery travelDatas={travelDatas} />
       <Value />
       <Questions />
-      <MainFooter /> */}
+      <MainFooter />
     </div>
   );
 }
 
-export { getServerSideProps };
+export { getServerSideProps }
 
 export default Home;

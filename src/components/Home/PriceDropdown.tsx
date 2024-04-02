@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { DownArrow } from '../icons/HomeIcons/DownArrow';
-import { getServerSideProps } from './heroData';
-import { Data } from './types/heroTypes';
+import { getServerSideProps } from './toursData';
+import { Data } from '../../types/toursTypes';
 
 export const PriceDropdown = ({ data }: { data: Data[] }) => {
     const [selectedPrice, setSelectedPrice] = useState('');
