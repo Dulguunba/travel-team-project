@@ -26,12 +26,19 @@ const CarouselCard = ({ responsiveTitle, image, title, icon, miniTitle, descript
   }
   return (
     <div className='relative'>
-      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='border cursor-pointer rounded-3xl'>
-        <img src={image} className={`${isHovered ? "md:w-[713px] md:h-[609px]" : "md:w-[372px] md:h-[503px]"} transition-all w-[417px] h-[464px] ease-out duration-700 rounded-3xl`} />
-        <div className={`hidden md:block absolute top-0 w-full h-full transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='cursor-pointer rounded-3xl'>
+        <img src={image} className={`${isHovered ? "lg:w-[713px] lg:h-[609px]" : "lg:w-[372px] lg:h-[503px]"} transition-all w-[417px] h-[464px] m-auto ease-out duration-1000 rounded-3xl`} />
+        <div className='lg:hidden flex items-center flex-col mt-2'>
+          <div className='font-primary text-2xl font-bold'>{responsiveTitle}</div>
+          <div className='flex gap-1 items-center font-primary mt-2'>
+            <LocationIcon width='20' height='22' fill='#4997D3' />
+            <h1>{responsivePackage} Packages</h1>
+          </div>
+        </div>
+        <div className={`hidden lg:block absolute top-0 w-full h-full transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
           <div className="bg-gradient-to-t from-black to-transparent absolute inset-0 rounded-3xl">
             <div className='absolute bottom-0'>
-              <div className='md:p-8 flex font-primary flex-col gap-3 text-white transition-all duration-700'>
+              <div className='lg:p-8 flex font-primary flex-col gap-3 text-white transition-all duration-700'>
                 <h1 className='text-3xl font-medium '>{title}</h1>
                 <div className='flex gap-2 items-center'>
                   {icon}
@@ -39,21 +46,15 @@ const CarouselCard = ({ responsiveTitle, image, title, icon, miniTitle, descript
                 </div>
                 <p className='text-xl text-gray-500'>{description}</p>
                 <div className='flex gap-5'>
-                  <button className='md:p-3  md:w-[147px] rounded-lg font-medium bg-white text-black'>Book now</button>
-                  <button className='border md:w-[147px] rounded-lg font-medium border-white p-3'>Learn more</button>
+                  <button className='lg:p-3  lg:w-[147px] rounded-lg font-medium bg-white text-black'>Book now</button>
+                  <button className='border lg:w-[147px] rounded-lg font-medium border-white p-3'>Learn more</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className='md:hidden flex flex-col mt-2'>
-        <div className='font-primary text-2xl font-bold'>{responsiveTitle}</div>
-        <div className='flex gap-1 items-center font-primary mt-2'>
-          <LocationIcon width='20' height='22' fill='#4997D3' />
-          <h1>{responsivePackage} Packages</h1>
-        </div>
-      </div>
+
     </div >
   )
 }
