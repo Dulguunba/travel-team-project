@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card } from './Card'
 import { ListCard } from './ListCard'
 import { TravelType } from '@/pages/types/travelType'
 
 
 
-export const Hero = ({ travelData }: { travelData: TravelType[] }) => {
+export const Hero = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const [toggle, setToggle] = useState('toggle')
+
     const [grid, setGrid] = useState('grid')
+
     const toggleFunction = () => {
         setToggle('toggle')
         setGrid('grid')
@@ -18,7 +20,6 @@ export const Hero = ({ travelData }: { travelData: TravelType[] }) => {
         setGrid('list')
         setToggle('')
     };
-    console.log(travelData)
     type CategoryType = 'All' | 'Best' | 'Nature' | 'City' | 'Seasonal';
 
     const selectCategory = (category: CategoryType) => {
@@ -38,15 +39,7 @@ export const Hero = ({ travelData }: { travelData: TravelType[] }) => {
                                 </svg>
                             </div>
                         </div>
-                        <div className='flex flex-wrap justify-between'>
-                            {/* {travelData.map((item, index) => ( */}
-                            {/*  <div key={index} className=''> */}
-                            {/* Render individual travel data item */}
-                            {/* <p>{item.price.adultPrice}</p> */}
-                            {/* Add more properties as needed */}
-                            {/* </div> */}
-                            {/*  ))} */}
-                        </div>
+                        {/* <p>{articles.name}</p> */}
                         <div className='pt-16 flex justify-between gap-4 items-center flex-wrap w-full'>
                             <div className='flex md:gap-10 gap-4 flex-wrap'>
                                 <button onClick={() => selectCategory('All')} className={`hover:bg-blue hover:text-white hover:duration-500 md:py-3 md:px-8 py-2 px-4  font-medium text-xl  rounded-[10px] ${selectedCategory === 'All' ? 'text-white bg-blue' : 'text-black bg-[#F6F6F6]'} `}>All</button>
@@ -76,6 +69,7 @@ export const Hero = ({ travelData }: { travelData: TravelType[] }) => {
                                                 fill={`${grid == 'grid' ? '#222222' : 'white'} `} />
                                         </g>
                                         <defs>
+
                                         </defs>
                                     </svg>
                                     <p>List view</p>
@@ -83,44 +77,27 @@ export const Hero = ({ travelData }: { travelData: TravelType[] }) => {
                             </div>
                         </div>
 
-                        {
-                            grid == 'grid' ?
-                                <div className=' md:grid  md:grid-cols-3  md:grid-rows-4 md:h-full flex flex-col  w-full pt-20 gap-[30px] '>
-                                    <Card place="Place name" country="country name  |" price="How much" style="bg-[url('/winter.png')]" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-no-repeat bg-[url('/japan.png')]   bg-no-repeat " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style=" bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style=" bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style=" bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                    <Card place="Place name" country="country name  |" price="How much" details="With long ancient history, Greece has so many beautiful landscapes and historical places to offer." style="   bg-[url('/winter.png')] " />
-                                </div> :
+                        <div className=' flex flex-col w-full py-20 gap-12 '>
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                            <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
+                                time="10 Days" price="Start from $3,500" />
+                        </div>
 
-                                <div className=' flex flex-col w-full py-20 gap-12 '>
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                    <ListCard img="./winter.png" where="WHERE" title="Classic Italy Tour Package" details="A journey to visit Rome, Florence, and Venice, with guided tours of famous landmarks like the Colosseum, Vatican City, and the Leaning Tower of Pisa and activities like wine tasting and a ride."
-                                        time="10 Days" price="Start from $3,500" />
-                                </div>
-                        }
                     </div>
                 </div >
             </div>

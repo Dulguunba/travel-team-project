@@ -1,6 +1,7 @@
+import { TravelType } from '@/pages/types/travelType'
 import React from 'react'
 
-export const About = () => {
+export const About = ({ travelData }: { travelData: TravelType[] }) => {
     return (
         <div className="flex flex-col items-center justify-center bg-[url('/place.png')] bg-no-repeat bg-cover">
             <div className='flex max-w-[1520px] w-[90%] py-5 flex-col h-[600px] md:h-[950px]'>

@@ -1,60 +1,43 @@
 export interface TravelType {
-    result: [
-        {
-            price: {
-                adultPrice: Number;
-                childPrice: Number;
-            }
-            food: {
-                IsIncludeFoodCheck: boolean;
-                IsIncludeFoodPriceCheck: boolean;
-                foodNumber: Number;
-                foodPrice: Number;
-            }
-            traffic: {
-                trafficPrice: Number,
-                IsIncludeTrafficCheck: Boolean,
-                IsIncludeTrafficPriceCheck: Boolean,
-            }
-            image: {
-                mainImage: String,
-                supportImage: String,
-            },
-            _id: Number,
-            name: String,
-            travelCompany: String,
-            duration: Number,
-            categoryType: [
-                "66015407ee6ed08462463b6b",
-                "66015412ee6ed08462463b6d",
-                "66015413ee6ed08462463b6f"
-            ];
-            touristType: [];
-            additionalInfo: String,
-            route: [
-                {
-                    startPoint: String,
-                    endPoint: String,
-                    vehicle: String,
-                    place: String,
-                    activity: String,
-                    sectionDuration: Number,
-                    sectionImage: String,
-                },
-                {
-                    startPoint: String,
-                    endPoint: String,
-                    vehicle: String,
-                    place: String
-                    activity: String,
-                    sectionDuration: Number,
-                    sectionImage: String
-                }
-            ],
-            calendar: [],
-            createdAt: Date,
-            updatedAt: Date,
-            __v: Number
-        }
-    ]
+    result: {
+        price: {
+            adultPrice: number;
+            childPrice: number;
+        };
+        food: {
+            IsIncludeFoodCheck: boolean;
+            IsIncludeFoodPriceCheck: boolean;
+            foodNumber: number;
+            foodPrice: number;
+        };
+        traffic: {
+            trafficPrice: number;
+            IsIncludeTrafficCheck: boolean;
+            IsIncludeTrafficPriceCheck: boolean;
+        };
+        image: {
+            mainImage: string;
+            supportImage: string;
+        };
+        _id: number;
+        name: string;
+        travelCompany: string;
+        duration: number;
+        categoryType: string[];
+        touristType: any[]; // Please update this type if possible
+        additionalInfo: string;
+        route: {
+            startPoint: string;
+            endPoint: string;
+            vehicle: string;
+            place: string;
+            activity: string;
+            sectionDuration: number;
+            sectionImage: string;
+        }[];
+        calendar: any[]; // Please update this type if possible
+        createdAt: Date;
+        updatedAt: Date;
+        __v: number;
+    }[];
 }

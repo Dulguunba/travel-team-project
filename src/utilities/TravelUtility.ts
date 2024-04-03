@@ -23,3 +23,13 @@ export const createTravelInfo = async (data: {} | null) => {
     return alert(`Та дахин оролдоно уу.`);
   }
 };
+
+// const handleSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+//   try {
+//     const response = await axios.post('http://localhost:8800/', values);
+//     console.log('Booking successful:', response.data);
+//   } catch (error) {
+//     alert(error);
+//   }
+//   setSubmitting(false);
+// };

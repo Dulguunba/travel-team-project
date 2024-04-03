@@ -25,7 +25,7 @@ function Home({ toursData }: { toursData: Tours }) {
       {/* <Gallery data={data} /> */}
       <Value />
       <Questions />
-      <MainFooter /> */}
+      <MainFooter />
     </div>
   );
 }
