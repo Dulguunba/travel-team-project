@@ -22,7 +22,7 @@ const Hero = ({ travelDatas, toursData, destinationDatas, categoryDatas }: Props
                                 with our expertly curated travel packages.</p>
                             <div className='bg-white lg:mt-12 lg:w-[791px] w-[300px] lg:h-[116px] shadow-lg mt-4 lg:pb-6 lg:p-6 flex rounded-lg lg:rounded-3xl'>
                                 <div className='flex lg:flex-row flex-col lg:justify-between w-full items-center lg:w-full'>
-                                    <DestinationDropdown toursData={toursData} />
+                                    <DestinationDropdown categoryDatas={categoryDatas} destinationDatas={destinationDatas} />
                                     <div className='border-b-2 lg:border-b-0 lg:border-r-2 lg:pr-5 lg:w-[219px] lg:h-[66px] flex flex-col lg:flex-col gap-1 items-start lg:justify-start w-full pb-2'>
                                         <div className='flex items-center justify-between w-full cursor-pointer'>
                                             <p className='font-medium lg:text-lg text-lg p-2 lg:p-1'>Date</p>

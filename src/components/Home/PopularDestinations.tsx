@@ -4,10 +4,10 @@ import { Travel } from '../../types/travelTypes';
 
 import Link from 'next/link';
 import CarouselCard from './CarouselCard';
+import { Destination } from '@/types/destinationTypes';
 
-const PopularDestinations = ({ travelDatas }: { travelDatas: Travel }) => {
-    const datas = travelDatas.result;
-    const slicedData = datas.slice(0, 3)
+const PopularDestinations = ({ travelDatas, destinationDatas }: { travelDatas: Travel, destinationDatas: Destination }) => {
+    const slicedData = travelDatas.result.slice(0, 3);
     return (
         <div className='flex justify-center items-center'>
             <div className='lg:max-w-[1520px] w-full lg:w-[90%] mt-20 p-2'>

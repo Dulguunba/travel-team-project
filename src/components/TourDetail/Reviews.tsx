@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import { LeftArrow } from './LeftArrow';
 import { RightArrow } from './RightArrow';
 import ReviewCard from './ReviewCard';
-import { Props, getServerSideProps } from './TourDetailHero';
+import { getServerSideProps } from './TourDetailHero';
+import { Tours } from '@/types/toursTypes';
+import { Travel } from '@/types/travelTypes';
 
+interface Props {
+    toursData: Tours
+    travelDatas: Travel
+}
 
 const Reviews = ({ toursData, travelDatas }: Props) => {
     const tourDatas = toursData.result;

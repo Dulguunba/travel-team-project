@@ -20,6 +20,13 @@ const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
         setIsScrolled(y > 450);
     }, [y]);
 
+    const destinationsByCategory = categoryDatas.result.map(category => {
+        const destinationsInCategory = destinationDatas.result.filter(destination => destination.destinationCategory._id === category._id);
+
+        return { category, destination: destinationsInCategory };
+    });
+
+    console.log('destByCat', destinationsByCategory)
     return (
         <>
             <div className="flex flex-col items-center justify-center">
@@ -32,46 +39,51 @@ const Header = ({ toursData, destinationDatas, categoryDatas }: Props) => {
                             <div className='flex items-center relative gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                                 <div className="dropdown dropdown-hover relative">
                                     <Link href={"/destination"}><div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Destination <DownArrow /></div></Link>
-                                    <ul tabIndex={0} className="dropdown-content -left-80 z-[1] menu p-2 shadow bg-base-100 rounded-box w-[60vw] flex-row grid grid-cols-5">
-                                        {categoryDatas.result.map((category) =>
-                                            <div className="text-gray-700 flex justify-between font-semibold pb-2 capitalize">
-                                                <h1 className='border-b-2 pb-2'>{category.english}</h1>
+                                    <ul tabIndex={0} className="dropdown-content -left-80 z-[1] menu p-2 shadow bg-base-100 rounded-box  w-[60vw] flex-row grid grid-cols-5">
+                                        {destinationsByCategory.map(({ category, destination }) =>
+                                            <div className='flex flex-col justify-start'>
+                                                <div className="text-gray-700 flex justify-between font-semibold pb-2 capitalize">
+                                                    <h1 className='border-b-2 pb-2'>
+                                                        {category.english}
+                                                    </h1>
+                                                </div>
+                                                <div className='text-black capitalize font-primary'>
+                                                    {destination.map((dest) => (
+                                                        <div><p className='hover:bg-slate-200 rounded-lg p-2 duration-300 transition-all ease-in-out'>{dest.english}</p></div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         )}
-                                        {/* {data.map((item) => (
-                                            <li className='text-black'>
-                                                <a>{item.title}</a>
-                                            </li>
-                                        ))} */}
                                     </ul>
                                 </div>
                             </div>
                             <div className='flex items-center gap-2 cursor-pointer hover:-translate-y-1 transition ease-in-out'>
                                 <div className="dropdown dropdown-hover relative">
                                     <div tabIndex={0} role="button" className="m-1 flex gap-2 items-center">Tours <DownArrow /></div>
-                                    <ul tabIndex={0} className="dropdown-content absolute -left-40 z-50 menu p-2 shadow bg-base-100 w-[400px] rounded-box flex-row justify-around">
+                                    <ul tabIndex={0} className="dropdown-content absolute -left-40 z-50 menu p-2 shadow bg-base-100 w-[400px] rounded-box flex-row grid gap-5 grid-cols-2">
                                         <div className='flex flex-col'>
-                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-start capitalize">
-                                                {personalTours.length > 0 ? personalTours[0].group : ''}
+                                            <div className="text-gray-700 font-semibold text-center capitalize">
+                                                <h1 className='border-b-2 pb-1'>{personalTours.length > 0 ? personalTours[0].group : ''}</h1>
                                             </div>
-                                            <div className='text-black mt-2 flex flex-col gap-1 capitalize'>
+                                            <div className='text-black mt-2 flex flex-col gap-3 capitalize'>
                                                 {personalTours.map((tour) =>
                                                 (
                                                     <Link href={`/tours/${tour.english}`}>
-                                                        < div className='cursor-pointer hover:text-blue transition-all' > {tour.english} </div>
+                                                        <div><p className='hover:bg-slate-200 rounded-lg p-2 duration-300 transition-all ease-in-out'>{tour.english}</p></div>
                                                     </Link>)
                                                 )}
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="text-gray-700 font-semibold border-b-2 pb-1 text-start capitalize">
-                                                {groupTours.length > 0 ? groupTours[0].group : ''}
-
+                                            <div className="text-gray-700 font-semibold text-center capitalize">
+                                                <h1 className='border-b-2 pb-1'>
+                                                    {groupTours.length > 0 ? groupTours[0].group : ''}
+                                                </h1>
                                             </div>
-                                            <div className='text-black mt-2 flex flex-col gap-1 capitalize'>
+                                            <div className='text-black mt-2 flex flex-col gap-3 capitalize'>
                                                 {groupTours.map((tour) => (
                                                     <Link href={`/tours/${tour.english}`}>
-                                                        <div className='cursor-pointer hover:text-blue transition-all'> {tour.english} </div>
+                                                        <div><p className='hover:bg-slate-200 rounded-lg p-2 duration-300 transition-all ease-in-out'>{tour.english}</p></div>
                                                     </Link>
                                                 ))}
                                             </div>

@@ -29,7 +29,7 @@ function Home({ travelDatas, toursData, destinationDatas, categoryDatas }: Props
   return (
     <div>
       <Hero travelDatas={travelDatas} destinationDatas={destinationDatas} categoryDatas={categoryDatas} toursData={toursData} />
-      <PopularDestinations travelDatas={travelDatas} />
+      <PopularDestinations travelDatas={travelDatas} destinationDatas={destinationDatas} />
       <Process />
       <Gallery travelDatas={travelDatas} />
       <Value />
