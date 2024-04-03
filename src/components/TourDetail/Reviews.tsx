@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import { LeftArrow } from './LeftArrow';
 import { RightArrow } from './RightArrow';
 import ReviewCard from './ReviewCard';
-import { Data } from '../Home/types/heroTypes';
+import { getServerSideProps } from './TourDetailHero';
+import { Tours } from '@/types/toursTypes';
+import { Travel } from '@/types/travelTypes';
 
-const Reviews = ({ data }: { data: Data[] }) => {
+interface Props {
+    toursData: Tours
+    travelDatas: Travel
+}
+
+const Reviews = ({ toursData, travelDatas }: Props) => {
+    const tourDatas = toursData.result;
     const [index, setIndex] = useState(0);
 
     const handlePrev = () => {
@@ -12,7 +20,7 @@ const Reviews = ({ data }: { data: Data[] }) => {
     }
 
     const handleNext = () => {
-        if (index < data.length - 2) setIndex(index + 2);
+        if (index < tourDatas.length - 2) setIndex(index + 2);
     }
 
     return (
@@ -26,17 +34,17 @@ const Reviews = ({ data }: { data: Data[] }) => {
                         {index > 0 ? <LeftArrow /> : <LeftArrow fill='#F6F6F6' />}
                     </button>
                     <button onClick={handleNext}>
-                        {index < data.length - 2 ? <RightArrow /> : <RightArrow fill='#F6F6F6' />}
+                        {index < tourDatas.length - 2 ? <RightArrow /> : <RightArrow fill='#F6F6F6' />}
                     </button>
                 </div>
             </div>
             <div className='mt-10 flex justify-between'>
-                {data.slice(index, index + 2).map((review) => (
+                {tourDatas.slice(index, index + 2).map((review) => (
                     <ReviewCard
-                        message={review.title}
-                        proPic={review.cover_image}
-                        name={review.title}
-                        bio={review.comments_count}
+                        message={review.english}
+                        proPic={review.english}
+                        name={review.english}
+                        bio={review.english}
                     />
                 ))}
             </div>
@@ -44,5 +52,7 @@ const Reviews = ({ data }: { data: Data[] }) => {
         </div>
     );
 };
+
+export { getServerSideProps }
 
 export default Reviews;

@@ -27,6 +27,7 @@
     box-shadow: -1px 1px 26px 3px rgba(0, 0, 0, 0.41);
 }
 
+
 .card {
     position: absolute;
     border-radius: 24px;
@@ -133,17 +134,11 @@
 .slider-container button {
 
     margin: auto;
-    border: 1px solid black;
     width: 50px;
     height: 50px;
     z-index: 10;
-    background-color: black;
 
-}
 
-.slick-track {
-    display: flex;
-    gap: 50px;
 }
 
 .slick-slider {
@@ -167,14 +162,13 @@
 
 .slide {
     padding: 0 20px;
-    /* Adjust as needed */
+
 }
 
 
-.slider-container button {
-    width: 50px;
-    height: 50px;
-    z-index: 10;
+.slick-slider {
+    width: 100%;
+
 }
 
 .slick-track {
@@ -182,12 +176,30 @@
     gap: 50px;
 }
 
-.slick-slider {
-    width: 100%;
 
+@media only screen and (max-width: 768px) {
+    .slick-prev:before {
+        font-size: 40px !important;
+        color: gray !important;
+        margin-left: 40px !important;
+    }
+
+    .slide {
+        padding: 0 20px;
+    }
+
+    .slick-next:before {
+        font-size: 40px !important;
+        color: gray !important;
+        position: absolute;
+        right: 40px;
+    }
+
+    .slick-track {
+        display: flex;
+
+    }
 }
-
-
 
 /* #card :hover {
     box-shadow: 3px 12px 400px 200px rgba(0, 0, 0, 0.5) inset;

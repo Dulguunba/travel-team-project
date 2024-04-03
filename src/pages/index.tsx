@@ -1,35 +1,45 @@
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { Process } from "@/components/Home/Process";
-import { Value } from "@/components/Home/Value";
-import { Questions } from "@/components/Home/Questions";
-import { MainFooter } from "@/components/Home/MainFooter";
-import { Data } from "@/components/Home/types/heroTypes";
-import { PopularDestinations } from "@/components/Home/PopularDestinations";
-import { getServerSideProps } from "@/components/Home/Hero";
-import Hero from "@/components/Home/Hero";
-import Gallery from "@/components/Home/Gallery";
-import { Tours } from "@/components/Home/Header";
+import { Process } from "@/components/home/Process";
+import { Value } from "@/components/home/Value";
+import { Questions } from "@/components/home/Questions";
+import { MainFooter } from "@/components/home/MainFooter";
+import Hero from "@/components/home/Hero";
+import Gallery from "@/components/home/Gallery";
+import PopularDestinations from "@/components/home/PopularDestinations";
+import { Tours } from "@/types/toursTypes";
+import { Travel } from "@/types/travelTypes";
+import { Footer } from "@/components/Footer";
+import { Destination } from "@/types/destinationTypes";
+import { DestinationCategory } from "@/types/destinationCategoryTypes";
+import { getServerSideProps } from '@/utils/fetchTravelDatas'
 
+export interface Props {
+  toursData: Tours
+  travelDatas: Travel
+  destinationDatas: Destination
+  categoryDatas: DestinationCategory
+}
 const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],
 });
 
-function Home({ toursData }: { toursData: Tours }) {
+function Home({ travelDatas, toursData, destinationDatas, categoryDatas }: Props) {
   return (
     <div>
-      <Hero toursData={toursData} />
-      {/* <PopularDestinations data={data} />
+      <Hero travelDatas={travelDatas} destinationDatas={destinationDatas} categoryDatas={categoryDatas} toursData={toursData} />
+      <PopularDestinations travelDatas={travelDatas} destinationDatas={destinationDatas} />
       <Process />
-      {/* <Gallery data={data} /> */}
+      <Gallery travelDatas={travelDatas} />
       <Value />
       <Questions />
       <MainFooter />
+      <Footer />
     </div>
   );
 }
 
-export { getServerSideProps };
+export { getServerSideProps }
 
 export default Home;

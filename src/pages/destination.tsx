@@ -1,27 +1,31 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { Header } from "@/components/destination/Header";
-import { Footer } from "@/components/destination/Footer";
-import { About } from "@/components/destination/About";
+import { Header } from "@/components/Header";
+import { Login } from "@/components/Login";
+import { Footer } from "@/components/Footer";
+import { About } from "@/components/About";
 
-import { Hero } from "@/components/destination/Hero";
-import { Order } from "@/components/destination/Order";
-import axios from "axios";
-import { TravelType } from "./types/travelType";
-import { FormComponent } from "@/components/destination/FormData";
-
-
+import { Details } from "@/components/Details";
+import { Form } from "@/components/Form";
+import { Signup } from "@/components/Signup";
+import { Order } from "@/components/Order";
+import { Hero } from "@/components/Hero";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Destination({ travelData }: { travelData: TravelType[] }) {
     return (
         <>
             {/* <Header /> */}
-            <About travelData={travelData} />
+            <About />
             {/* <Order /> */}
-            <Hero travelData={travelData} />
+            <Hero />
             {/* <Details /> */}
-            {/* <FormComponent /> */}
+            {/* <Form /> */}
+            {/* <Login /> */}
+            {/* <Login /> */}
+            {/* <Signup /> */}
+
+
             <Footer />
         </>
     );
