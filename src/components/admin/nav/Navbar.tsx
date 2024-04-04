@@ -5,7 +5,7 @@ import { Profileicon } from "@/components/icons2/Profileicon";
 
 export const Navbar = () => {
   return (
-    <div className=" bg-[#121316] flex justify-between p-3">
+    <div className=" bg-[#121316] flex justify-between p-3 min-[350px]:w-full max-[639px]:full">
       <Pineconelogoicon />
       <div className="flex gap-5">
         <div className="mt-1">

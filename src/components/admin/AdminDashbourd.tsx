@@ -4,6 +4,7 @@ import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
 import { instance } from "../utilities/TravelUtility";
 import { Leftbar } from "./Leftbar";
+import { HomeIcon } from "../icons2/HomeIcon";
 
 type dashboardData = {
   name: String;
@@ -53,24 +54,36 @@ export const AdminDashbourd = () => {
     <div>
       <Navbar />
       <div className="flex">
-        <Leftbar />
+        <div>
+          <div className="hidden lg:block">
+            <Leftbar />
+          </div>
+          <div className="sm:flex p-2 bg-gray-100 h-full group hover:flex">
+            <div className="group-hover:hidden">
+              <HomeIcon />
+            </div>
+            <div className="group-hover:block hidden absolute bg-white">
+              <Leftbar />
+            </div>
+          </div>
+        </div>
         <div className="bg-gray-200 w-full p-8">
           <div className=" flex gap-10">
-            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-7/12 h-30">
+            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-7/12 h-30 min-[350px]:w-full max-[640px]:w-full">
               <h2 className=" flex">
                 <Ordericon /> Захиалга
               </h2>
               <h1 className=" text-2xl font-bold">58</h1>
               <p className=" text-[]">Өнөөдөр</p>
             </div>
-            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-5/12 h-30">
+            <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-5/12 h-30 min-[350px]:w-full max-[640px]:full">
               <h1 className=" text-2xl font-bold">235,000₮</h1>
               <p className=" text-[]">Өнөөдөр</p>
             </div>
           </div>
           {/* Borluulalt */}
-          <div className="flex w-full mt-5 gap-10">
-            <div className=" rounded-lg p-3 border-none bg-white w-7/12">
+          <div className="flex w-full mt-5 gap-10 sm:flex-col lg:flex-row min-[350px]:flex-col">
+            <div className=" rounded-lg p-3 border-none bg-white w-7/12 min-[350px]:w-full">
               <div className=" flex justify-between mb-3">
                 <h1 className=" text-xl">Шилдэг бүтээгдэхүүн</h1>
                 <Bagaih />
@@ -122,7 +135,7 @@ export const AdminDashbourd = () => {
                 </table>
               </div>
             </div>
-            <div className=" w-5/12">
+            <div className=" w-5/12 min-[350px]:w-full">
               <div className=" rounded-lg p-3 border-none bg-white row-span-2">
                 <div className=" flex justify-between mb-3">
                   <h1 className=" text-xl">Борлуулалт</h1>

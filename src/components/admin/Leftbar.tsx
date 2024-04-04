@@ -7,7 +7,9 @@ import { AdminProduct } from "../icons/adminicons/AdminProduct";
 
 export const Leftbar = () => {
   return (
-    <div className="w-1/6 min-h-screen h-full py-10 flex flex-col gap-7 justify-start bg-white shadow-lg">
+    <div
+      className={`w-1/6 min-h-screen h-full py-10 flex flex-col gap-7 justify-start`}
+    >
       <a
         className="flex gap-2 w-full items-center pl-5"
         href="/admin/Dashboard"
@@ -26,13 +28,13 @@ export const Leftbar = () => {
         </div>
         <h1>Захиалга</h1>
       </a>
-      <a className="flex gap-2 w-full items-center pl-5" href="/admin/Income">
+      <a className="flex gap-2 w-full items-center pl-5 " href="/admin/Income">
         <div className="w-1/6 px-4">
           <AdminRevenue />
         </div>
         <h1>Орлого</h1>
       </a>
-      <a className="flex gap-2 w-full items-center pl-5" href="/admin/Product">
+      <a className="flex gap-2 w-full items-center pl-5 " href="/admin/Product">
         <div className="w-1/6 px-4">
           <AdminProduct />
         </div>
