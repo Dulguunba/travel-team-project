@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Navbar } from "./nav/Navbar";
 import { Leftbar } from "./Leftbar";
 import { Addtionicon } from "../icons2/Addtionicon";
@@ -8,9 +8,68 @@ import { Dateicon } from "../icons2/product/Dateicon";
 import { Searchicon } from "../icons2/product/Searchicon";
 import { Deleteicon } from "../icons2/product/Deleteicon";
 import { Editicon } from "../icons2/product/Editicon";
+import { instance } from "../utilities/TravelUtility";
+
+type travelInfoType = {
+  additionalInfo: String;
+  calendar: [
+    {
+      endDay: String;
+      endTime: String;
+      startDay: String;
+      startTime: String;
+    }
+  ];
+  categoryType: String[];
+  createdAt: Date;
+  duration: 14;
+  food: {
+    IsIncludeFoodCheck: Boolean;
+    IsIncludeFoodPriceCheck: Boolean;
+    foodNumber: Number;
+    foodPrice: Number;
+  };
+  image: {
+    mainImage: String;
+    supportImage: String;
+  };
+  name: String;
+  price: { adultPrice: String; childPrice: String };
+  route: String[];
+  touristType: [];
+  traffic: {
+    trafficPrice: Number;
+    IsIncludeTrafficCheck: Boolean;
+    IsIncludeTrafficPriceCheck: Boolean;
+  };
+  travelCompany: String;
+  updatedAt: String;
+  __v: Number;
+  _id: String;
+};
 
 export const AdminProduct = () => {
-  const [productData, setProductData] = useState([{}, {}, {}, {}, {}, {}, {}]);
+  const [productData, setProductData] = useState([]);
+  const getProduct = async () => {
+    try {
+      const get: [] = (await instance.get("/travel/get")).data.result;
+      setProductData(get);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useMemo(() => {
+    getProduct();
+  }, []);
+  const deleteTravel = async (id: String) => {
+    try {
+      const travel = await instance.delete("travel/delete/?_id=" + id);
+      getProduct();
+      alert("SuccessFully Delete Travel");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -24,11 +83,10 @@ export const AdminProduct = () => {
           <hr />
           <div className="m-8">
             <button className=" mb-5 flex gap-3 bg-black rounded-lg w-fit px-10 p-2 text-white">
-              {" "}
               <div className="mt-1">
                 <Addtionicon />
               </div>
-              Бүтээгдэхүүн нэмэх
+              Аялал нэмэх
             </button>
             <div className="flex justify-between mb-8">
               <div className=" flex gap-5">
@@ -57,22 +115,20 @@ export const AdminProduct = () => {
             <div>
               <div className="overflow-x-auto bg-white rounded-lg">
                 <table className="table">
-                  {/* head */}
                   <thead>
                     <tr>
                       <th></th>
-                      <th>Бүтээгдэхүүн</th>
-                      <th>Ангилал</th>
+                      <th>Зураг</th>
+                      <th>Аялалын нэр</th>
+                      <th>Компанийн нэр</th>
+                      <th>Хугцаа</th>
                       <th>Үнэ</th>
-                      <th>Үлдэгдэл</th>
-                      <th>Зарагдсан</th>
-                      <th> Нэмсэн огноо</th>
+                      <th> Нэмэлт мэдээлэл</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {/* row 1 */}
-                    {productData.map(() => {
+                    {productData.map((travel: travelInfoType) => {
                       return (
                         <tr>
                           <th>
@@ -84,32 +140,41 @@ export const AdminProduct = () => {
                             <div className="flex items-center gap-3">
                               <div className="avatar">
                                 <div className="mask mask-squircle w-12 h-12">
-                                  <img
-                                    src="/tailwind-css-component-profile-2@56w.png"
-                                    alt="Avatar Tailwind CSS Component"
-                                  />
+                                  <img src={`${travel.image.mainImage}`} />
                                 </div>
                               </div>
                               <div>
-                                <div className="font-bold">Hart Hagerty</div>
+                                <div className="font-bold">
+                                  {travel.travelCompany}
+                                </div>
                                 <div className="text-sm opacity-50">
-                                  United States
+                                  {travel.additionalInfo.slice(0, 10)}
                                 </div>
                               </div>
                             </div>
                           </td>
-                          <td>
-                            <span className="badge badge-ghost badge-sm">
-                              Desktop Support Technician
-                            </span>
-                          </td>
-                          <td>19,000₮</td>
-                          <th>76</th>
-                          <th>30</th>
-                          <th>2024-01-10</th>
+                          <td>{travel.name.slice(0, 30)}</td>
+                          <td>{travel.travelCompany}</td>
+                          <th>
+                            <p>
+                              {travel.calendar[0].startDay} -
+                              {travel.calendar[0].endDay}
+                            </p>
+                          </th>
+                          <th>
+                            <select id="">
+                              <option>Adult-{travel.price.adultPrice}</option>
+                              <option>Child-{travel.price.childPrice}</option>
+                            </select>
+                          </th>
+                          <th>
+                            <p className=" text-ellipsis">
+                              {travel.additionalInfo}
+                            </p>
+                          </th>
                           <th>
                             <div className=" flex gap-5">
-                              <button>
+                              <button onClick={() => deleteTravel(travel._id)}>
                                 <Deleteicon />
                               </button>
                               <button>

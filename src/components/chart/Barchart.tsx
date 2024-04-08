@@ -1,12 +1,31 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart as Chartjs } from "chart.js/auto";
+import { Chart as ChartJS } from "chart.js/auto";
 
 type Userdata = {
-  label: number[];
-  datasets: { label: string; dataset: number[] }[];
+  id: Number;
+  year: Date;
+  userGain: Number;
+  userLost: Number;
 };
 
-export const Barchart = (user: Userdata) => {
-  return <Bar data={user} />;
+export const Barchart = () => {
+  return (
+    <Bar
+      data={{
+        labels: ["A", "B", "c"],
+        datasets: [
+          {
+            label: "revese",
+            data: [200, 300, 400],
+          },
+          {
+            label: "revese",
+            data: [200, 300, 400],
+          },
+        ],
+      }}
+      options={}
+    />
+  );
 };

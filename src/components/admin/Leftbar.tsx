@@ -7,11 +7,9 @@ import { AdminProduct } from "../icons/adminicons/AdminProduct";
 
 export const Leftbar = () => {
   return (
-    <div
-      className={`w-1/6 min-h-screen h-full py-10 flex flex-col gap-7 justify-start`}
-    >
+    <div className={`sm:w-1/6  h-full sm:py-10 flex flex-col gap-7 `}>
       <a
-        className="flex gap-2 w-full items-center pl-5"
+        className="flex gap-2 w-full items-center sm:pl-5"
         href="/admin/Dashboard"
       >
         <div className="w-1/6 px-4">
@@ -20,7 +18,7 @@ export const Leftbar = () => {
         <h1>Хяналтын самбар</h1>
       </a>
       <a
-        className="flex gap-2 w-full items-center pl-5"
+        className="flex gap-2 w-full items-center sm:pl-5"
         href="/admin/order/Order"
       >
         <div className="w-1/6 px-4">
@@ -28,19 +26,28 @@ export const Leftbar = () => {
         </div>
         <h1>Захиалга</h1>
       </a>
-      <a className="flex gap-2 w-full items-center pl-5 " href="/admin/Income">
+      <a
+        className="flex gap-2 w-full items-center sm:pl-5 "
+        href="/admin/Income"
+      >
         <div className="w-1/6 px-4">
           <AdminRevenue />
         </div>
         <h1>Орлого</h1>
       </a>
-      <a className="flex gap-2 w-full items-center pl-5 " href="/admin/Product">
+      <a
+        className="flex gap-2 w-full items-center sm:pl-5 "
+        href="/admin/Product"
+      >
         <div className="w-1/6 px-4">
           <AdminProduct />
         </div>
         <h1>Бүтээгдэхүүн</h1>
       </a>
-      <a className="flex gap-2 w-full items-center pl-5" href="/admin/Product">
+      <a
+        className="flex gap-2 w-full items-center sm:pl-5"
+        href="/admin/Product"
+      >
         <div className="w-1/6 px-4">
           <AdminSetting />
         </div>

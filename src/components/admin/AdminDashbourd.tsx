@@ -4,7 +4,7 @@ import { Bagaih } from "../icons2/product/Bagaih";
 import { Ordericon } from "../icons2/Ordericon";
 import { instance } from "../utilities/TravelUtility";
 import { Leftbar } from "./Leftbar";
-import { HomeIcon } from "../icons2/HomeIcon";
+import { HomeIcon, Xicon } from "../icons2";
 
 type dashboardData = {
   name: String;
@@ -16,6 +16,7 @@ type dashboardData = {
 
 export const AdminDashbourd = () => {
   const [getOrder, setGetOrder] = useState();
+  const [leftToglle, setLeftToggle] = useState(false);
   const data = [
     {
       name: "WOMEN'S HORSEBIT",
@@ -41,7 +42,7 @@ export const AdminDashbourd = () => {
   ];
   const getOrderDB = async () => {
     try {
-      const get = (await instance.get("route/get")).data;
+      const get = (await instance.get("travel/get")).data;
       setGetOrder(get);
     } catch (error) {
       console.log(error);
@@ -54,19 +55,6 @@ export const AdminDashbourd = () => {
     <div>
       <Navbar />
       <div className="flex">
-        <div>
-          <div className="hidden lg:block">
-            <Leftbar />
-          </div>
-          <div className="sm:flex p-2 bg-gray-100 h-full group hover:flex">
-            <div className="group-hover:hidden">
-              <HomeIcon />
-            </div>
-            <div className="group-hover:block hidden absolute bg-white">
-              <Leftbar />
-            </div>
-          </div>
-        </div>
         <div className="bg-gray-200 w-full p-8">
           <div className=" flex gap-10">
             <div className=" rounded-lg p-3 border-none bg-white row-span-1 w-7/12 h-30 min-[350px]:w-full max-[640px]:w-full">
@@ -85,7 +73,7 @@ export const AdminDashbourd = () => {
           <div className="flex w-full mt-5 gap-10 sm:flex-col lg:flex-row min-[350px]:flex-col">
             <div className=" rounded-lg p-3 border-none bg-white w-7/12 min-[350px]:w-full">
               <div className=" flex justify-between mb-3">
-                <h1 className=" text-xl">Шилдэг бүтээгдэхүүн</h1>
+                <h1 className=" text-xl">Шилдэг Аялал</h1>
                 <Bagaih />
               </div>
               <div className="overflow-x-auto">
@@ -94,7 +82,7 @@ export const AdminDashbourd = () => {
                   <thead>
                     <tr>
                       <th></th>
-                      <th>Бүтээгдэхүүн</th>
+                      <th>Аялал</th>
                       <th>Зарагдсан</th>
                       <th>Үнэ</th>
                     </tr>
